@@ -13,7 +13,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\IRepository\IUserRepository',
+            'App\Repository\UserRepository'
+        );
+        $this->app->bind(
+            'App\IRepository\ITestRepository',
+            'App\Repository\TestRepository'
+        );
+        $this->app->bind(
+            'App\IRepository\IAmountAssignedRepository',
+            'App\Repository\AmountAssignedRepository'
+        );
+        $this->app->bind(
+            'App\IRepository\IVoucherRepository',
+            'App\Repository\VoucherRepository'
+        );
     }
 
     /**
