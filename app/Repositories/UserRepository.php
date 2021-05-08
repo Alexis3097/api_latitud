@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 use App\Models\User;
-use App\IRepository\IUserRepository;
+use App\IRepositories\IUserRepository;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements IUserRepository

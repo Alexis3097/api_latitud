@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 use App\Models\AmountAssigned;
-use App\IRepository\IAmountAssignedRepository;
+use App\IRepositories\IAmountAssignedRepository;
 
 class AmountAssignedRepository implements IAmountAssignedRepository
 {

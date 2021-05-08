@@ -1,7 +1,7 @@
 <?php
 
-namespace App\IRepository;
-use App\IRepository\IBaseRepository;
+namespace App\IRepositories;
+use App\Contracts\IBaseRepository;
 
 interface IAmountAssignedRepository extends IBaseRepository
 {

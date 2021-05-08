@@ -1,9 +1,8 @@
 <?php
 
-namespace App\IRepository;
+namespace App\IRepositories;
 
-use Illuminate\Http\Request;
-use App\IRepository\IBaseRepository;
+use App\Contracts\IBaseRepository;
 
 interface IUserRepository extends IBaseRepository
 {

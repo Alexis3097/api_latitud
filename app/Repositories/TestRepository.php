@@ -11,23 +11,28 @@ class TestRepository implements ITestRepository
         return Test::paginate(10);
     }
 
-    public function create($data): bool
+
+    public function create($data)
     {
-        return Test::saveOrFail($data);
+        return Test::create($data);
     }
 
     public function show($id)
     {
-        // TODO: Implement show() method.
+        return Test::find($id);
     }
 
     public function update($data, $id)
     {
-        // TODO: Implement update() method.
+        $test = Test::find($id);
+        $test->fill($data);
+        return $test->save();
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $test =  Test::find($id);
+        $test->delete();
+        return $test;
     }
 }

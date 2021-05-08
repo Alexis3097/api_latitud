@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 use App\Models\Voucher;
-use App\IRepository\IVoucherRepository;
+use App\IRepositories\IVoucherRepository;
 
 class VoucherRepository implements IVoucherRepository
 {
