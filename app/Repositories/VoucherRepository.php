@@ -6,23 +6,23 @@ use App\IRepositories\IVoucherRepository;
 
 class VoucherRepository implements IVoucherRepository
 {
-    /**
-     * @throws \Throwable
-     */
-    public function create($data): bool
+
+    public function all(){
+        return Voucher::paginate(10);
+    }
+    public function create($data)
     {
-        return Voucher::saveOrFail($data);
+        return Voucher::create($data);
     }
     public function show($id){
-
+        return Voucher::find($id);
     }
     public function update($data, $id){
-
+        $voucher = Voucher::find($id);
+        $voucher->fill($data);
+        return $voucher->save();
     }
     public function delete($id){
-
-    }
-    public function all(){
-        return Voucher::all();
+        return Voucher::find($id)->delete();
     }
 }

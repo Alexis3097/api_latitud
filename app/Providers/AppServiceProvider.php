@@ -14,16 +14,16 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\IRepositories\IUserRepository',
-            'App\Repositories\UserRepository'
-        );
-        $this->app->bind(
             'App\IRepositories\ITestRepository',
             'App\Repositories\TestRepository'
         );
         $this->app->bind(
             'App\IRepositories\IAmountAssignedRepository',
             'App\Repositories\AmountAssignedRepository'
+        );
+        $this->app->bind(
+            'App\IRepositories\IUserRepository',
+            'App\Repositories\UserRepository'
         );
         $this->app->bind(
             'App\IRepositories\IVoucherRepository',

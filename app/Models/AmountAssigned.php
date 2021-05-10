@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static paginate(int $int)
+ */
 class AmountAssigned extends Model
 {
     protected $table = 'amount_assigned';

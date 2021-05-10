@@ -16,7 +16,7 @@ class CreateAmountAssignedTable extends Migration
         Schema::create('amount_assigned', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('amount');
+            $table->double('amount'); //monto asignado
             $table->boolean('amount_status');//cerrado o abierto
             $table->softDeletes();
             $table->timestamps();

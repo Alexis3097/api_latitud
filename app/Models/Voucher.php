@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AmountAssigned;
 use App\Models\ExpenseType;
 use App\Models\CheckType;
+
+/**
+ * @method static paginate(int $int)
+ * @method static create($data)
+ * @method static find($id)
+ */
 class Voucher extends Model
 {
     use SoftDeletes;

@@ -25,5 +25,7 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::apiResource('test', 'TestController');
+    Route::apiResource('AmountAssigned', 'AmountAssignedController');
+    Route::apiResource('Voucher', 'VoucherController');
 
 });
