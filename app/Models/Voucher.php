@@ -29,6 +29,8 @@ class Voucher extends Model
         'concept',
         'amount',
         'photo',
+        'Store',
+        'RFC',
     ];
 
     public function amountAssigned(){

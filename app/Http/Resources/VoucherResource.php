@@ -22,6 +22,8 @@ class VoucherResource extends JsonResource
             'concept' => $this->concept,
             'amount' => $this->amount,
             'photo' => $this->photo,
+            'Store' => $this->Store,
+            'RFC' => $this->RFC,
             'deleted_at' => $this->deleted_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

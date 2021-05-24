@@ -21,6 +21,7 @@ class CreateVouchersTable extends Migration
             $table->string('concept');
             $table->double('amount');
             $table->string('photo');
+            $table->string('photoId');
             $table->softDeletes();
             $table->timestamps();
         });
