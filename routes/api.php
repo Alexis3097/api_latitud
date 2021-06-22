@@ -20,6 +20,7 @@ Route::group([
 
 ], function () {
 
+    Route::get('getApi', 'TestController@getApi');
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
