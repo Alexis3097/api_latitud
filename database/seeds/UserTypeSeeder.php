@@ -16,7 +16,7 @@ class UserTypeSeeder extends Seeder
             'type'=>'Administrador'
         ]);
         UserType::create([
-            'type'=>'Coordinador'
+            'type'=>'General'
         ]);
     }
 }
