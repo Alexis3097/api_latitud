@@ -33,4 +33,10 @@ class UserRepository implements IUserRepository
     public function all(){
 
     }
+
+    public function getCoordinadores()
+    {
+        return User::where('user_type_id',2)->get();
+    }
+
 }

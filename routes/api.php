@@ -20,7 +20,7 @@ Route::group([
 
 ], function () {
 
-    Route::get('getApi', 'TestController@getApi');
+
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
@@ -28,5 +28,6 @@ Route::group([
     Route::apiResource('test', 'TestController');
     Route::apiResource('AmountAssigned', 'AmountAssignedController');
     Route::apiResource('Voucher', 'VoucherController');
+    Route::get('coordinadores', 'UserController@getCoordinadores');
 
 });

@@ -8,12 +8,14 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use App\Models\UserType;
 use App\Models\AmountAssigned;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-
+    use SoftDeletes;
+//    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *

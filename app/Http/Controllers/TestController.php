@@ -15,13 +15,11 @@ class TestController extends Controller
 {
     protected $ITestRepository;
     function __construct(ITestRepository $ITestRepository){
-//        $this->middleware('auth:api');
+       $this->middleware('auth:api');
         $this->ITestRepository = $ITestRepository;
     }
 
-    public function getApi(){
-        return response()->json(['messages'=> 'SI entro la api']);
-    }
+
 
     public function index()
     {
@@ -103,5 +101,6 @@ class TestController extends Controller
             return response()->json(['destroy'=>false],500);
         }
     }
+
 
 }

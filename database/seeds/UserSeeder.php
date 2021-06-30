@@ -21,8 +21,32 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'user_type_id'=> 2,
-            'name'=> 'cristian tecnico',
-            'email'=> 'cristian@gmail.com',
+            'name'=> 'Giovana',
+            'email'=> 'Giovana@gmail.com',
+            'password'=> Hash::make('adminadmin'),
+        ]);
+        User::create([
+            'user_type_id'=> 2,
+            'name'=> 'Ana',
+            'email'=> 'Ana@gmail.com',
+            'password'=> Hash::make('adminadmin'),
+        ]);
+        User::create([
+            'user_type_id'=> 2,
+            'name'=> 'Gaby',
+            'email'=> 'Gaby@gmail.com',
+            'password'=> Hash::make('adminadmin'),
+        ]);
+        User::create([
+            'user_type_id'=> 3,
+            'name'=> 'Alexis',
+            'email'=> 'Alexis@gmail.com',
+            'password'=> Hash::make('adminadmin'),
+        ]);
+        User::create([
+            'user_type_id'=> 3,
+            'name'=> 'Manuel',
+            'email'=> 'Manuel@gmail.com',
             'password'=> Hash::make('adminadmin'),
         ]);
     }
