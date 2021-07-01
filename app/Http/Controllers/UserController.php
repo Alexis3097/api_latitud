@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\ResponseMessages;
-use App\IRepositories\IUserRepository;
 use Illuminate\Http\Request;
+use App\Enums\ResponseMessages;
 use Illuminate\Support\Facades\Log;
-use function PHPUnit\Framework\isEmpty;
+use App\Http\Resources\UserResource;
+use App\IRepositories\IUserRepository;
 
 class UserController extends Controller
 {
@@ -20,7 +20,7 @@ class UserController extends Controller
     public function getCoordinadores(){
         try{
             $coordinadores = $this->IUserRepository->getCoordinadores();
-            if(!isEmpty($coordinadores)){
+            if(!is_null($coordinadores)){
                    return UserResource::collection($coordinadores);
             }
             else{

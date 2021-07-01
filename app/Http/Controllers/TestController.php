@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\ResponseMessages;
-use App\IRepositories\ITestRepository;
-use App\Http\Requests\StoreTest;
-use App\Http\Resources\TestResource;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Throwable;
-use function PHPUnit\Framework\isEmpty;
+use App\Models\Test;
+use Illuminate\Http\Request;
+use App\Enums\ResponseMessages;
+use App\Http\Requests\StoreTest;
+use Illuminate\Support\Facades\Log;
+use App\Http\Resources\TestResource;
+use App\IRepositories\ITestRepository;
 
 class TestController extends Controller
 {
@@ -24,8 +24,9 @@ class TestController extends Controller
     public function index()
     {
         try{
+            
             $tests = $this->ITestRepository->all();
-            if(!isEmpty($tests)){
+            if(!is_null($tests)){
                 return TestResource::collection($tests);
             }
             else{
