@@ -25,7 +25,6 @@ class UserResource extends JsonResource
             'email'=> $this->email,
             'photo'=> $this->photo,
             'email_verified_at'=> $this->email_verified_at,
-            'password'=> $this->password,
             'remember_token'=> $this->remember_token,
             'created_at'=> $this->created_at,
             'updated_at'=> $this->updated_at,
