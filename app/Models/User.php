@@ -41,6 +41,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(AmountAssigned::class);
     }
 
+    public function box(){
+        return $this->hasOne(Box::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -66,5 +70,16 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+    protected $appends = [
+        'AmountState',
+    ];
+
+
+
+    public function getAmountStateAttribute()
+    {
+        $amountState = $this->box->amount;
+        return $amountState === null ? 0.00 : $amountState;
     }
 }
