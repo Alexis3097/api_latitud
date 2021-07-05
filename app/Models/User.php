@@ -79,9 +79,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAmountStateAttribute()
     {
-//        $amountState = $this->box->amount;
-//        return $amountState === null ? 0.00 : $amountState;
-        $grupo = true;
-        return $grupo;
+        $amountState = $this->box->amount;
+        return $amountState === null ? 0.00 : $amountState;
+//        $grupo = true;
+//        return $grupo;
     }
 }
