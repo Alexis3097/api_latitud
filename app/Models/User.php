@@ -8,6 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use App\Models\UserType;
 use App\Models\AmountAssigned;
+use App\Models\Box;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -72,16 +73,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
     protected $appends = [
-        'AmountState',
+
     ];
 
 
 
-    public function getAmountStateAttribute()
-    {
-        $amountState = $this->box->amount;
-        return $amountState === null ? 0.00 : $amountState;
-//        $grupo = true;
-//        return $grupo;
-    }
+
 }
