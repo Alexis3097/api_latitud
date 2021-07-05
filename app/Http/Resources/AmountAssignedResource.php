@@ -14,14 +14,6 @@ class AmountAssignedResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id' => $this->id,
-            'user_id' => $this->user_id,
-            'amount' => $this->amount,
-            'amount_status' => $this->amount_status,
-            'deleted_at' => $this->deleted_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];
+        return parent::toArray($request);
     }
 }
