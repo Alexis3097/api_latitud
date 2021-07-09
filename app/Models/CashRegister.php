@@ -15,9 +15,16 @@ class CashRegister extends Model
         'now_amount',
     ];
 
+    protected $appends = [
+        'user',
+    ];
+
 
     public function box()
     {
         return $this->belongsTo(Box::class);
+    }
+    public function getUserAttribute(){
+        return $this->box();
     }
 }

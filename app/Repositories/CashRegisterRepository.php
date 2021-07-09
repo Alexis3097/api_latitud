@@ -13,11 +13,7 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-        return CashRegister::with('box')->get();
-
-//        $register = CashRegister::whereHas('box', function (Builder $query) {
-//            $query->where('content', 'like', 'foo%');
-//        })->get();
+        return CashRegister::all();
     }
 
     public function create($data)
