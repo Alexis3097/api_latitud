@@ -30,6 +30,6 @@ class CashRegisterSeeder extends Seeder
             'account'=>100,
             'now_amount'=>5800,
         ]);
-
+        factory(CashRegister::Class,30)->create();
     }
 }
