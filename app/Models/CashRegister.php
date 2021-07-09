@@ -25,6 +25,6 @@ class CashRegister extends Model
         return $this->belongsTo(Box::class);
     }
     public function getUserAttribute(){
-        return $this->user;
+        return $this->id;
     }
 }
