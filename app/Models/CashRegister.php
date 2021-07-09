@@ -27,6 +27,7 @@ class CashRegister extends Model
     }
     public function getUserAttribute(){
         $id =  $this->box;
-        return $id->user_id;
+        $algo =  $id->user_id;
+        return $algo;
     }
 }
