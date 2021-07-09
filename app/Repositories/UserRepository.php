@@ -36,9 +36,7 @@ class UserRepository implements IUserRepository
 
     public function getCoordinadores()
     {
-        $user = User::where('user_type_id',2)->with('box')->get();
-//        where('user_type_id',2)->box->get();
-        return $user;
+        return User::where('user_type_id',2)->with('box')->get();
     }
 
 }
