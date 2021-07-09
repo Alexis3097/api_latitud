@@ -28,4 +28,11 @@ class CashRegister extends Model
     public function getUserAttribute(){
         return $this->box->user;
     }
+
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['created_at'] =$value->format('l jS \\of F Y h:i:s A');
+    }
+
+
 }
