@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\Box;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class CashRegister extends Model
@@ -25,6 +26,7 @@ class CashRegister extends Model
         return $this->belongsTo(Box::class);
     }
     public function getUserAttribute(){
-        return $this->id;
+        $id =  $this->box;
+        return $id->user_id;
     }
 }
