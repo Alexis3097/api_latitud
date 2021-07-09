@@ -12,7 +12,8 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-        return CashRegister::with('box');
+        return CashRegister::all();
+//        return CashRegister::with('box');
     }
 
     public function create($data)
