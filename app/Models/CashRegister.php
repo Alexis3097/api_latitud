@@ -18,7 +18,6 @@ class CashRegister extends Model
 
     protected $appends = [
         'user',
-        'Date',
     ];
 
 
@@ -30,10 +29,7 @@ class CashRegister extends Model
         return $this->box->user;
     }
 
-    public function setDateAttribute($value)
-    {
-        $this->attributes['created_at'] =$value->format('l jS \\of F Y h:i:s A');
-    }
+
 
 
 }
