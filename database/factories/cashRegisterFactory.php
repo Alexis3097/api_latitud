@@ -4,7 +4,6 @@
 
 use App\Models\CashRegister;
 use Faker\Generator as Faker;
-
 $factory->define(CashRegister::class, function (Faker $faker) {
     return [
         'box_id' => $faker->numberBetween(1,3),
