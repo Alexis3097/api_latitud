@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\CashRegister;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\CashRegister;
 class Box extends Model
 {
     protected $table = 'box';
@@ -18,7 +18,8 @@ class Box extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cashRegister(){
-        return $this->hasOne(CashRegister::class);
+    public function cashRegisters()
+    {
+        return $this->hasMany(CashRegister::class);
     }
 }

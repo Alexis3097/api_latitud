@@ -16,7 +16,8 @@ class CashRegister extends Model
     ];
 
 
-    public function box(){
+    public function box()
+    {
         return $this->belongsTo(Box::class);
     }
 }
