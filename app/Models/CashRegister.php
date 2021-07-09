@@ -15,9 +15,9 @@ class CashRegister extends Model
         'now_amount',
     ];
 
-    protected $appends = [
-        'user',
-    ];
+//    protected $appends = [
+//        'user',
+//    ];
 
 
     public function box()
