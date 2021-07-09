@@ -1,0 +1,35 @@
+<?php
+
+use App\Models\CashRegister;
+use Illuminate\Database\Seeder;
+
+class CashRegisterSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        CashRegister::create([
+            'box_id'=>1,
+            'last_amount'=>600,
+            'account'=>100,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>2,
+            'last_amount'=>700,
+            'account'=>100,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>3,
+            'last_amount'=>5700,
+            'account'=>100,
+            'now_amount'=>5800,
+        ]);
+
+    }
+}

@@ -29,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
             'App\IRepositories\IVoucherRepository',
             'App\Repositories\VoucherRepository'
         );
+        $this->app->bind(
+            'App\IRepositories\ICashRegisterRepository',
+            'App\Repositories\CashRegisterRepository'
+        );
     }
 
     /**

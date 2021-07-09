@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Box;
 use Illuminate\Database\Eloquent\Model;
 
 class CashRegister extends Model
@@ -11,6 +11,12 @@ class CashRegister extends Model
     protected $fillable = [
         'box_id',
         'last_amount',
+        'account',
         'now_amount',
     ];
+
+
+    public function box(){
+        return $this->belongsTo(Box::class);
+    }
 }

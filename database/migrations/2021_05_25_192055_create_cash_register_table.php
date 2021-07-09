@@ -17,6 +17,7 @@ class CreateCashRegisterTable extends Migration
             $table->id();
             $table->foreignId('box_id')->constrained('box');
             $table->integer('last_amount');
+            $table->integer('account');
             $table->integer('now_amount');
             $table->softDeletes();
             $table->timestamps();
