@@ -13,8 +13,8 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-        $page = 2;
-        return CashRegister::paginate(5)->appends( ['page' => $page]);
+        
+        return CashRegister::paginate(10);
     }
 
     public function create($data)
