@@ -21,7 +21,7 @@ class CashRegisterSeeder extends Seeder
         CashRegister::create([
             'box_id'=>2,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>200,
             'now_amount'=>800,
         ]);
         CashRegister::create([
@@ -30,9 +30,111 @@ class CashRegisterSeeder extends Seeder
             'account'=>100,
             'now_amount'=>5800,
         ]);CashRegister::create([
-            'box_id'=>1,
+            'box_id'=>4,
             'last_amount'=>600,
-            'account'=>100,
+            'account'=>300,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>5,
+            'last_amount'=>700,
+            'account'=>400,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>6,
+            'last_amount'=>5700,
+            'account'=>500,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>7,
+            'last_amount'=>600,
+            'account'=>600,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>1,
+            'last_amount'=>700,
+            'account'=>700,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>2,
+            'last_amount'=>5700,
+            'account'=>800,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>3,
+            'last_amount'=>600,
+            'account'=>900,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>4,
+            'last_amount'=>700,
+            'account'=>1000,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>5,
+            'last_amount'=>5700,
+            'account'=>1100,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>6,
+            'last_amount'=>600,
+            'account'=>1200,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>7,
+            'last_amount'=>700,
+            'account'=>1300,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>1,
+            'last_amount'=>5700,
+            'account'=>1400,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>2,
+            'last_amount'=>600,
+            'account'=>1500,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>3,
+            'last_amount'=>700,
+            'account'=>1600,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>4,
+            'last_amount'=>5700,
+            'account'=>1700,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>5,
+            'last_amount'=>600,
+            'account'=>1800,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>6,
+            'last_amount'=>700,
+            'account'=>1900,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>7,
+            'last_amount'=>5700,
+            'account'=>10000,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>1,
+            'last_amount'=>1600,
+            'account'=>1500,
             'now_amount'=>700,
         ]);
         CashRegister::create([
@@ -44,279 +146,177 @@ class CashRegisterSeeder extends Seeder
         CashRegister::create([
             'box_id'=>3,
             'last_amount'=>5700,
-            'account'=>100,
+            'account'=>200,
             'now_amount'=>5800,
         ]);CashRegister::create([
+            'box_id'=>4,
+            'last_amount'=>600,
+            'account'=>300,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>5,
+            'last_amount'=>700,
+            'account'=>400,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>6,
+            'last_amount'=>5700,
+            'account'=>500,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>7,
+            'last_amount'=>600,
+            'account'=>600,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
             'box_id'=>1,
+            'last_amount'=>700,
+            'account'=>700,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>2,
+            'last_amount'=>5700,
+            'account'=>800,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>3,
+            'last_amount'=>600,
+            'account'=>900,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>4,
+            'last_amount'=>700,
+            'account'=>1000,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>5,
+            'last_amount'=>5700,
+            'account'=>1400,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>6,
+            'last_amount'=>600,
+            'account'=>1500,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>7,
+            'last_amount'=>700,
+            'account'=>1700,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>1,
+            'last_amount'=>5700,
+            'account'=>1200,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>2,
+            'last_amount'=>600,
+            'account'=>1100,
+            'now_amount'=>700,
+        ]);
+        CashRegister::create([
+            'box_id'=>3,
+            'last_amount'=>700,
+            'account'=>1200,
+            'now_amount'=>800,
+        ]);
+        CashRegister::create([
+            'box_id'=>4,
+            'last_amount'=>5700,
+            'account'=>1300,
+            'now_amount'=>5800,
+        ]);CashRegister::create([
+            'box_id'=>5,
             'last_amount'=>600,
             'account'=>100,
             'now_amount'=>700,
         ]);
         CashRegister::create([
-            'box_id'=>2,
+            'box_id'=>6,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>1400,
             'now_amount'=>800,
         ]);
         CashRegister::create([
-            'box_id'=>3,
+            'box_id'=>7,
             'last_amount'=>5700,
-            'account'=>100,
+            'account'=>1500,
             'now_amount'=>5800,
         ]);CashRegister::create([
             'box_id'=>1,
             'last_amount'=>600,
-            'account'=>100,
+            'account'=>1600,
             'now_amount'=>700,
         ]);
         CashRegister::create([
             'box_id'=>2,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>1700,
             'now_amount'=>800,
         ]);
         CashRegister::create([
             'box_id'=>3,
             'last_amount'=>5700,
-            'account'=>100,
+            'account'=>1800,
             'now_amount'=>5800,
         ]);CashRegister::create([
-            'box_id'=>1,
+            'box_id'=>4,
             'last_amount'=>600,
-            'account'=>100,
+            'account'=>1900,
             'now_amount'=>700,
         ]);
         CashRegister::create([
-            'box_id'=>2,
+            'box_id'=>5,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>1200,
             'now_amount'=>800,
         ]);
         CashRegister::create([
-            'box_id'=>3,
+            'box_id'=>6,
             'last_amount'=>5700,
-            'account'=>100,
+            'account'=>1800,
             'now_amount'=>5800,
         ]);CashRegister::create([
-            'box_id'=>1,
+            'box_id'=>7,
             'last_amount'=>600,
-            'account'=>100,
+            'account'=>15200,
             'now_amount'=>700,
         ]);
         CashRegister::create([
-            'box_id'=>2,
+            'box_id'=>1,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>12500,
             'now_amount'=>800,
         ]);
         CashRegister::create([
-            'box_id'=>3,
+            'box_id'=>2,
             'last_amount'=>5700,
-            'account'=>100,
+            'account'=>1200,
             'now_amount'=>5800,
         ]);CashRegister::create([
-            'box_id'=>1,
+            'box_id'=>3,
             'last_amount'=>600,
-            'account'=>100,
+            'account'=>1300,
             'now_amount'=>700,
         ]);
         CashRegister::create([
-            'box_id'=>2,
+            'box_id'=>4,
             'last_amount'=>700,
-            'account'=>100,
+            'account'=>4100,
             'now_amount'=>800,
         ]);
         CashRegister::create([
-            'box_id'=>3,
+            'box_id'=>5,
             'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
-            'now_amount'=>5800,
-        ]);CashRegister::create([
-            'box_id'=>1,
-            'last_amount'=>600,
-            'account'=>100,
-            'now_amount'=>700,
-        ]);
-        CashRegister::create([
-            'box_id'=>2,
-            'last_amount'=>700,
-            'account'=>100,
-            'now_amount'=>800,
-        ]);
-        CashRegister::create([
-            'box_id'=>3,
-            'last_amount'=>5700,
-            'account'=>100,
+            'account'=>1500,
             'now_amount'=>5800,
         ]);
     }

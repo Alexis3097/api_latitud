@@ -13,7 +13,7 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-        
+
         return CashRegister::paginate(10);
     }
 
