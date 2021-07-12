@@ -37,6 +37,6 @@ class BoxRepository implements IBoxRepository
     {
      return Box::whereHas('user',function (Builder $query){
          $query->where('user_type_id','=',3);
-     })->first();
+     })->get();
     }
 }
