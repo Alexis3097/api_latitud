@@ -17,17 +17,17 @@ class BoxController extends Controller
         $this->IBoxRepository = $IBoxRepository;
     }
     function cajaChica(){
-        try{
+//        try{
             $box = $this->IBoxRepository->getCajaChica();
-            if(!is_null($box)){
+//            if(!is_null($box)){
                 return BoxResource::collection($box);
-            }
-            else{
-                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
-            }
-        }catch (Throwable $e){
-            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-            return response()->json(['get'=>false],500);
-        }
+//            }
+//            else{
+//                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+//            }
+//        }catch (Throwable $e){
+//            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+//            return response()->json(['get'=>false],500);
+//        }
     }
 }
