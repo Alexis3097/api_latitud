@@ -28,7 +28,7 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['get'=>$e],500);
         }
     }
     function registersCajaChia(){
