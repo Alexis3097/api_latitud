@@ -19,6 +19,9 @@ class UserTypeSeeder extends Seeder
             'type'=>'Coordinador'
         ]);
         UserType::create([
+            'type'=>'caja_chica'
+        ]);
+        UserType::create([
             'type'=>'General'
         ]);
     }

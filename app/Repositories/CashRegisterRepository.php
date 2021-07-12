@@ -13,8 +13,16 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
+        return CashRegister::orderBy('id','desc')->paginate(10);
+    }
+    public function registersCajaChia()
+    {
+//        $cajaChica = CashRegister::whereHas('box', function (Builder $query) {
+//            $query->where('user_id','=','');
+//        })->get();
 
-        return CashRegister::paginate(10);
+
+        return CashRegister::box();
     }
 
     public function create($data)
