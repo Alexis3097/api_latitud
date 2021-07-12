@@ -18,18 +18,18 @@ class CashRegisterController extends Controller
     }
 
     function index(){
-//        try{
+        try{
             $cashRegister = $this->ICashRegisterRepository->all();
-//            if(!is_null($cashRegister)){
+            if(!is_null($cashRegister)){
                 return CashRegisterResource::collection($cashRegister);
-//            }
-//            else{
-//                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
-//            }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-//            return response()->json(['get'=>$e],500);
-//        }
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>false],500);
+        }
     }
     function registersCajaChia(){
         try{
@@ -42,7 +42,7 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['get'=>$e],500);
         }
     }
 }
