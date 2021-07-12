@@ -35,7 +35,7 @@ class BoxRepository implements IBoxRepository
 
     function getCajaChica()
     {
-     return Box::with('user')->whereHas('user',function (Builder $query){
+     return Box::whereHas('user',function (Builder $query){
          $query->where('user_type_id','=',3);
      })->get();
     }
