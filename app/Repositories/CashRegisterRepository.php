@@ -22,7 +22,7 @@ class CashRegisterRepository implements ICashRegisterRepository
                 //3 es el tipo de usuario caja chica
                 $users->where('user_type_id','=',3)->orWhere('user_type_id','=','1');
             });
-        })->paginate(10);
+        })->orderBy('id','desc')->paginate(10);
 
 
         return $cashRegister;
