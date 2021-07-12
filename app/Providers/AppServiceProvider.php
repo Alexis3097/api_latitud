@@ -33,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
             'App\IRepositories\ICashRegisterRepository',
             'App\Repositories\CashRegisterRepository'
         );
+        $this->app->bind(
+            'App\IRepositories\IBoxRepository',
+            'App\Repositories\BoxRepository'
+        );
     }
 
     /**

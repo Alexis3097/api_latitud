@@ -31,5 +31,6 @@ Route::group([
     Route::get('coordinadores', 'UserController@getCoordinadores');
     Route::get('cashRegister/registersCajaChia','CashRegisterController@registersCajaChia');
     Route::apiResource('cashRegister','CashRegisterController');
+    Route::get('box/cajaChica','BoxController@cajaChica');
 
 });

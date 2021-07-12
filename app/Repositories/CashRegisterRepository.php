@@ -19,7 +19,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
         $cashRegister = CashRegister::whereHas('box', function (Builder $query) {
             $query->whereHas('user', function (Builder $users){
-                //3 es el tipo de usuario caja chica
+                //3 es el tipo de usuario caja chica y 1 es admin
                 $users->where('user_type_id','=',3)->orWhere('user_type_id','=','1');
             });
         })->orderBy('id','desc')->paginate(10);
