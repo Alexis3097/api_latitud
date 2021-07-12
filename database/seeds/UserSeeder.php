@@ -38,19 +38,19 @@ class UserSeeder extends Seeder
             'password'=> Hash::make('adminadmin'),
         ]);
         User::create([
-            'user_type_id'=> 3,
+            'user_type_id'=> 4,
             'name'=> 'Alexis',
             'email'=> 'Alexis@gmail.com',
             'password'=> Hash::make('adminadmin'),
         ]);
         User::create([
-            'user_type_id'=> 3,
+            'user_type_id'=> 4,
             'name'=> 'Manuel',
             'email'=> 'Manuel@gmail.com',
             'password'=> Hash::make('adminadmin'),
         ]);
         User::create([
-            'user_type_id'=> 3,
+            'user_type_id'=> 4,
             'name'=> 'Dani',
             'email'=> 'Dani@gmail.com',
             'password'=> Hash::make('adminadmin'),
