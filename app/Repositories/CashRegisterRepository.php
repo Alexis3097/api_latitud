@@ -17,12 +17,14 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function registersCajaChia()
     {
-//        $cajaChica = CashRegister::whereHas('box', function (Builder $query) {
-//            $query->where('user_id','=','');
-//        })->get();
+        $cashRegister = CashRegister::whereHas('box', function (Builder $query) {
+            $query->whereHas('users', function (Builder $users){
+                $users->where('user_type_id','=','3');//3 es el tipo de usuario caja chica
+            })->get();
+        })->get();
 
 
-        return CashRegister::box();
+        return $cashRegister;
     }
 
     public function create($data)
