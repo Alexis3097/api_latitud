@@ -17,6 +17,21 @@ class UserController extends Controller
         $this->IUserRepository = $IUserRepository;
     }
 
+    public function index(){
+        try{
+            $usuarios = $this->IUserRepository->all();
+            if(!is_null($usuarios)){
+                return UserResource::collection($usuarios);
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
+
     public function getCoordinadores(){
         try{
             $coordinadores = $this->IUserRepository->getCoordinadores();

@@ -31,7 +31,7 @@ class UserRepository implements IUserRepository
     }
 
     public function all(){
-
+        return User::all();
     }
 
     public function getCoordinadores()
