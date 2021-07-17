@@ -47,7 +47,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Box::class);
     }
     public function cashRegister(){
-        return $this->belongsTo(CashRegister::class);
+        return $this->hasOne(CashRegister::class);
     }
 
     /**
