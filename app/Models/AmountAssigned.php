@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Voucher;
+use App\Models\CashRegister;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -29,5 +30,10 @@ class AmountAssigned extends Model
 
     public function voucher(){
         return $this->hasOne(Voucher::class);
+    }
+
+    public function CashRegister()
+    {
+        return $this->morphOne(CashRegister::Class, 'registrable');
     }
 }

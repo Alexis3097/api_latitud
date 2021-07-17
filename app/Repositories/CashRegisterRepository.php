@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\IRepositories\ICashRegisterRepository;
+use App\Models\AmountAssigned;
 use App\Models\CashRegister;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -13,7 +14,19 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-        return CashRegister::orderBy('id','desc')->paginate(10);
+        $test =  AmountAssigned::create([
+            'user_id'=>1,
+            'amount'=>500,
+            'amount_status'=>true,
+    ]);
+        $test->CashRegister()->create([
+            'user_id' =>1,
+            'account'=>500,
+            'type'=>'pagado',
+        ]);
+
+//        return CashRegister::orderBy('id','desc')->paginate(10);
+        return $test;
     }
     public function registersCajaChia()
     {

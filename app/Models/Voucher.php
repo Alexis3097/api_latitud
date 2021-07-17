@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\CashRegister;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\AmountAssigned;
@@ -43,5 +44,10 @@ class Voucher extends Model
 
     public function checkType(){
         return $this->belongsTo(CheckType::class);
+    }
+
+    public function CashRegister()
+    {
+        return $this->morphOne(CashRegister::Class, 'registrable');
     }
 }
