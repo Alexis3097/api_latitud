@@ -30,11 +30,11 @@ class CashRegister extends Model
         return $this->morphTo();
     }
 
-    public function getRelacionAttribute(){
+    public function getUserAttribute(){
         return $this->registrable->user;
     }
     protected $appends = [
-    'Relacion'
+    'user'
     ];
 
 }
