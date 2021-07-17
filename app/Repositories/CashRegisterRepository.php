@@ -14,19 +14,7 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function all()
     {
-//        $test =  AmountAssigned::create([
-//            'user_id'=>1,
-//            'amount'=>500,
-//            'amount_status'=>true,
-//    ]);
-//        $test->CashRegister()->create([
-//            'user_id' =>1,
-//            'account'=>500,
-//            'type'=>'pagado',
-//        ]);
-
         return CashRegister::with('user')->orderBy('id','desc')->paginate(10);
-
     }
     public function registersCajaChia()
     {

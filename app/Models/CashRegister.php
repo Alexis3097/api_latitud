@@ -17,24 +17,24 @@ class CashRegister extends Model
         'registrable_type',
     ];
 
-//    protected $appends = [
-//        'user',
-//    ];
 
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-//    public function getUserAttribute(){
-//        return $this->box->user;
-//    }
+
     //relacion polimorfica
     public function registrable()
     {
         return $this->morphTo();
     }
 
-
+    public function getRelacionAttribute(){
+        return $this->registrable;
+    }
+    protected $appends = [
+    'Relacion'
+    ];
 
 }

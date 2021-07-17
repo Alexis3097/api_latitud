@@ -15,7 +15,7 @@ class CreateVouchersTable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
-//            $table->foreignId('amount_assigned_id')->constrained('amount_assigned');
+           $table->foreignId('user_id')->constrained();
             $table->foreignId('expense_type_id')->constrained('expense_types');
             $table->foreignId('check_type_id')->constrained('check_types');
             $table->string('concept');
