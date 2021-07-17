@@ -21,7 +21,7 @@ class CashRegisterController extends Controller
        try{
             $cashRegister = $this->ICashRegisterRepository->all();
            if(!is_null($cashRegister)){
-        return response()->json($cashRegister);
+        
                return CashRegisterResource::collection($cashRegister);
            }
            else{
