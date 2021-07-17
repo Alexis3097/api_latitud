@@ -31,7 +31,7 @@ class CashRegister extends Model
     }
 
     public function getRelacionAttribute(){
-        return $this->registrable->user_id;
+        return $this->registrable->user;
     }
     protected $appends = [
     'Relacion'
