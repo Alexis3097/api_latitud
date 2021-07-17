@@ -8,6 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use App\Models\UserType;
 use App\Models\AmountAssigned;
+use App\Models\CashRegister;
 use App\Models\Box;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -44,6 +45,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function box(){
         return $this->hasOne(Box::class);
+    }
+    public function cashRegister(){
+        return $this->belongsTo(CashRegister::class);
     }
 
     /**

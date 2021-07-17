@@ -25,8 +25,8 @@ class CashRegisterRepository implements ICashRegisterRepository
 //            'type'=>'pagado',
 //        ]);
 
-        return CashRegister::orderBy('id','desc')->paginate(10);
-//        return $test;
+        return CashRegister::with('user')->orderBy('id','desc')->paginate(10);
+
     }
     public function registersCajaChia()
     {

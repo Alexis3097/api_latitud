@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Box;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,9 +22,9 @@ class CashRegister extends Model
 //    ];
 
 
-    public function box()
+    public function user()
     {
-        return $this->belongsTo(Box::class);
+        return $this->hasOne(User::class);
     }
 //    public function getUserAttribute(){
 //        return $this->box->user;
