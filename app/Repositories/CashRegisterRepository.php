@@ -18,7 +18,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function registersCajaChia()
     {
-        $cashRegister = CashRegister::registrable()->get();
+        $cashRegister = CashRegister::All();
 //            ->orderBy('id','desc')->paginate(10);
 
 
