@@ -21,7 +21,7 @@ class AmountAssigned extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','amount','amount_status',
+        'user_id','amount','reason','amount_status',
     ];
 
     public function user(){

@@ -45,7 +45,6 @@ class AmountAssignedController extends Controller
             }else{
                 return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
             }
-            return new AmountAssignedResource($AmountAssigned);
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
             return response()->json(['store'=>false],500);

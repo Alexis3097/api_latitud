@@ -17,6 +17,7 @@ class CreateAmountAssignedTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->double('amount'); //monto asignado
+            $table->string('reason');
             $table->boolean('amount_status');//cerrado o abierto
             $table->softDeletes();
             $table->timestamps();
