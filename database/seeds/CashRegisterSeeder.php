@@ -18,7 +18,6 @@ class CashRegisterSeeder extends Seeder
            'user_id'=>1,
            'amount'=>500,
            'reason'=>'prueba de que jala uwu',
-           'amount_status'=>true,
         ]);
        $test->CashRegister()->create([
            'account'=>500,
