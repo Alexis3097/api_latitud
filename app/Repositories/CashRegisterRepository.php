@@ -22,11 +22,11 @@ class CashRegisterRepository implements ICashRegisterRepository
 
 
 
-        $cashRegister = CashRegister::find(1);
+        $cashRegister = CashRegister::all();
 //            ->orderBy('id','desc')->paginate(10);
-        $test = $cashRegister->registrable;
+//        $test = $cashRegister->registrable;
 
-        return $test;
+        return $cashRegister;
     }
 
     public function create($data)
