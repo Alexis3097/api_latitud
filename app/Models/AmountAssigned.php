@@ -28,9 +28,6 @@ class AmountAssigned extends Model
         return $this->belongsTo(User::class);
     }
 
-//    public function voucher(){
-//        return $this->hasOne(Voucher::class);
-//    }
 
     public function cashRegister()
     {

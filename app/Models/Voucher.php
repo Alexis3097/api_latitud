@@ -36,9 +36,7 @@ class Voucher extends Model
         'RFC',
     ];
 
-//    public function amountAssigned(){
-//        return $this->belongsTo(AmountAssigned::class);
-//    }
+
 
     public function expenseType(){
         return $this->belongsTo(ExpenseType::class);
