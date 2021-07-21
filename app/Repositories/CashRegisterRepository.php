@@ -21,8 +21,8 @@ class CashRegisterRepository implements ICashRegisterRepository
 
 
 
-        
-        $cashRegister = CashRegister::all();
+
+        $cashRegister = CashRegister::find(1);
 //            ->orderBy('id','desc')->paginate(10);
         $test = $cashRegister->registrable;
 
