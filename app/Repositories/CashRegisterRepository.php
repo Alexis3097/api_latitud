@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\IRepositories\ICashRegisterRepository;
 use App\Models\AmountAssigned;
 use App\Models\CashRegister;
+use App\Models\Voucher;
 use Illuminate\Database\Eloquent\Builder;
 
 class CashRegisterRepository implements ICashRegisterRepository
@@ -25,8 +26,16 @@ class CashRegisterRepository implements ICashRegisterRepository
 //            });
 //        })->orderBy('id','desc')->paginate(10);
 
-        $cashRegister = CashRegister::find(1);
-        return $cashRegister->registrable->user;
+        $cashRegister = CashRegister::whereHasMorph(
+            'registrable',
+            [AmountAssigned::class, Voucher::class],
+            function (Builder $query) {
+                $query->where('type', 'like', 'pagado%');
+            }
+        )->get();
+
+//        $cashRegister = CashRegister::all();
+        return $cashRegister;
 
 
     }
