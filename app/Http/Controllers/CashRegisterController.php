@@ -36,7 +36,8 @@ class CashRegisterController extends Controller
 //        try{
             $cashRegister = $this->ICashRegisterRepository->registersCajaChia();
 //            if(!is_null($cashRegister)){
-                return CashRegisterResource::collection($cashRegister);
+//                return CashRegisterResource::collection($cashRegister);
+                return response()->json($cashRegister);
 //            }
 //            else{
 //                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
