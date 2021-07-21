@@ -17,6 +17,7 @@ class CashRegisterSeeder extends Seeder
         $test =  AmountAssigned::create([
            'user_id'=>1,
            'amount'=>500,
+           'reason'=>'prueba de que jala uwu',
            'amount_status'=>true,
         ]);
        $test->CashRegister()->create([
