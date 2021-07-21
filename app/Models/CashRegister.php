@@ -22,11 +22,11 @@ class CashRegister extends Model
         return $this->morphTo();
     }
 
-//    public function getUserAttribute(){
-//        return $this->registrable->user;
-//    }
-//    protected $appends = [
-//    'user'
-//    ];
+    public function getUserAttribute(){
+        return $this->registrable->user;
+    }
+    protected $appends = [
+    'user'
+    ];
 
 }
