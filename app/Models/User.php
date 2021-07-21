@@ -10,6 +10,7 @@ use App\Models\UserType;
 use App\Models\AmountAssigned;
 use App\Models\CashRegister;
 use App\Models\Box;
+use App\Models\Voucher;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -41,6 +42,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function amountAssigned(){
         return $this->hasOne(AmountAssigned::class);
+    }
+    public function voucher(){
+        return $this->hasOne(Voucher::class);
     }
 
     public function box(){
