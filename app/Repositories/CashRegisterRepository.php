@@ -30,7 +30,10 @@ class CashRegisterRepository implements ICashRegisterRepository
             'registrable',
             [AmountAssigned::class, Voucher::class],
             function (Builder $query) {
-                $query->user->where('user_type_id','=',3)->orWhere('user_type_id','=','1');
+                $query->whereHas('user', function (Builder $users){
+                //3 es el tipo de usuario caja chica y 1 es admin
+                $users->where('user_type_id','=',3)->orWhere('user_type_id','=','1');
+            });
             }
         )->get();
 
