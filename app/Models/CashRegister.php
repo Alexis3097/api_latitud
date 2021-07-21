@@ -10,19 +10,11 @@ class CashRegister extends Model
     protected $table = 'cash_register';
     use SoftDeletes;
     protected $fillable = [
-        'user_id',
         'account',
         'type',
         'registrable_id',
         'registrable_type',
     ];
-
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     //relacion polimorfica
     public function registrable()

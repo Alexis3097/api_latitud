@@ -25,19 +25,20 @@ class Voucher extends Model
      * @var array
      */
     protected $fillable = [
-//        'amount_assigned_id',
+        'user_id',
         'expense_type_id',
         'check_type_id',
         'concept',
         'amount',
         'photo',
+        'photoId',
         'Store',
         'RFC',
     ];
 
-    public function amountAssigned(){
-        return $this->belongsTo(AmountAssigned::class);
-    }
+//    public function amountAssigned(){
+//        return $this->belongsTo(AmountAssigned::class);
+//    }
 
     public function expenseType(){
         return $this->belongsTo(ExpenseType::class);
@@ -47,7 +48,7 @@ class Voucher extends Model
         return $this->belongsTo(CheckType::class);
     }
 
-    public function CashRegister()
+    public function cashRegister()
     {
         return $this->morphOne(CashRegister::Class, 'registrable');
     }
