@@ -26,7 +26,7 @@ class CashRegisterRepository implements ICashRegisterRepository
 //            ->orderBy('id','desc')->paginate(10);
 //        $test = $cashRegister->registrable;
 
-        return $cashRegister;
+        return $cashRegister->registrable;
     }
 
     public function create($data)
