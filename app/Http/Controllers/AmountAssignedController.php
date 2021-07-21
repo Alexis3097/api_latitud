@@ -39,7 +39,7 @@ class AmountAssignedController extends Controller
     public function store(Request $request)
     {
 //        try {
-            $AmountAssigned = $this->IAmountAssignedRepository->create($request->all());
+            $AmountAssigned = $this->IAmountAssignedRepository->create($request);
 //            if(!is_null($AmountAssigned)){
                 return new AmountAssignedResource($AmountAssigned);
 //            }else{
