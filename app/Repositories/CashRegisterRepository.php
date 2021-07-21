@@ -30,7 +30,7 @@ class CashRegisterRepository implements ICashRegisterRepository
             'registrable',
             [AmountAssigned::class, Voucher::class],
             function (Builder $query) {
-                $query->where('type', 'like', 'pagado%');
+                $query->where('type', 'like', 'adeudo%');
             }
         )->get();
 
