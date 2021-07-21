@@ -14,8 +14,8 @@ class AddRfcStoreToVouchersTable extends Migration
     public function up()
     {
         Schema::table('vouchers', function (Blueprint $table) {
-            $table->string('Store');
-            $table->string('RFC');
+            $table->string('Store')->after('photoId');
+            $table->string('RFC')->after('Store');
         });
     }
 
