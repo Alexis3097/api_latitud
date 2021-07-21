@@ -14,7 +14,7 @@ final class ResponseMessages extends Enum
     private const DESTROY_SUCCESS = 'Registro eliminado';
     private const DESTROY_FAILED_400 = 'Registro no eliminado';
     private const DESTROY_FAILED_500 = 'Error al eliminar los datos: ';
-    private const POSTSUCCESSFUL = 'Se guardo el registro: ';
+    private const POSTSUCCESSFUL = 'Se guardo el registro';
 
 
 }
