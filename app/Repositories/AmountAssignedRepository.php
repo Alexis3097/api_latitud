@@ -14,12 +14,10 @@ class AmountAssignedRepository implements IAmountAssignedRepository
     }
     public function create($data)
     {
-
-
-
-
-//        try {
-//            DB::beginTransaction();
+        $amount = null;
+        try {
+            global $amount;
+            DB::beginTransaction();
             //guardar el monto asignado
             $amount = AmountAssigned::create([
                 'user_id'=>$data->user_id,
@@ -37,11 +35,11 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             })->first();
             $box->amount = $box->amount + $data->amount;
             $box->save();
-//            DB::commit();
+            DB::commit();
 
-//        } catch (\Exception $e) {
-//            DB::rollback();
-//        }
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
         return $amount;
     }
     public function show($id){
