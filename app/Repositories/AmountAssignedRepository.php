@@ -19,11 +19,12 @@ class AmountAssignedRepository implements IAmountAssignedRepository
 
 
 //        try {
-            DB::beginTransaction();
+//            DB::beginTransaction();
             //guardar el monto asignado
             $amount = AmountAssigned::create([
                 'user_id'=>$data->user_id,
                 'amount'=>$data->amount,
+                'reason'=>$data->reason,
             ]);
             //guardar en el registro de actividades cuanto se le dio - cash_register
             $amount->CashRegister()->create([
