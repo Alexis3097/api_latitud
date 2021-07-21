@@ -25,10 +25,10 @@ class CashRegisterRepository implements ICashRegisterRepository
 //            });
 //        })->orderBy('id','desc')->paginate(10);
 
-        $cashRegister = CashRegister::all()->registrable->user;
-        return $cashRegister;
+        $cashRegister = CashRegister::all();
+        return $cashRegister->registrable->user;
 
-       
+
     }
 
     public function create($data)
