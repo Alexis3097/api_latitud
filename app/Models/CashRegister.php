@@ -14,6 +14,7 @@ class CashRegister extends Model
         'type',
         'registrable_id',
         'registrable_type',
+        'user_id',
     ];
 
     //relacion polimorfica
@@ -28,5 +29,8 @@ class CashRegister extends Model
     protected $appends = [
     'user'
     ];
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 
 }

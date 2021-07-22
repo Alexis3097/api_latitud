@@ -19,6 +19,7 @@ class CreateCashRegisterTable extends Migration
             $table->string('type');//si es pagado o adeudo
             $table->unsignedBigInteger('registrable_id');
             $table->string('registrable_type');
+            $table->foreignId('user_id')->constrained();//destino del dinero
             $table->softDeletes();
             $table->timestamps();
         });

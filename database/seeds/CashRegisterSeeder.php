@@ -22,6 +22,7 @@ class CashRegisterSeeder extends Seeder
        $test->CashRegister()->create([
            'account'=>500,
            'type'=>'pagado',
+           'user_id'=>2
        ]);
 
        $test2 = Voucher::create([

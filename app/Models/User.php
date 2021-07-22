@@ -50,8 +50,8 @@ class User extends Authenticatable implements JWTSubject
     public function box(){
         return $this->hasOne(Box::class);
     }
-    public function cashRegister(){
-        return $this->hasOne(CashRegister::class);
+    public function cashRegisters(){
+        return $this->hasMany(CashRegister::class);
     }
 
     /**
