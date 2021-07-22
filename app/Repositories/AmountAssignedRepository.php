@@ -31,7 +31,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             ]);
             //actualizar si caja del usuario a quien se le envio
             $box = Box::whereHas('user', function (Builder $users) use($data){
-                $users->where('user_type_id','=',$data->idDestinatario);
+                $users->where('id','=',$data->idDestinatario);
             })->first();
             $box->amount = $box->amount + $data->amount;
             $box->save();
