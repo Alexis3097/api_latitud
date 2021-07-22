@@ -40,6 +40,7 @@ class CashRegisterSeeder extends Seeder
         $test2->CashRegister()->create([
             'account'=>1500,
             'type'=>'pagado',
+            'user_id'=>3
         ]);
 
     }
