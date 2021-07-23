@@ -7,6 +7,7 @@ use App\Enums\ResponseMessages;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\UserResource;
 use App\IRepositories\IUserRepository;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -44,6 +45,20 @@ class UserController extends Controller
         }catch(Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
             return response()->json(['get'=>false],500);
+        }
+    }
+
+    public function store(Request $request){
+        try {
+            $user = $this->IUserRepository->create($request);
+            if(!is_null($user)){
+                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::STORE_FAILED_500().$e);
+            return response()->json(['store'=>false],500);
         }
     }
 

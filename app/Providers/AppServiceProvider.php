@@ -37,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
             'App\IRepositories\IBoxRepository',
             'App\Repositories\BoxRepository'
         );
+        $this->app->bind(
+            'App\IRepositories\IUserTypeRepository',
+            'App\Repositories\UserTypeRepository'
+        );
+
     }
 
     /**

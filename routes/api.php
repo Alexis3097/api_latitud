@@ -33,5 +33,6 @@ Route::group([
     Route::apiResource('cashRegister','CashRegisterController');
     Route::get('box/cajaChica','BoxController@cajaChica');
     Route::apiResource('user', 'UserController');
+    Route::get('userType','UserTypeController@index');
 
 });
