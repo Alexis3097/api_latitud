@@ -35,6 +35,7 @@ class UserRepository implements IUserRepository
         } catch (\Exception $e) {
             DB::rollback();
             cloudinary()->destroy($foto->getPublicId());
+            $user = null;
         }
         return $user;
 
