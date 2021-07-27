@@ -21,6 +21,7 @@ class UserRepository implements IUserRepository
             'date_of_birth'=>$data->fecha,
             'email'=>$data->correo,
             'photo'=>$foto->getSecurePath(),
+            'photoId'=>$foto->getPublicId(),
             'password'=>$data->password,
             'user_type_id'=>$data->userType,
         ]);
