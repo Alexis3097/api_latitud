@@ -28,7 +28,7 @@ class UserRepository implements IUserRepository
                 'photo'=>$foto->getSecurePath(),
                 'photoId'=>$foto->getPublicId(),
                 'password'=>$data->password,
-                'user_type_id'=>$data->userType,
+                'user_type_id'=>$data->userTypeId,
             ]);
         } catch (\Exception $e) {
             DB::rollback();
