@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Models\Box;
 use App\Models\User;
 use Cloudinary\Cloudinary;
 use App\IRepositories\IUserRepository;
@@ -31,6 +32,10 @@ class UserRepository implements IUserRepository
                 'photoId'=>$foto->getPublicId(),
                 'password'=>$data->password,
                 'user_type_id'=>$data->userTypeId,
+            ]);
+            Box::create([
+                'amount'=>0,
+                'user_id'=>$user->id,
             ]);
             DB::commit();
         } catch (\Exception $e) {
