@@ -20,7 +20,7 @@ class UserRepository implements IUserRepository
             DB::beginTransaction();
             $foto = cloudinary()->upload($data->file('file')->getRealPath());
             $data['password'] = $this->hashPassword($data->password);
-            $user =   User::create([
+            $user = User::create([
                 'name'=>$data->nombre,
                 'last_name1'=>$data->apellidoPat,
                 'last_name2'=>$data->apellidoMat,
@@ -32,6 +32,7 @@ class UserRepository implements IUserRepository
                 'password'=>$data->password,
                 'user_type_id'=>$data->userTypeId,
             ]);
+            DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             cloudinary()->destroy($foto->getPublicId());
