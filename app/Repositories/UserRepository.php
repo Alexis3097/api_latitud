@@ -20,7 +20,7 @@ class UserRepository implements IUserRepository
             'job'=>$data->puesto,
             'date_of_birth'=>$data->fecha,
             'email'=>$data->correo,
-            'photo'=>$data->$foto->getSecurePath(),
+            'photo'=>$foto->getSecurePath(),
             'password'=>$data->password,
             'user_type_id'=>$data->userType,
         ]);
