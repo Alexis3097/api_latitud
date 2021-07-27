@@ -52,7 +52,8 @@ class UserController extends Controller
 //        try {
             $user = $this->IUserRepository->create($request);
 //            if(!is_null($user)){
-                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+//                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+                return response()->json($user);
 //            }else{
 //                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
 //            }
