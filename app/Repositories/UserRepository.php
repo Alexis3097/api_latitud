@@ -2,18 +2,28 @@
 
 namespace App\Repositories;
 use App\Models\User;
+use Cloudinary\Cloudinary;
 use App\IRepositories\IUserRepository;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements IUserRepository
 {
-    /**
-     * @throws \Throwable
-     */
-    public function create($data): bool
+
+    public function create($data)
     {
+        $foto = cloudinary()->upload($data->file('file')->getRealPath());
         $data['password'] = $this->hashPassword($data->password);
-        return User::saveOrFail($data);
+        return  User::create([
+            'name'=>$data->nombre,
+            'last_name1'=>$data->apellidoPat,
+            'last_name2'=>$data->apellidoMat,
+            'job'=>$data->puesto,
+            'date_of_birth'=>$data->fecha,
+            'email'=>$data->correo,
+            'photo'=>$data->$foto->getSecurePath(),
+            'password'=>$data->password,
+            'user_type_id'=>$data->userType,
+        ]);
     }
     public function show($id){
 
