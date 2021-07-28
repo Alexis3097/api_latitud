@@ -71,7 +71,7 @@ class UserRepository implements IUserRepository
     }
 
     public function onlyUsers(){
-        return User::all();
+        return User::paginate(10);
     }
 
 }
