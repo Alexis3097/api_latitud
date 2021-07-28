@@ -53,8 +53,7 @@ class UserRepository implements IUserRepository
 
     }
     public function delete($id){
-        //elimina uno con el id
-        cloudinary()->destroy('vprj55y9kdos3mbz1n4h');
+
     }
 
     public function hashPassword($password): string
@@ -69,6 +68,10 @@ class UserRepository implements IUserRepository
     public function getCoordinadores()
     {
         return User::where('user_type_id',2)->with('box')->get();
+    }
+
+    public function onlyUsers(){
+        return User::all();
     }
 
 }

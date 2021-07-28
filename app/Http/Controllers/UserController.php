@@ -61,4 +61,21 @@ class UserController extends Controller
             return response()->json(['store'=>false],500);
         }
     }
+
+    public function onlyUser(){
+
+        try{
+            $users = $this->IUserRepository->onlyUsers();
+            if(!is_null($users)){
+                return UserResource::collection($users);
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch(Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>false],500);
+        }
+
+    }
 }
