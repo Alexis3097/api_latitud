@@ -15,7 +15,9 @@ class UserSeeder extends Seeder
     {
         User::create([
             'user_type_id'=> 1,
-            'name'=> 'Alexis admin',
+            'name'=> 'Cristian Alexis',
+            'last_name1'=>'Montoya',
+            'last_name2'=>'Arguello',
             'email'=> 'admin@gmail.com',
             'password'=> Hash::make('adminadmin'),
             'photo'=> 'https://res.cloudinary.com/de2odpwpz/image/upload/v1627498753/l6f9dqitwqhsajkprtoh.jpg',
