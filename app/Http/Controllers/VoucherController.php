@@ -90,5 +90,15 @@ class VoucherController extends Controller
             return response()->json(['destroy'=>false],500);
         }
     }
+    public function  getDataSelects(){
+        try {
+            $expenseType = $this->IVoucherRepository->getExpenseType();
+            $checkType = $this->IVoucherRepository->getCheckType();
+            return response()->json(['expenseType'=>$expenseType, 'checkType'=>$checkType]);
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
 
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Repositories;
+use App\Models\CheckType;
+use App\Models\ExpenseType;
 use App\Models\Voucher;
 use App\IRepositories\IVoucherRepository;
 
@@ -24,5 +26,15 @@ class VoucherRepository implements IVoucherRepository
     }
     public function delete($id){
         return Voucher::find($id)->delete();
+    }
+
+    public function getExpenseType()
+    {
+        return ExpenseType::all();
+    }
+
+    public function getCheckType()
+    {
+        return CheckType::all();
     }
 }

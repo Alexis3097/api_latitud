@@ -27,6 +27,7 @@ Route::group([
     Route::post('me', 'AuthController@me');
     Route::apiResource('test', 'TestController');
     Route::apiResource('AmountAssigned', 'AmountAssignedController');
+    Route::get('Voucher/getDataSelects', 'VoucherController@getDataSelects');
     Route::apiResource('Voucher', 'VoucherController');
     Route::get('coordinadores', 'UserController@getCoordinadores');
     Route::get('cashRegister/registersCajaChia','CashRegisterController@registersCajaChia');
@@ -35,5 +36,6 @@ Route::group([
     Route::get('user/onlyUser','UserController@onlyUser');
     Route::apiResource('user', 'UserController');
     Route::get('userType','UserTypeController@index');
+
 
 });
