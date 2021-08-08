@@ -32,6 +32,7 @@ class Voucher extends Model
         'amount',
         'photo',
         'photoId',
+        'date',
         'Store',
         'RFC',
     ];
