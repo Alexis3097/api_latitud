@@ -30,6 +30,7 @@ Route::group([
     Route::get('Voucher/getDataSelects', 'VoucherController@getDataSelects');
     Route::apiResource('Voucher', 'VoucherController');
     Route::get('coordinadores', 'UserController@getCoordinadores');
+    Route::get('cashRegister/getDetailRegister/{id}','CashRegisterController@getDetailRegister');
     Route::get('cashRegister/registersCajaChia','CashRegisterController@registersCajaChia');
     Route::apiResource('cashRegister','CashRegisterController');
     Route::get('box/cajaChica','BoxController@cajaChica');

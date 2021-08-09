@@ -46,4 +46,19 @@ class CashRegisterController extends Controller
             return response()->json(['get'=>$e],500);
         }
     }
+
+    function getDetailRegister($id){
+        try{
+            $detailRegisters = $this->ICashRegisterRepository->getDetailRegister($id);
+            if(!is_null($detailRegisters)){
+                return new CashRegisterResource($detailRegisters);
+            }
+            else{
+                return response()->json(['messages'=>ResponseMessages::GET_RESOURCE_VOID()]);
+            }
+        }catch(Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
 }

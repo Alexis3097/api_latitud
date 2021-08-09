@@ -42,4 +42,9 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
         // TODO: Implement delete() method.
     }
+
+    public function getDetailRegister($id)
+    {
+        return CashRegister::where('id', $id)->get();
+    }
 }
