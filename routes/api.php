@@ -31,8 +31,8 @@ Route::group([
     Route::apiResource('Voucher', 'VoucherController');
     Route::get('coordinadores', 'UserController@getCoordinadores');
 
-    Route::get('cashRegister/registersCajaChia','CashRegisterController@registersCajaChia');
     Route::apiResource('cashRegister','CashRegisterController');
+    Route::get('cashRegister/registersCajaChia','CashRegisterController@registersCajaChia');
 
     Route::get('box/cajaChica','BoxController@cajaChica');
     Route::get('user/onlyUser','UserController@onlyUser');
