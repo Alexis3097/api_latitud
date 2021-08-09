@@ -47,9 +47,9 @@ class CashRegisterController extends Controller
         }
     }
 
-    function show(Request $request){
+    function show($id){
         try{
-            $detailRegisters = $this->ICashRegisterRepository->getDetailRegister($request->id);
+            $detailRegisters = $this->ICashRegisterRepository->getDetailRegister($id);
             if(!is_null($detailRegisters)){
                 return new CashRegisterResource($detailRegisters);
             }
