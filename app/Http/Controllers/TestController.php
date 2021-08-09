@@ -24,7 +24,7 @@ class TestController extends Controller
     public function index()
     {
         try{
-            
+
             $tests = $this->ITestRepository->all();
             if(!is_null($tests)){
                 return TestResource::collection($tests);
@@ -53,10 +53,10 @@ class TestController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($test)
     {
         try{
-            $test = $this->ITestRepository->show($id);
+            $test = $this->ITestRepository->show($test);
             if(!is_null($test)){
                 return new TestResource($test);
             }
