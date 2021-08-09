@@ -32,24 +32,24 @@ class CashRegisterController extends Controller
            return response()->json(['get'=>false],500);
        }
     }
-//    function registersCajaChia(){
-//        try{
-//            $cashRegister = $this->ICashRegisterRepository->registersCajaChia();
-//            if(!is_null($cashRegister)){
-//                return CashRegisterResource::collection($cashRegister);
-//            }
-//            else{
-//                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
-//            }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-//            return response()->json(['get'=>$e],500);
-//        }
-//    }
-
-    function show($cashRegister){
+    function registersCajaChia(){
         try{
-            $detailRegisters = $this->ICashRegisterRepository->getDetailRegister($cashRegister);
+            $cashRegister = $this->ICashRegisterRepository->registersCajaChia();
+            if(!is_null($cashRegister)){
+                return CashRegisterResource::collection($cashRegister);
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>$e],500);
+        }
+    }
+
+    function show($id){
+        try{
+            $detailRegisters = $this->ICashRegisterRepository->getDetailRegister($id);
             if(!is_null($detailRegisters)){
                 return new CashRegisterResource($detailRegisters);
             }
