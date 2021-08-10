@@ -45,6 +45,6 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function getDetailRegister($id)
     {
-        return CashRegister::where('id', $id)->with('user')->get();
+        return CashRegister::where('id', $id)->get();
     }
 }
