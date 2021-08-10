@@ -28,14 +28,14 @@ class CashRegister extends Model
     }
     protected $appends = [
         'user',
-        'destinatario'
+//        'destinatario'
     ];
     function user(){
         return $this->belongsTo(User::class);
     }
 
-    function getdestinatarioAttribute(){
-        return $this->user;
-    }
+//    function getdestinatarioAttribute(){
+//        return $this->user;
+//    }
 
 }
