@@ -27,10 +27,15 @@ class CashRegister extends Model
         return $this->registrable->user;
     }
     protected $appends = [
-    'user'
+        'user',
+        'destinatario'
     ];
     function user(){
         return $this->belongsTo(User::class);
+    }
+
+    function destinatario(){
+        return $this->user;
     }
 
 }
