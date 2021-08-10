@@ -34,7 +34,7 @@ class CashRegister extends Model
         return $this->belongsTo(User::class);
     }
 
-    function destinatario(){
+    function getdestinatarioAttribute(){
         return $this->user;
     }
 
