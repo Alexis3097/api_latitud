@@ -23,18 +23,18 @@ class CashRegister extends Model
         return $this->morphTo();
     }
 
-    public function getUserAttribute(){
+    public function getSenderAttribute(){
         return $this->registrable->user;
     }
     protected $appends = [
-        'user',
-        'destinatario'
+        'Sender',
+        'Receiver'
     ];
     function user(){
         return $this->belongsTo(User::class);
     }
 
-    function getdestinatarioAttribute(){
+    function getReseiverAttribute(){
         return $this->user;
     }
 
