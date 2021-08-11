@@ -23,9 +23,7 @@ class CashRegister extends Model
         return $this->morphTo();
     }
 
-    public function getSenderAttribute(){
-        return $this->registrable->user;
-    }
+
     protected $appends = [
         'Sender',
         'Receiver'
@@ -34,7 +32,11 @@ class CashRegister extends Model
         return $this->belongsTo(User::class);
     }
 
-    function getReseiverAttribute(){
+    public function getSenderAttribute(){
+        return $this->registrable->user;
+    }
+
+    function getReceiverAttribute(){
         return $this->user;
     }
 
