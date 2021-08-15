@@ -19,7 +19,7 @@ class CashRegister extends Model
 
     public function setCreatedAtAttribute($value)
     {
-        $this->attributes['created_at'] = '2021-08-15';
+        $this->attributes['created_at'] = '2021-08-20';
     }
 
     //relacion polimorfica
