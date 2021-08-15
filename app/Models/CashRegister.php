@@ -45,7 +45,7 @@ class CashRegister extends Model
     }
     public function getCreatedAtAttribute($value)
     {
-        return  Carbon::parse($value)->format('Y-m-d H:i:s.u');
+        return  Carbon::parse($value)->setTimezone('America/Mexico_City')->format('Y-m-d H:i:s.u');
     }
 
     function  getFechaAttribute(){
