@@ -47,7 +47,7 @@ class CashRegister extends Model
 //        $timestamp = '2020-06-06 20:20:00';
 //        $date = Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'Europe/Stockholm');
 //        $date->setTimezone('UTC');
-        return $this->created_at->setTimezone('UTC');
+        return $this->created_at->setTimezone('America/Mexico_City');
     }
 
 }
