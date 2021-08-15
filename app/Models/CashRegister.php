@@ -9,7 +9,6 @@ class CashRegister extends Model
 {
     protected $table = 'cash_register';
     use SoftDeletes;
-    protected $dateFormat = 'U';
     protected $fillable = [
         'account',
         'type',
