@@ -18,7 +18,10 @@ class CashRegister extends Model
         'user_id',
     ];
 
-
+    public function getCreatedAtAttribute($value)
+    {
+        return  Carbon::parse($value)->setTimezone('America/Mexico_City')->format('Y-m-d H:i:s.u');
+    }
 
     //relacion polimorfica
     public function registrable()
@@ -30,7 +33,6 @@ class CashRegister extends Model
     protected $appends = [
         'Sender',
         'Receiver',
-        'Fecha'
     ];
     function user(){
         return $this->belongsTo(User::class);
@@ -43,16 +45,8 @@ class CashRegister extends Model
     function getReceiverAttribute(){
         return $this->user;
     }
-    public function getCreatedAtAttribute($value)
-    {
-        return  Carbon::parse($value)->setTimezone('America/Mexico_City')->format('Y-m-d H:i:s.u');
-    }
 
-    function  getFechaAttribute(){
-//        $timestamp = '2020-06-06 20:20:00';
-//        $date = Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'Europe/Stockholm');
-//        $date->setTimezone('UTC');
-        return  Carbon::parse($this->attributes['created_at'])->format('Y-m-d H:i:s.u');
-    }
+
+
 
 }
