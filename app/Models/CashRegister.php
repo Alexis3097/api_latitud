@@ -17,6 +17,11 @@ class CashRegister extends Model
         'user_id',
     ];
 
+    public function setCreatedAtAttribute($value)
+    {
+        $this->attributes['created_at'] = '2021-08-15';
+    }
+
     //relacion polimorfica
     public function registrable()
     {
