@@ -20,7 +20,7 @@ class CashRegister extends Model
 
     public function getCreatedAtAttribute($value)
     {
-        return  Carbon::parse($value)->setTimezone('America/Mexico_City')->isoFormat('H:mm:ss A');
+        return  Carbon::parse($value)->setTimezone('America/Mexico_City')->isoFormat('Y-m-d H:mm:ss A');
     }
 
     //relacion polimorfica
