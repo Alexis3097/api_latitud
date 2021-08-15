@@ -43,6 +43,10 @@ class CashRegister extends Model
     function getReceiverAttribute(){
         return $this->user;
     }
+    public function getCreatedAtAttribute($value)
+    {
+        return  Carbon::parse($value)->format('Y-m-d H:i:s.u');
+    }
 
     function  getFechaAttribute(){
 //        $timestamp = '2020-06-06 20:20:00';
