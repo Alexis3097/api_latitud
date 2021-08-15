@@ -17,10 +17,7 @@ class CashRegister extends Model
         'user_id',
     ];
 
-    public function setCreatedAtAttribute($value)
-    {
-        $this->attributes['created_at'] = '2021-08-20';
-    }
+
 
     //relacion polimorfica
     public function registrable()
@@ -31,7 +28,8 @@ class CashRegister extends Model
 
     protected $appends = [
         'Sender',
-        'Receiver'
+        'Receiver',
+        'Fecha'
     ];
     function user(){
         return $this->belongsTo(User::class);
@@ -43,6 +41,13 @@ class CashRegister extends Model
 
     function getReceiverAttribute(){
         return $this->user;
+    }
+
+    function  getFechaAttribute(){
+//        $timestamp = '2020-06-06 20:20:00';
+//        $date = Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'Europe/Stockholm');
+//        $date->setTimezone('UTC');
+        return 'fecha';
     }
 
 }
