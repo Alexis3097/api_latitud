@@ -2,6 +2,7 @@
 
 namespace App\Models;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -47,7 +48,7 @@ class CashRegister extends Model
 //        $timestamp = '2020-06-06 20:20:00';
 //        $date = Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'Europe/Stockholm');
 //        $date->setTimezone('UTC');
-        return $this->created_at->setTimezone('America/Mexico_City');
+        return  Carbon::parse($this->attributes['created_at'])->format('Y-m-d H:i:s.u');
     }
 
 }
