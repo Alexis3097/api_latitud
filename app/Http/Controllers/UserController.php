@@ -51,11 +51,12 @@ class UserController extends Controller
     public function store(Request $request){
         try {
             $user = $this->IUserRepository->create($request);
-            if(!is_null($user)){
-                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
-            }else{
-                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
-            }
+            return response()->json($user);
+//            if(!is_null($user)){
+//                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+//            }else{
+//                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
+//            }
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
             return response()->json($e);
