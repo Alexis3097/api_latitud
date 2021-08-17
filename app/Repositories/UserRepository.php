@@ -46,7 +46,7 @@ class UserRepository implements IUserRepository
             cloudinary()->destroy($foto->getPublicId());
             $error = $e;
         }
-        return $data;
+        return $error;
 
     }
     public function show($id){
