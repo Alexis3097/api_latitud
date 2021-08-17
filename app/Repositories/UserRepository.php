@@ -44,7 +44,7 @@ class UserRepository implements IUserRepository
             global $error;
             DB::rollback();
             cloudinary()->destroy($foto->getPublicId());
-            $error = $e;
+            $error = 'error uwu';
         }
         return $error;
 
