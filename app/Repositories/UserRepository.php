@@ -15,6 +15,7 @@ class UserRepository implements IUserRepository
     {
         $foto = null;
         $user = null;
+        $error = null;
         try{
             global $foto;
             global $user;
@@ -40,10 +41,10 @@ class UserRepository implements IUserRepository
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-//            cloudinary()->destroy($foto->getPublicId());
-            $user = $e;
+            cloudinary()->destroy($foto->getPublicId());
+            $error = $e;
         }
-        return $user;
+        return $error;
 
     }
     public function show($id){
