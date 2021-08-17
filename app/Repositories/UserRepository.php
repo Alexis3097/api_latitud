@@ -13,40 +13,40 @@ class UserRepository implements IUserRepository
 
     public function create($data)
     {
-        $foto = null;
-        $user = null;
-        $error = null;
-        try{
-            global $foto;
-            global $user;
-
-            DB::beginTransaction();
+//        $foto = null;
+//        $user = null;
+//        $error = null;
+//        try{
+//            global $foto;
+//            global $user;
+//
+//            DB::beginTransaction();
             $foto = cloudinary()->upload($data->file('file')->getRealPath());
-            $data['password'] = $this->hashPassword($data->password);
-            $user = User::create([
-                'name'=>$data->nombre,
-                'last_name1'=>$data->apellidoPat,
-                'last_name2'=>$data->apellidoMat,
-                'job'=>$data->puesto,
-                'date_of_birth'=>$data->fecha,
-                'email'=>$data->correo,
-                'photo'=>$foto->getSecurePath(),
-                'photoId'=>$foto->getPublicId(),
-                'password'=>$data->password,
-                'user_type_id'=>$data->userTypeId,
-            ]);
-            Box::create([
-                'amount'=>0,
-                'user_id'=>$user->id,
-            ]);
-            DB::commit();
-        } catch (\Exception $e) {
-            global $error;
-            DB::rollback();
-            cloudinary()->destroy($foto->getPublicId());
-            $error = 'error uwu';
-        }
-        return $error;
+//            $data['password'] = $this->hashPassword($data->password);
+//            $user = User::create([
+//                'name'=>$data->nombre,
+//                'last_name1'=>$data->apellidoPat,
+//                'last_name2'=>$data->apellidoMat,
+//                'job'=>$data->puesto,
+//                'date_of_birth'=>$data->fecha,
+//                'email'=>$data->correo,
+//                'photo'=>$foto->getSecurePath(),
+//                'photoId'=>$foto->getPublicId(),
+//                'password'=>$data->password,
+//                'user_type_id'=>$data->userTypeId,
+//            ]);
+//            Box::create([
+//                'amount'=>0,
+//                'user_id'=>$user->id,
+//            ]);
+//            DB::commit();
+//        } catch (\Exception $e) {
+//            global $error;
+//            DB::rollback();
+//            cloudinary()->destroy($foto->getPublicId());
+//            $error = 'error uwu';
+//        }
+        return $foto->getSecurePath();
 
     }
     public function show($id){
