@@ -19,7 +19,7 @@ class UserRepository implements IUserRepository
         try{
             global $foto;
             global $user;
-            global $error;
+
             DB::beginTransaction();
             $foto = cloudinary()->upload($data->file('file')->getRealPath());
             $data['password'] = $this->hashPassword($data->password);
@@ -41,6 +41,7 @@ class UserRepository implements IUserRepository
             ]);
             DB::commit();
         } catch (\Exception $e) {
+            global $error;
             DB::rollback();
             cloudinary()->destroy($foto->getPublicId());
             $error = $e;
