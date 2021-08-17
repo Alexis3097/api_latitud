@@ -59,7 +59,7 @@ class UserController extends Controller
 //            }
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
-            return response()->json($e);
+            return response()->json(['errorCatch'=>$user]);
         }
     }
 
