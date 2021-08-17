@@ -19,6 +19,7 @@ class UserRepository implements IUserRepository
         try{
             global $foto;
             global $user;
+            global $error;
             DB::beginTransaction();
             $foto = cloudinary()->upload($data->file('file')->getRealPath());
             $data['password'] = $this->hashPassword($data->password);

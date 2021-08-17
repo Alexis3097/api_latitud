@@ -51,7 +51,7 @@ class UserController extends Controller
     public function store(Request $request){
         try {
             $user = $this->IUserRepository->create($request);
-            return response()->json($user);
+            return response()->json(['error'=>$user]);
 //            if(!is_null($user)){
 //                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
 //            }else{
