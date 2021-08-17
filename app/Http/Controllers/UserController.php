@@ -44,7 +44,7 @@ class UserController extends Controller
             }
         }catch(Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-            return response()->json($e);
+            return response()->json(['get'=>false],500);
         }
     }
 
@@ -58,7 +58,7 @@ class UserController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
-            return response()->json(['store'=>false],500);
+            return response()->json($e);
         }
     }
 
