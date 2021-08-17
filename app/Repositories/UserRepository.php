@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            cloudinary()->destroy($foto->getPublicId());
+//            cloudinary()->destroy($foto->getPublicId());
             $user = $e;
         }
         return $user;
