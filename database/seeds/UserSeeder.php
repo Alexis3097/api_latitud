@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'last_name2'=>'Arguello',
             'email'=> 'admin@gmail.com',
             'password'=> Hash::make('adminadmin'),
-            'photo'=> 'https://res.cloudinary.com/de2odpwpz/image/upload/v1627498753/l6f9dqitwqhsajkprtoh.jpg',
+            'photo'=> 'https://res.cloudinary.com/de2odpwpz/image/upload/v1629164104/ME_khizzl.jpg',
         ]);
         User::create([
             'user_type_id'=> 2,
