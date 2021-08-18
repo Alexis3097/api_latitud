@@ -50,11 +50,11 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-//        $foto = $request->file('file');
+        $foto = $request->file('file');
         if(isset($foto)){
-            return response()->json(['mensaje'=>'soy nullo']);
+            return response()->json(['mensajeif'=>$foto]);
         }
-        return response()->json(['mensaje'=>'soy algo mas']);
+        return response()->json(['mensaje'=>$foto]);
 //        try {
 //            $user = $this->IUserRepository->create($request);
 //            if(!is_null($user)){
