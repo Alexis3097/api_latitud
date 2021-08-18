@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Resources\UserResource;
 use App\IRepositories\IUserRepository;
 use Throwable;
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -49,7 +50,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        if(is_null($request->file('file'))){
+        if(isEmpty($request->file('file'))){
             return response()->json(['mensaje'=>'soy nullo']);
         }
         return response()->json(['mensaje'=>'soy algo mas']);
