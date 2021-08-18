@@ -20,7 +20,9 @@ class UserRepository implements IUserRepository
             global $user;
 
             DB::beginTransaction();
-            $foto = cloudinary()->upload($data->file('file')->getRealPath());
+            if($foto != null){
+                $foto = cloudinary()->upload($data->file('file')->getRealPath());
+            }
             $data['password'] = $this->hashPassword($data->password);
             $user = User::create([
                 'name'=>$data->nombre,
@@ -29,8 +31,8 @@ class UserRepository implements IUserRepository
                 'job'=>$data->puesto,
                 'date_of_birth'=>$data->fecha,
                 'email'=>$data->correo,
-                'photo'=>$foto->getSecurePath(),
-                'photoId'=>$foto->getPublicId(),
+                'photo'=>$foto == null ? $foto : $foto->getSecurePath(),
+                'photoId'=>$foto == null ? $foto : $foto->getSecurePath(),
                 'password'=>$data->password,
                 'user_type_id'=>$data->userTypeId,
             ]);
