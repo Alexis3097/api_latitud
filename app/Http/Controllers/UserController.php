@@ -50,24 +50,17 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-//        $foto = $request->file('file');
-        if(is_null($request->file('file'))){
-            return response()->json(['mensajeif'=>'$foto']);
-        }else{
-            return response()->json(['mensaje'=>'$foto']);
+        try {
+            $user = $this->IUserRepository->create($request);
+            if(!is_null($user)){
+                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::STORE_FAILED_500().$e);
+            return response()->json(['store'=>$e],500);
         }
-
-//        try {
-//            $user = $this->IUserRepository->create($request);
-//            if(!is_null($user)){
-//                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
-//            }else{
-//                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
-//            }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::STORE_FAILED_500().$e);
-//            return response()->json(['store'=>$e],500);
-//        }
     }
 
     public function onlyUser(){
