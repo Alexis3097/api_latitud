@@ -50,11 +50,11 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        $foto = $request->file('file');
-        if(is_null($foto)){
-            return response()->json(['mensajeif'=>$foto]);
+//        $foto = $request->file('file');
+        if(is_null($request->file('file'))){
+            return response()->json(['mensajeif'=>'$foto']);
         }else{
-            return response()->json(['mensaje'=>$foto]);
+            return response()->json(['mensaje'=>'$foto']);
         }
 
 //        try {
