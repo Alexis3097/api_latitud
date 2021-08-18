@@ -49,7 +49,10 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        return response()->json($request->file('file'));
+        if($request->file('file') == null){
+            return response()->json(['mensaje'=>'soy nullo']);
+        }
+        return response()->json(['mensaje'=>'soy algo mas']);
 //        try {
 //            $user = $this->IUserRepository->create($request);
 //            if(!is_null($user)){
