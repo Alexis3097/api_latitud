@@ -47,7 +47,7 @@ class AmountAssignedController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
-            return response()->json(['store'=>$e],500);
+            return response()->json(['store'=>false],500);
         }
     }
 
