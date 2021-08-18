@@ -50,7 +50,8 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
-        if(isEmpty($request->file('file'))){
+        $foto = $request->file('file');
+        if(is_null($foto)){
             return response()->json(['mensaje'=>'soy nullo']);
         }
         return response()->json(['mensaje'=>'soy algo mas']);
