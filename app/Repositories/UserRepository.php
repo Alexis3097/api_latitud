@@ -32,7 +32,7 @@ class UserRepository implements IUserRepository
                 'date_of_birth'=>$data->fecha,
                 'email'=>$data->correo,
                 'photo'=>$foto == null ? $foto : $foto->getSecurePath(),
-                'photoId'=>$foto == null ? $foto : $foto->getSecurePath(),
+                'photoId'=>$foto == null ? $foto : $foto->getPublicId(),
                 'password'=>$data->password,
                 'user_type_id'=>$data->userTypeId,
             ]);
