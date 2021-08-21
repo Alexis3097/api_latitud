@@ -35,7 +35,7 @@ class VoucherController extends Controller
 
     public function store(Request $request){
         try {
-            $voucher = $this->IVoucherRepository->create($request->all());
+            $voucher = $this->IVoucherRepository->create($request);
             if(!is_null($voucher)){
                 return new VoucherResource($voucher);
             }else{

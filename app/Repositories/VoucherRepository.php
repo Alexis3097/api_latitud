@@ -5,6 +5,7 @@ use App\Models\CheckType;
 use App\Models\ExpenseType;
 use App\Models\Voucher;
 use App\IRepositories\IVoucherRepository;
+use Illuminate\Support\Facades\DB;
 
 class VoucherRepository implements IVoucherRepository
 {
@@ -14,7 +15,38 @@ class VoucherRepository implements IVoucherRepository
     }
     public function create($data)
     {
-        return Voucher::create($data);
+        $foto = null;
+        $voucher = null;
+        try{
+            global $foto;
+            global $voucher;
+            DB::beginTransaction();
+            if(!is_null($data->file('file'))){
+                $foto = cloudinary()->upload($data->file('file')->getRealPath());
+            }
+            $voucher = Voucher::create([
+                'user_id'=>$data->user_id,
+                'expense_type_id'=>$data->expense_type_id,
+                'check_type_id'=>$data->check_type_id,
+                'concept'=>$data->concept,
+                'amount'=>$data->amount,
+                'photo'=>$foto == null ? $foto : $foto->getSecurePath(),
+                'photoId'=>$foto == null ? $foto : $foto->getSecurePath(),
+                'Store'=>$data->Store,
+                'RFC'=>$data->RFC,
+                'date'=>$data->date
+            ]);
+            //guardar en el registro de actividades cuanto se le dio - cash_register
+            $voucher->CashRegister()->create([
+                'account'=>$data->amount,
+                'type'=>'pagado',
+                'user_id'=>$data->user_id,
+            ]);
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollback();
+            cloudinary()->destroy($foto->getPublicId());
+        }
     }
     public function show($id){
         return Voucher::find($id);
