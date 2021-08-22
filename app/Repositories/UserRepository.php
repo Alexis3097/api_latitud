@@ -49,7 +49,7 @@ class UserRepository implements IUserRepository
 
     }
     public function show($id){
-        $user = User::find($id);
+        return  User::find($id)->with('box');
     }
     public function update($data, $id){
 
