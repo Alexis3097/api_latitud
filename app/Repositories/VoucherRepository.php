@@ -50,7 +50,7 @@ class VoucherRepository implements IVoucherRepository
             return $foto;
 
         }
-        return $voucher;
+        return 'fin de todo';
     }
     public function show($id){
         return Voucher::find($id);
