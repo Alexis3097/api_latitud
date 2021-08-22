@@ -46,7 +46,7 @@ class VoucherRepository implements IVoucherRepository
         }catch (\Exception $e){
             global $foto;
             DB::rollback();
-            cloudinary()->destroy($foto->getPublicId());
+//            cloudinary()->destroy($foto->getPublicId());
             return $foto;
 
         }
