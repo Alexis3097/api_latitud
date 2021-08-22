@@ -32,9 +32,9 @@ class CashRegisterController extends Controller
            return response()->json(['get'=>false],500);
        }
     }
-    function registersCajaChia(){
+    function registersXUser($id){
         try{
-            $cashRegister = $this->ICashRegisterRepository->registersCajaChia();
+            $cashRegister = $this->ICashRegisterRepository->registersXUser($id);
             if(!is_null($cashRegister)){
                 return CashRegisterResource::collection($cashRegister);
             }
