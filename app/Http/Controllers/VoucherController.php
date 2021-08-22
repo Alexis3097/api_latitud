@@ -34,18 +34,17 @@ class VoucherController extends Controller
     }
 
     public function store(Request $request){
-//        try {
+        try {
             $voucher = $this->IVoucherRepository->create($request);
-//        return response()->json(['messages'=>$voucher]);
-//            if(!is_null($voucher)){
-//                return new VoucherResource($voucher);
-//            }else{
-//                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
-//            }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::STORE_FAILED_500().$e);
-//            return response()->json(['store'=>$e],500);
-//        }
+            if(!is_null($voucher)){
+                return new VoucherResource($voucher);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::STORE_FAILED_500().$e);
+            return response()->json(['store'=>$e],500);
+        }
     }
 
     public function show($id){
