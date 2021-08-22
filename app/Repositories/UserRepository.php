@@ -49,7 +49,7 @@ class UserRepository implements IUserRepository
 
     }
     public function show($id){
-        return User::where('id',$id)->with('box')->firts();
+        return User::where('id',$id)->with('box')->first();
     }
     public function update($data, $id){
 
