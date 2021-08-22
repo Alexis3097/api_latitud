@@ -31,7 +31,7 @@ class VoucherRepository implements IVoucherRepository
                 'concept'=>$data->concept,
                 'amount'=>$data->amount,
                 'photo'=>$foto == null ? $foto : $foto->getSecurePath(),
-                'photoId'=>$foto == null ? $foto : $foto->getPublicId(),
+                'photoId'=>null,
                 'Store'=>$data->Store,
                 'RFC'=>$data->RFC,
                 'date'=>$data->date
@@ -44,9 +44,11 @@ class VoucherRepository implements IVoucherRepository
             ]);
             DB::commit();
         }catch (\Exception $e){
+            global $foto;
             DB::rollback();
-            return $e;
-//            cloudinary()->destroy($foto->getPublicId());
+            cloudinary()->destroy($foto->getPublicId());
+            return $foto;
+
         }
         return $voucher;
     }

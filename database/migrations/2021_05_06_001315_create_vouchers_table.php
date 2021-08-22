@@ -20,8 +20,8 @@ class CreateVouchersTable extends Migration
             $table->foreignId('check_type_id')->constrained('check_types');
             $table->string('concept');
             $table->double('amount');
-            $table->string('photo');
-            $table->string('photoId');
+            $table->string('photo')->nullable();
+            $table->string('photoId')->nullable();
             $table->string('Store');
             $table->string('RFC');
             $table->dateTime('date', 0);
