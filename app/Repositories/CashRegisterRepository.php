@@ -19,7 +19,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function registersXUser($id)
     {
-        $cashRegister = CashRegister::where('user_id',3)->orWhere('user_id',1)->orderBy('id','desc')->paginate(10);;
+        $cashRegister = CashRegister::where('user_id',$id)->orWhere('user_id',1)->orderBy('id','desc')->paginate(10);
         return $cashRegister;
     }
 
