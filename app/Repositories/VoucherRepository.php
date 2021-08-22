@@ -45,8 +45,8 @@ class VoucherRepository implements IVoucherRepository
             DB::commit();
         }catch (\Exception $e){
             DB::rollback();
-            cloudinary()->destroy($foto->getPublicId());
-        }
+//            cloudinary()->destroy($foto->getPublicId());
+        }   
         return $voucher;
     }
     public function show($id){
