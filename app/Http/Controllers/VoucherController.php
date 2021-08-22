@@ -36,8 +36,8 @@ class VoucherController extends Controller
     public function store(Request $request){
 //        try {
             $voucher = $this->IVoucherRepository->create($request);
-        return response()->json(['messages'=>$voucher]);
-//            if(!is_null($voucher)){
+//        return response()->json(['messages'=>$voucher]);
+//            if(!is_null($voucher)){   
 //                return new VoucherResource($voucher);
 //            }else{
 //                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
