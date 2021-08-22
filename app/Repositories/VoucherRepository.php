@@ -31,7 +31,8 @@ class VoucherRepository implements IVoucherRepository
                 'concept'=>$data->concept,
                 'amount'=>$data->amount,
                 'photo'=>$foto == null ? $foto : $foto->getSecurePath(),
-                'photoId'=>$foto == null ? $foto : $foto->getPublicId(),
+//                'photoId'=>$foto == null ? $foto : $foto->getPublicId(),
+                'photoId'=>$foto == null ? $foto : $foto->getSecurePath(),
                 'Store'=>$data->Store,
                 'RFC'=>$data->RFC,
                 'date'=>$data->date
