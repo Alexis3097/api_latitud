@@ -15,7 +15,7 @@ class VoucherRepository implements IVoucherRepository
     }
     public function create($data)
     {
-        $foto = null;
+        $foto = 'test';
         $voucher = null;
         try{
             global $foto;
