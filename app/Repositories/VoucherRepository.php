@@ -44,11 +44,11 @@ class VoucherRepository implements IVoucherRepository
             ]);
             DB::commit();
         }catch (\Exception $e){
-            global $foto;
+//            global $foto;
             DB::rollback();
-            if(!is_null($foto)){
+//            if(!is_null($foto)){
                 cloudinary()->destroy($foto->getPublicId());
-            }
+//            }
         }
         return $voucher;
     }
