@@ -28,7 +28,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             $amount->CashRegister()->create([
                 'account'=>$data->amount,
                 'type'=>'pagado',
-                'user_id'=>$data->idDestinatario,
+                'user_id'=>$data->idDestinatario,//a quien se le esta dando el dinero
             ]);
             //actualizar si caja del usuario a quien se le envio
             $box = Box::whereHas('user', function (Builder $users) use($data){

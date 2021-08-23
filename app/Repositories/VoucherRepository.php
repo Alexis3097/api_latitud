@@ -25,7 +25,7 @@ class VoucherRepository implements IVoucherRepository
                 $foto = cloudinary()->upload($data->file('file')->getRealPath());
             }
             $voucher = Voucher::create([
-                'user_id'=>$data->user_id,
+                'user_id'=>$data->user_id,//el usuario que esta mandando el dinero
                 'expense_type_id'=>$data->expense_type_id,
                 'check_type_id'=>$data->check_type_id,
                 'concept'=>$data->concept,
@@ -40,7 +40,7 @@ class VoucherRepository implements IVoucherRepository
             $voucher->CashRegister()->create([
                 'account'=>$data->amount,
                 'type'=>'pagado',
-                'user_id'=>$data->user_id,
+                'user_id'=>$data->user_id,//debe ser a quien le esta dando el dinero
             ]);
             DB::commit();
         }catch (\Exception $e){

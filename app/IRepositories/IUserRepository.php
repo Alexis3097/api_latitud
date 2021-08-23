@@ -8,4 +8,5 @@ interface IUserRepository extends IBaseRepository
 {
     public function  getCoordinadores();
     public function  onlyUsers();
+    public function getBoss();
 }

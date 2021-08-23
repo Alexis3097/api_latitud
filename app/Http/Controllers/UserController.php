@@ -92,4 +92,19 @@ class UserController extends Controller
             return response()->json(['get'=>false],500);
         }
     }
+
+    public function getBoss(){
+        try {
+            $users = $this->IUserRepository->getBoss();
+            if(!is_null($users)){
+                return UserResource::collection($users);
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
 }
