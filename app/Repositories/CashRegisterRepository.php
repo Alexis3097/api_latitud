@@ -55,6 +55,7 @@ class CashRegisterRepository implements ICashRegisterRepository
             'registrable',
             [AmountAssigned::class, Voucher::class],
             function (Builder $query, $type){
+                $query->where('idDestination', '=',5);
 //                if ($type === 'App\Models\Voucher') {
 //                    $query->Where('idDestination', '=',5);
 //                }
