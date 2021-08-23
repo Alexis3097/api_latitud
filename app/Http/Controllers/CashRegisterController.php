@@ -65,6 +65,6 @@ class CashRegisterController extends Controller
     public function getRegistersXUser($id): \Illuminate\Http\JsonResponse
     {
         $RegistersXUser = $this->ICashRegisterRepository->getRegistersXUser($id);
-        return response()->json('test');
+        return response()->json($RegistersXUser);
     }
 }

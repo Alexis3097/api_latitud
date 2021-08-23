@@ -56,7 +56,7 @@ class CashRegisterRepository implements ICashRegisterRepository
             [AmountAssigned::class, Voucher::class],
             function (Builder $query, $type) use ($id){
                 if ($type === 'App\Models\Voucher') {
-                    $query->orWhere('user_id', $id);
+                    $query->Where('user_id', '=',5);
                 }
 //                $query->whereHas('user', function (Builder $users){
 //                //3 es el tipo de usuario caja chica y 1 es admin
