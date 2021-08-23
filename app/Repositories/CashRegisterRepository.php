@@ -55,14 +55,13 @@ class CashRegisterRepository implements ICashRegisterRepository
             'registrable',
             [AmountAssigned::class, Voucher::class],
             function (Builder $query, $type)use ($id){
+                //cuando el destino fue el usuario logeado
                 $query->where('idDestination', '=',$id);
-//                if ($type === 'App\Models\Voucher') {
-//                    $query->Where('idDestination', '=',5);
-//                }
-//                $query->whereHas('user', function (Builder $users){
-//                //3 es el tipo de usuario caja chica y 1 es admin
-//                $users->where('user_type_id','=',3)->orWhere('user_type_id','=','1');
-//            });
+
+                //cuando el voucher fue hecho por el
+                if ($type === 'App\Models\Voucher') {
+                    $query->orWhere('id', '=', $id);
+                }
             })->orderBy('id','desc')->paginate(10);
 //        return $cashRegister;
     }
