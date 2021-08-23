@@ -60,7 +60,7 @@ class CashRegisterRepository implements ICashRegisterRepository
 
                 //cuando el voucher fue hecho por el
                 if ($type === 'App\Models\Voucher') {
-                    $query->orWhere('id', '=', $id);
+                    $query->orWhere('user_id', '=', $id);
                 }
             })->orderBy('id','desc')->paginate(10);
 //        return $cashRegister;
