@@ -19,7 +19,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function registersXUser($id)
     {
-        $cashRegister = CashRegister::where('user_id',$id)->orWhere('user_id',1)->orderBy('id','desc')->paginate(10);
+        $cashRegister = CashRegister::where('idDestination',$id)->orWhere('idDestination',1)->orderBy('id','desc')->paginate(10);
         return $cashRegister;
     }
 
@@ -54,7 +54,7 @@ class CashRegisterRepository implements ICashRegisterRepository
         return CashRegister::whereHasMorph(
             'registrable',
             [AmountAssigned::class, Voucher::class],
-            function (Builder $query, $type) use ($id){
+            function (Builder $query, $type){
                 if ($type === 'App\Models\Voucher') {
                     $query->Where('user_id', '=',5);
                 }

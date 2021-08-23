@@ -52,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne(Box::class);
     }
     public function cashRegisters(){
-        return $this->hasMany(CashRegister::class);
+        return $this->hasMany(CashRegister::class,'idDestination');
     }
 
     /**

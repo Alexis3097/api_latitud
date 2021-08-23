@@ -15,7 +15,7 @@ class CashRegister extends Model
         'type',
         'registrable_id',
         'registrable_type',
-        'user_id',
+        'idDestination',
     ];
 
     public function getCreatedAtAttribute($value)
@@ -35,7 +35,7 @@ class CashRegister extends Model
         'Receiver',
     ];
     function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'idDestination');
     }
 
     public function getSenderAttribute(){
