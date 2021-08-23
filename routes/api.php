@@ -32,6 +32,7 @@ Route::group([
     Route::get('coordinadores', 'UserController@getCoordinadores');
 
     Route::get('cashRegister/registersXUser/{id}','CashRegisterController@registersXUser');
+    Route::get('cashRegister/getRegistersXUser/{id}','CashRegisterController@getRegistersXUser');
     Route::apiResource('cashRegister','CashRegisterController');
 
     Route::get('box/cajaChica','BoxController@cajaChica');
