@@ -54,8 +54,8 @@ class CashRegisterRepository implements ICashRegisterRepository
         return CashRegister::whereHasMorph(
             'registrable',
             [AmountAssigned::class, Voucher::class],
-            function (Builder $query, $type){
-                $query->where('idDestination', '=',8);
+            function (Builder $query, $type)use ($id){
+                $query->where('idDestination', '=',$id);
 //                if ($type === 'App\Models\Voucher') {
 //                    $query->Where('idDestination', '=',5);
 //                }
