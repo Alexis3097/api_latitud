@@ -53,7 +53,7 @@ class CashRegisterRepository implements ICashRegisterRepository
         $cashRegister=  CashRegister::find($id)->registrable;
         $modelo = array(
             'cashRegister' => $cashRegister,
-            'test'=>2
+            'test'=>$cashRegister->expense_type_id,
         );
         return $modelo;
     }
