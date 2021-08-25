@@ -49,7 +49,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function getRegisterWithVoucher($id)
     {
-        return CashRegister::find($id)->registrable->with('expenseType');
+        return CashRegister::where('id',$id)->registrable->with('expenseType');
     }
 
     public function getRegistersXUser($id)
@@ -67,7 +67,6 @@ class CashRegisterRepository implements ICashRegisterRepository
                     $query->orWhere('user_id', '=', $id);
                 }
             })->orderBy('id','desc')->paginate(10);
-//        return $cashRegister;
     }
 
 
