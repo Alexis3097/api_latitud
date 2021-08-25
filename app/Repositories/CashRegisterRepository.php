@@ -7,6 +7,8 @@ namespace App\Repositories;
 use App\IRepositories\ICashRegisterRepository;
 use App\Models\AmountAssigned;
 use App\Models\CashRegister;
+use App\Models\CheckType;
+use App\Models\ExpenseType;
 use App\Models\Voucher;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -51,11 +53,11 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
 
         $cashRegister=  CashRegister::find($id);
-        $modelo = array(
+        return  array(
             'cashRegister' => $cashRegister,
-            'test'=>$cashRegister->registrable->expense_type_id,
+            'ExpenseType'=> ExpenseType::find($cashRegister->registrable->expense_type_id),
+            'CheckType'=> CheckType::find($cashRegister->registrable->check_type_id),
         );
-        return $modelo;
     }
 
     public function getRegistersXUser($id)
