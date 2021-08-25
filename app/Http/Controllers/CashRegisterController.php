@@ -65,7 +65,7 @@ class CashRegisterController extends Controller
         try{
             $detailRegisters = $this->ICashRegisterRepository->getRegisterWithVoucher($id);
             if(!is_null($detailRegisters)){
-                return new CashRegisterResource($detailRegisters);
+                return response()->json($detailRegisters);
             }
             else{
                 return response()->json(['messages'=>ResponseMessages::GET_RESOURCE_VOID()]);
