@@ -47,6 +47,10 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
         return CashRegister::where('id', $id)->get();
     }
+    public function getRegisterWithVoucher($id)
+    {
+        return CashRegister::find($id);
+    }
 
     public function getRegistersXUser($id)
     {
@@ -65,4 +69,6 @@ class CashRegisterRepository implements ICashRegisterRepository
             })->orderBy('id','desc')->paginate(10);
 //        return $cashRegister;
     }
+
+
 }
