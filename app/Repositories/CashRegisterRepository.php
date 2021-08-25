@@ -49,7 +49,7 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
     public function getRegisterWithVoucher($id)
     {
-        return CashRegister::find($id)->registrable->with('user');
+        return CashRegister::where('id', $id)->registrable;
     }
 
     public function getRegistersXUser($id)
