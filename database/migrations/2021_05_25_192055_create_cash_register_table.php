@@ -15,7 +15,7 @@ class CreateCashRegisterTable extends Migration
     {
         Schema::create('cash_register', function (Blueprint $table) {
             $table->id();
-            $table->integer('account');
+            $table->double('account');
             $table->string('type');//si es pagado o adeudo
             $table->unsignedBigInteger('registrable_id');
             $table->string('registrable_type');
