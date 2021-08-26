@@ -38,17 +38,19 @@ class AmountAssignedController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $AmountAssigned = $this->IAmountAssignedRepository->create($request);
-            if(!is_null($AmountAssigned)){
-                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
-            }else{
-                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
-            }
-        }catch (Throwable $e){
-            Log::info(ResponseMessages::STORE_FAILED_500().$e);
-            return response()->json(['store'=>false],500);
-        }
+        $AmountAssigned = $this->IAmountAssignedRepository->create($request);
+        return response()->json($AmountAssigned);
+//        try {
+//            $AmountAssigned = $this->IAmountAssignedRepository->create($request);
+//            if(!is_null($AmountAssigned)){
+//                return response()->json(['messages'=>ResponseMessages::POSTSUCCESSFUL()]);
+//            }else{
+//                return response()->json(['messages'=>ResponseMessages::STORE_FAILED_400()]);
+//            }
+//        }catch (Throwable $e){
+//            Log::info(ResponseMessages::STORE_FAILED_500().$e);
+//            return response()->json(['store'=>false],500);
+//        }
     }
 
 
