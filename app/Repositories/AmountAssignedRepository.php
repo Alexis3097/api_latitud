@@ -40,6 +40,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
 
         } catch (\Exception $e) {
             DB::rollback();
+            $amount = null;
         }
         return $amount;
     }
