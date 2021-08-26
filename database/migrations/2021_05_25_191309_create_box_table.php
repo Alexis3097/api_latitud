@@ -15,7 +15,7 @@ class CreateBoxTable extends Migration
     {
         Schema::create('box', function (Blueprint $table) {
             $table->id();
-            $table->integer('amount');
+            $table->double('amount');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
