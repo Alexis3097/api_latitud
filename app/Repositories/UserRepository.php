@@ -81,4 +81,9 @@ class UserRepository implements IUserRepository
     {
         return User::where('user_type_id',1)->orWhere('user_type_id',2)->orWhere('user_type_id',3)->get();
     }
+
+    public function getUserXId($id)
+    {
+        return User::find($id);
+    }
 }
