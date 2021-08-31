@@ -93,6 +93,23 @@ class UserController extends Controller
         }
     }
 
+    public function update(Request $request, $id)
+    {
+        try{
+            $user = $this->IUserRepository->update($request->all(), $id);
+            if(!is_null($user)){
+                return response()->json(['messages'=>ResponseMessages::UPDATE_SUCCESS()]);
+            }
+            else{
+                return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
+            }
+        }catch(Throwable $e){
+            Log::info(ResponseMessages::UPDATE_FAILED_500().$e);
+            return response()->json(['update'=>false],500);
+
+        }
+    }
+
     public function getBoss(){
         try {
             $users = $this->IUserRepository->getBoss();
