@@ -36,12 +36,12 @@ Route::group([
     Route::get('cashRegister/RegisterWithVoucher/{id}','CashRegisterController@RegisterWithVoucher');
     Route::apiResource('cashRegister','CashRegisterController');
 
-//    Route::get('box/cajaChica','BoxController@cajaChica');
-//    Route::get('user/getUserXId/{id}','UserController@getUserXId');
-//    Route::get('user/onlyUser','UserController@onlyUser');
-//    Route::get('user/getBoss','UserController@getBoss');
-//    Route::get('userType','UserTypeController@index');
-//    Route::apiResource('user', 'UserController');
+    Route::get('box/cajaChica','BoxController@cajaChica');
+    Route::get('user/getUserXId/{id}','UserController@getUserXId');
+    Route::get('user/onlyUser','UserController@onlyUser');
+    Route::get('user/getBoss','UserController@getBoss');
+    Route::get('userType','UserTypeController@index');
+    Route::apiResource('user', 'UserController')->except('update');
     Route::put('user/{id}','UserController@update');
 
 
