@@ -41,7 +41,8 @@ Route::group([
 //    Route::get('user/onlyUser','UserController@onlyUser');
 //    Route::get('user/getBoss','UserController@getBoss');
 //    Route::get('userType','UserTypeController@index');
-    Route::apiResource('user', 'UserController');
+//    Route::apiResource('user', 'UserController');
+    Route::post('user/{id}','UserController@update');
 
 
 });
