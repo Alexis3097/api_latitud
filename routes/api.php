@@ -41,8 +41,9 @@ Route::group([
     Route::get('user/onlyUser','UserController@onlyUser');
     Route::get('user/getBoss','UserController@getBoss');
     Route::get('userType','UserTypeController@index');
-    Route::apiResource('user', 'UserController')->except('update');
-    Route::post('user/{id}','UserController@update');
+    Route::apiResource('user', 'UserController');
+//        ->except('update');
+//    Route::post('user/{id}','UserController@update');
 
 
 });
