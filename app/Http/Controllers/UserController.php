@@ -94,9 +94,8 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
-
         try{
             $user = $this->IUserRepository->update($request, $id);
             if(!is_null($user)){
