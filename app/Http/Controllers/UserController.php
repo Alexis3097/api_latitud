@@ -96,7 +96,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = $this->IUserRepository->update($request, $id);
-        return response()->json($request);
+        return response()->json($request->get('name'));
 //        try{
 //            $user = $this->IUserRepository->update($request, $id);
 //            if(!is_null($user)){
