@@ -52,52 +52,37 @@ class UserRepository implements IUserRepository
         return User::where('id',$id)->with('box')->first();
     }
     public function update($data, $id){
-//        $foto = null;
-//        $user = null;
-//        try{
-//            global $foto;
-//            global $user;
-//
-//            DB::beginTransaction();
-//            $user =  User::find($id);
-//            //si el request trae data entonces hay que subir a foto y guardarlo
-//            if(!is_null($data->file('file'))){
-//                $foto = cloudinary()->upload($data->file('file')->getRealPath());
-//                $user->photo =$foto->getSecurePath();
-//                $user->photoId =$foto->getPublicId();
-//            }
-//            //actualizando los datos
-//            $user->name = $data->name;
-//            $user->last_name1 = $data->last_name1;
-//            $user->last_name2 = $data->last_name2;
-//            $user->job = $data->job ;
-//            $user->date_of_birth = $data->date_of_birth;
-//            $user->email = $data->email;
-//            $user->user_type_id = $data->user_type_id;
-//            $user->save();
-//            DB::commit();
-//        } catch (\Exception $e) {
-//            DB::rollback();
-//            if(!is_null($foto)){
-//                cloudinary()->destroy($foto->getPublicId());
-//            }
-//        }
-        $user =  User::find($id);
-        //si el request trae data entonces hay que subir a foto y guardarlo
-        if(!is_null($data->file('file'))){
-            $foto = cloudinary()->upload($data->file('file')->getRealPath());
-            $user->photo =$foto->getSecurePath();
-            $user->photoId =$foto->getPublicId();
+        $foto = null;
+        $user = null;
+        try{
+            global $foto;
+            global $user;
+
+            DB::beginTransaction();
+            $user =  User::find($id);
+            //si el request trae data entonces hay que subir a foto y guardarlo
+            if(!is_null($data->file('file'))){
+                $foto = cloudinary()->upload($data->file('file')->getRealPath());
+                $user->photo =$foto->getSecurePath();
+                $user->photoId =$foto->getPublicId();
+            }
+            //actualizando los datos
+            $user->name = $data->name;
+            $user->last_name1 = $data->last_name1;
+            $user->last_name2 = $data->last_name2;
+            $user->job = $data->job ;
+            $user->date_of_birth = $data->date_of_birth;
+            $user->email = $data->email;
+            $user->user_type_id = $data->user_type_id;
+            $user->save();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            if(!is_null($foto)){
+                cloudinary()->destroy($foto->getPublicId());
+            }
         }
-        //actualizando los datos
-        $user->name = $data->name;
-        $user->last_name1 = $data->last_name1;
-        $user->last_name2 = $data->last_name2;
-        $user->job = $data->job ;
-        $user->date_of_birth = $data->date_of_birth;
-        $user->email = $data->email;
-        $user->user_type_id = $data->user_type_id;
-        $user->save();
+
         return $user;
     }
     public function delete($id){
