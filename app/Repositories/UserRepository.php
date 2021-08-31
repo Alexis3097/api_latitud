@@ -74,7 +74,7 @@ class UserRepository implements IUserRepository
             $user->date_of_birth = $data->date_of_birth;
             $user->email = $data->email;
             $user->user_type_id = $data->user_type_id;
-            return $user->save();
+            $user->save();
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
