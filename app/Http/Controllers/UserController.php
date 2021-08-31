@@ -49,7 +49,8 @@ class UserController extends Controller
         }
     }
 
-    public function store(Request $request){
+    public function store(Request $request): \Illuminate\Http\JsonResponse
+    {
         try {
             $user = $this->IUserRepository->create($request);
             if(!is_null($user)){
