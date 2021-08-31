@@ -78,7 +78,9 @@ class UserRepository implements IUserRepository
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            cloudinary()->destroy($foto->getPublicId());
+            if(!is_null($foto)){
+                cloudinary()->destroy($foto->getPublicId());
+            }
         }
         return $user;
     }
