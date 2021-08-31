@@ -82,7 +82,7 @@ class UserRepository implements IUserRepository
 //                cloudinary()->destroy($foto->getPublicId());
 //            }
 //        }
-        return  User::find($id);
+        return $data;
     }
     public function delete($id){
 
