@@ -73,10 +73,10 @@ class UserRepository implements IUserRepository
             $user->name = $data->name;
             $user->last_name1 = $data->last_name1;
             $user->last_name2 = $data->last_name2;
-            $user->job = $data->job ;
+            $user->job = $data->job == null ? $user->job : $data->job;
             $user->date_of_birth = $data->date_of_birth;
             $user->email = $data->email;
-            $user->user_type_id = $data->user_type_id;
+            $user->user_type_id =  $data->user_type_id == null ? $user->user_type_id : $data->user_type_id;
             $user->save();
             DB::commit();
         } catch (\Exception $e) {
