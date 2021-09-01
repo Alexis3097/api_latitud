@@ -41,6 +41,7 @@ Route::group([
     Route::get('user/onlyUser','UserController@onlyUser');
     Route::get('user/getBoss','UserController@getBoss');
     Route::get('userType','UserTypeController@index');
+    Route::put('user/changePasswordFromUser/{id}','UserController@changePasswordFromUser');
     Route::apiResource('user', 'UserController');
 
 

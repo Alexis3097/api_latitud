@@ -10,4 +10,5 @@ interface IUserRepository extends IBaseRepository
     public function  onlyUsers();
     public function getBoss();
     public function getUserXId($id);
+    public function changePasswordFromUser($id, $password);
 }

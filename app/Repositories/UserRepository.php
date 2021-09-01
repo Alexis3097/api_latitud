@@ -117,4 +117,12 @@ class UserRepository implements IUserRepository
     {
         return User::find($id);
     }
+
+    public function changePasswordFromUser($id, $password)
+    {
+        $user = User::find($id);
+        $user->password =  $this->hashPassword($password);
+        $user->save();
+        return $user;
+    }
 }

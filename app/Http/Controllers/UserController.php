@@ -140,4 +140,19 @@ class UserController extends Controller
             return response()->json(['get'=>false],500);
         }
     }
+
+    public function changePasswordFromUser(Request $request, $id){
+        try{
+            $user = $this->IUserRepository->changePasswordFromUser($id, $request->input('password'));
+            if(!is_null($user)){
+                return New UserResource($user);
+            }
+            else{
+                return response()->json(['messages'=> ResponseMessages::GET_RESOURCES_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::STORE_FAILED_500().$e);
+            return response()->json(['store'=>$e],500);
+        }
+    }
 }
