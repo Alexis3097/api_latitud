@@ -63,6 +63,9 @@ class UserRepository implements IUserRepository
             //si el request trae data entonces hay que subir a foto y guardarlo
             if(!is_null($data->file('file'))){
                 $foto = cloudinary()->upload($data->file('file')->getRealPath());
+                //elimino la foto vieja
+                cloudinary()->destroy($user->photoId);
+                //actualizo el url de la nueva fotp
                 $user->photo =$foto->getSecurePath();
                 $user->photoId =$foto->getPublicId();
             }
@@ -81,6 +84,7 @@ class UserRepository implements IUserRepository
             if(!is_null($foto)){
                 cloudinary()->destroy($foto->getPublicId());
             }
+            $user = $e;
         }
 
         return $user;

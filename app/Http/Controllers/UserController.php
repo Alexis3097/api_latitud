@@ -96,19 +96,21 @@ class UserController extends Controller
 
     public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
-        try{
-            $user = $this->IUserRepository->update($request, $id);
-            if(!is_null($user)){
-                return response()->json($user);
-            }
-            else{
-                return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
-            }
-        }catch(Throwable $e){
-            Log::info(ResponseMessages::UPDATE_FAILED_500().$e);
-            return response()->json(['update'=>false],500);
-
-        }
+        $user = $this->IUserRepository->update($request, $id);
+        return response()->json($user);
+//        try{
+//            $user = $this->IUserRepository->update($request, $id);
+//            if(!is_null($user)){
+//                return response()->json($user);
+//            }
+//            else{
+//                return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
+//            }
+//        }catch(Throwable $e){
+//            Log::info(ResponseMessages::UPDATE_FAILED_500().$e);
+//            return response()->json(['update'=>false],500);
+//
+//        }
     }
 
     public function getBoss(){
