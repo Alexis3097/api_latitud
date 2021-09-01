@@ -104,7 +104,7 @@ class UserRepository implements IUserRepository
     }
 
     public function onlyUsers(){
-        return User::paginate(10);
+        return User::orderBy('id','desc')->paginate(10);
     }
 
 
