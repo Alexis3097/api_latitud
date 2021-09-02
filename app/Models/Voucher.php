@@ -35,6 +35,7 @@ class Voucher extends Model
         'date',
         'Store',
         'RFC',
+        'approve',
     ];
 
 
