@@ -47,6 +47,7 @@ class BoxController extends Controller
                 }
                 return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
             }
+            return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
         }catch (Throwable $e){
             Log::info(ResponseMessages::UPDATE_FAILED_400() .$e);
             return response()->json(['update'=>false],500);
