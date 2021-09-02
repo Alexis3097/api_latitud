@@ -72,4 +72,9 @@ class VoucherRepository implements IVoucherRepository
     {
         return CheckType::all();
     }
+
+    public function approveExpense($idUser)
+    {
+        return Voucher::where('user_id', $idUser)->first();
+    }
 }

@@ -7,4 +7,5 @@ interface IVoucherRepository extends IBaseRepository
 {
     public function getExpenseType();
     public function  getCheckType();
+    public function approveExpense($idUser);
 }

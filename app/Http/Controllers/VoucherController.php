@@ -90,7 +90,8 @@ class VoucherController extends Controller
             return response()->json(['destroy'=>false],500);
         }
     }
-    public function  getDataSelects(){
+    public function  getDataSelects(): \Illuminate\Http\JsonResponse
+    {
         try {
             $expenseType = $this->IVoucherRepository->getExpenseType();
             $checkType = $this->IVoucherRepository->getCheckType();
@@ -98,6 +99,15 @@ class VoucherController extends Controller
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
             return response()->json(['get'=>false],500);
+        }
+    }
+
+    public function approveExpense(Request $request, $idUser){
+        try{
+            $voucher = $this->IVoucherRepository->approveExpense($idUser);
+            return response()->json($voucher);
+        }catch (Throwable $e){
+            return response()->json($e);
         }
     }
 
