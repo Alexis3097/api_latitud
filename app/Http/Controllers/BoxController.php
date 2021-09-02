@@ -33,8 +33,8 @@ class BoxController extends Controller
 
     public function approveExpense(Request $request, $idUser){
         try{
-            $box = $this->IBoxRepository->approveExpense($idUser, $request->input('$amount'));
-            return response()->json([$idUser,$request->input('$amount')]);
+            $box = $this->IBoxRepository->approveExpense($idUser, $request->input('amount'));
+            return response()->json([$idUser,$request->input('amount')]);
         }catch (Throwable $e){
             return response()->json($e);
         }
