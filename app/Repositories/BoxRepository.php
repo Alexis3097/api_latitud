@@ -41,9 +41,11 @@ class BoxRepository implements IBoxRepository
      })->get();
     }
 
-    public function approveExpense($idUser)
+    public function approveExpense($idUser,$amount)
     {
-        return Box::where('user_id', $idUser)->first();
+        $box =  Box::where('user_id', $idUser)->first();
+        $box->amount -=$amount;
+        return $box->save();
     }
 
 }
