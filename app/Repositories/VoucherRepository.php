@@ -74,4 +74,9 @@ class VoucherRepository implements IVoucherRepository
     }
 
 
+    public function changeStatusApprove($id)
+    {
+        $voucher = Voucher::find($id);
+        $voucher->approve = true;
+    }
 }
