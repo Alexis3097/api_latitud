@@ -78,5 +78,6 @@ class VoucherRepository implements IVoucherRepository
     {
         $voucher = Voucher::find($id);
         $voucher->approve = true;
+        $voucher->save();
     }
 }

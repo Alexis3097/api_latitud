@@ -39,10 +39,14 @@ class BoxController extends Controller
 
     public function approveExpense(Request $request, $idUser){
         try{
-//            $box = $this->IBoxRepository->approveExpense($idUser, $request);
-            return response()->json([$idUser,$request->amount]);
+            $box = $this->IBoxRepository->approveExpense($idUser, $request->amount);
+            if(!is_null($box)){
+                $this->IVoucherRepository->changeStatusApprove($request->idVoucher);
+            }
+            return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
         }catch (Throwable $e){
-            return response()->json($e);
+            Log::info(ResponseMessages::UPDATE_FAILED_400() .$e);
+            return response()->json(['update'=>false],500);
         }
     }
 }
