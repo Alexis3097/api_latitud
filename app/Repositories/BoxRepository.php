@@ -40,4 +40,10 @@ class BoxRepository implements IBoxRepository
          $query->where('user_type_id','=',3);
      })->get();
     }
+
+    public function approveExpense($idUser)
+    {
+        return Box::where('user_id', $idUser)->first();
+    }
+
 }

@@ -28,7 +28,6 @@ Route::group([
     Route::apiResource('test', 'TestController');
     Route::apiResource('AmountAssigned', 'AmountAssignedController');
     Route::get('Voucher/getDataSelects', 'VoucherController@getDataSelects');
-    Route::get( 'Voucher/approveExpense/{id}', 'VoucherController@approveExpense');
     Route::apiResource('Voucher', 'VoucherController');
     Route::get('coordinadores', 'UserController@getCoordinadores');
 
@@ -38,6 +37,7 @@ Route::group([
     Route::apiResource('cashRegister','CashRegisterController');
 
     Route::get('box/cajaChica','BoxController@cajaChica');
+    Route::put( 'box/approveExpense/{id}', 'BoxController@approveExpense');
     Route::get('user/getUserXId/{id}','UserController@getUserXId');
     Route::get('user/onlyUser','UserController@onlyUser');
     Route::get('user/getBoss','UserController@getBoss');

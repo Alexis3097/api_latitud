@@ -102,13 +102,6 @@ class VoucherController extends Controller
         }
     }
 
-    public function approveExpense(Request $request, $idUser){
-        try{
-            $voucher = $this->IVoucherRepository->approveExpense($idUser);
-            return response()->json($voucher);
-        }catch (Throwable $e){
-            return response()->json($e);
-        }
-    }
+
 
 }
