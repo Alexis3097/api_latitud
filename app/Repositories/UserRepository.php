@@ -101,7 +101,8 @@ class UserRepository implements IUserRepository
     }
 
     public function all(){
-        return User::with('box')->orderBy('id','asc')->get();
+        //el id 1 es del admin, no hacer caso para mostrar
+        return User::with('box')->where('id','!=', 1)->orderBy('id','asc')->get();
     }
 
     public function getCoordinadores()
