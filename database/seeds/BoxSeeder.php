@@ -12,10 +12,10 @@ class BoxSeeder extends Seeder
      */
     public function run()
     {
-        Box::create([
-            'amount'=>500,
-            'user_id'=>1,
-        ]);
+//        Box::create([
+//            'amount'=>500,
+//            'user_id'=>1,
+//        ]);
         Box::create([
             'amount'=>500,
             'user_id'=>2,
