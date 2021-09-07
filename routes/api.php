@@ -33,6 +33,7 @@ Route::group([
 
     Route::get('cashRegister/registersXUser/{id}','CashRegisterController@registersXUser');
     Route::get('cashRegister/getRegistersXUser/{id}','CashRegisterController@getRegistersXUser');
+    Route::get('cashRegister/getRegistersXCajaChica/{id}','CashRegisterController@getRegistersXCajaChica');
     Route::get('cashRegister/RegisterWithVoucher/{id}','CashRegisterController@RegisterWithVoucher');
     Route::apiResource('cashRegister','CashRegisterController');
 

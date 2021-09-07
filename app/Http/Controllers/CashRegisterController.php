@@ -91,4 +91,19 @@ class CashRegisterController extends Controller
             return response()->json(['get'=>false],500);
         }
     }
+    public function getRegistersXCajaChica($id)
+    {
+        try{
+            $registersXCajaChica = $this->ICashRegisterRepository->getRegistersXCajaChica($id);
+            if(!is_null($registersXCajaChica)){
+                return new CashRegisterResource($registersXCajaChica);
+            }
+            else{
+                return response()->json(['messages'=>ResponseMessages::GET_RESOURCE_VOID()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
 }

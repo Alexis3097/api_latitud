@@ -20,7 +20,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             DB::beginTransaction();
             //guardar el monto asignado
             $amount = AmountAssigned::create([
-                'user_id'=>$data->user_id,
+                'user_id'=>$data->user_id,// id de quien hace el deposito
                 'amount'=>$data->amount,
                 'reason'=>$data->reason,
             ]);

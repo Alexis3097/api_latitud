@@ -77,5 +77,26 @@ class CashRegisterRepository implements ICashRegisterRepository
             })->orderBy('id','desc')->paginate(10);
     }
 
+    public function getRegistersXCajaChica($id)
+    {
+        // TODO: Implement getRegistersXUser() method.
+        return CashRegister::whereHasMorph(
+            'registrable',
+            [AmountAssigned::class, Voucher::class],
+            function (Builder $query, $type)use ($id){
+                //cuando el destino fue el usuario logeado
+                $query->where('idDestination', '=',$id);
+
+                //cuando el voucher fue hecho por el
+                if ($type === 'App\Models\Voucher') {
+                    $query->orWhere('user_id', '=', $id);
+                }
+                //cuando el amount fue hecho por el
+                if ($type === 'App\Models\AmountAssigned') {
+                    $query->orWhere('user_id', '=', $id);
+                }
+            })->orderBy('id','desc')->paginate(10);
+    }
+
 
 }

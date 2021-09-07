@@ -9,5 +9,6 @@ interface ICashRegisterRepository extends IBaseRepository
     public function registersXUser($id);
     public function getDetailRegister($id);
     public function getRegistersXUser($id);
+    public function getRegistersXCajaChica($id);
     public function getRegisterWithVoucher($id);
 }
