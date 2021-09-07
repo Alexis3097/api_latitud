@@ -53,4 +53,14 @@ class BoxRepository implements IBoxRepository
 
     }
 
+    public function discountBox($idUser, $amount)
+    {
+        if(!is_null($amount)){
+            $box =  Box::where('user_id', $idUser)->first();
+            $box->amount -=$amount;
+            $box->save();
+            return $box;
+        }
+        return null;
+    }
 }

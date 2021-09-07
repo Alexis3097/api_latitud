@@ -49,7 +49,19 @@ class BoxController extends Controller
             }
             return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
         }catch (Throwable $e){
-            Log::info(ResponseMessages::UPDATE_FAILED_400() .$e);
+            Log::info(ResponseMessages::UPDATE_FAILED_500() .$e);
+            return response()->json(['update'=>false],500);
+        }
+    }
+    public function discountBox(Request $request, $idUser){
+        try{
+            $box = $this->IBoxRepository->discountBox($idUser, $request->amount);
+            if(!is_null($box)){
+                return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
+            }
+            return response()->json(['messages'=> ResponseMessages::UPDATE_FAILED_400()]);
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::UPDATE_FAILED_500() .$e);
             return response()->json(['update'=>false],500);
         }
     }

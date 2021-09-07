@@ -22,7 +22,7 @@ class UserTypeSeeder extends Seeder
         ]);
         //3 caja chica
         UserType::create([
-            'type'=>'caja_chica'
+            'type'=>'Caja chica'
         ]);
         //4 general
         UserType::create([

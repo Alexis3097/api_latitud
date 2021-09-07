@@ -38,6 +38,7 @@ Route::group([
 
     Route::get('box/cajaChica','BoxController@cajaChica');
     Route::put( 'box/approveExpense/{id}', 'BoxController@approveExpense');
+    Route::put( 'box/discountBox/{id}', 'BoxController@discountBox');
     Route::get('user/getUserXId/{id}','UserController@getUserXId');
     Route::get('user/onlyUser','UserController@onlyUser');
     Route::get('user/getBoss','UserController@getBoss');
