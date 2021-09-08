@@ -39,6 +39,7 @@ class VoucherRepository implements IVoucherRepository
             //guardar en el registro de actividades cuanto se le dio - cash_register
             $voucher->CashRegister()->create([
                 'account'=>$data->amount,
+                'type'=> 'no aprobado',
                 'idDestination'=>$data->idDestinatario,//debe ser a quien le esta dando el dinero
             ]);
             DB::commit();

@@ -16,7 +16,7 @@ class CreateCashRegisterTable extends Migration
         Schema::create('cash_register', function (Blueprint $table) {
             $table->id();
             $table->double('account');
-            $table->string('type')->default('no aprobado');//si es aprobado o no aprobado
+            $table->string('type');//si es aprobado o no aprobado
             $table->unsignedBigInteger('registrable_id');
             $table->string('registrable_type');
             $table->unsignedBigInteger('idDestination');//destino del dinero

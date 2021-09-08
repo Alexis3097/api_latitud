@@ -27,7 +27,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             //guardar en el registro de actividades cuanto se le dio - cash_register
             $amount->CashRegister()->create([
                 'account'=>$data->amount,
-                'type'=>'pagado',
+                'type'=>'aprobado',
                 'idDestination'=>$data->idDestinatario,//a quien se le esta dando el dinero
             ]);
             //actualizar si caja del usuario a quien se le envio
