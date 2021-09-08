@@ -16,7 +16,7 @@ class CreateCashRegisterTable extends Migration
         Schema::create('cash_register', function (Blueprint $table) {
             $table->id();
             $table->double('account');
-            $table->string('type');//si es aprobado o no aprobado
+            $table->string('type');//para amoount = aprobado, para voucher = en revision o aprobado
             $table->unsignedBigInteger('registrable_id');
             $table->string('registrable_type');
             $table->unsignedBigInteger('idDestination');//destino del dinero
