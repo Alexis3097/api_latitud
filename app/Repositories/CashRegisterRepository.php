@@ -99,4 +99,10 @@ class CashRegisterRepository implements ICashRegisterRepository
     }
 
 
+    public function changeStateType($id)
+    {
+        $cashRegister = CashRegister::find($id);
+        $cashRegister->type = 'aprobado';
+        $cashRegister->save();
+    }
 }

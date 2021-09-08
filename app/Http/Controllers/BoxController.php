@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ResponseMessages;
 use App\Http\Resources\BoxResource;
 use App\IRepositories\IBoxRepository;
+use App\IRepositories\ICashRegisterRepository;
 use App\IRepositories\IVoucherRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,11 +17,13 @@ class BoxController extends Controller
 
     protected $IBoxRepository;
     protected $IVoucherRepository;
-    function __construct(IBoxRepository $IBoxRepository, IVoucherRepository $IVoucherRepository)
+    protected $ICashRegisterRepository;
+    function __construct(IBoxRepository $IBoxRepository, IVoucherRepository $IVoucherRepository, ICashRegisterRepository $ICashRegisterRepository)
     {
         $this->middleware('auth:api');
         $this->IBoxRepository = $IBoxRepository;
         $this->IVoucherRepository = $IVoucherRepository;
+        $this->ICashRegisterRepository = $ICashRegisterRepository;
     }
     function cajaChica(){
         try{
@@ -40,10 +43,14 @@ class BoxController extends Controller
     public function approveExpense(Request $request, $idUser){
         try{
             $voucher = $this->IVoucherRepository->show($request->idVoucher);
+                //si el voucher esta en no aprobado o falso
             if(!$voucher->approve){
+                //se resta el monto
                 $box = $this->IBoxRepository->approveExpense($idUser, $request->amount);
                 if(!is_null($box)){
+                    //se cambia el estado del voucher a aprobado
                     $this->IVoucherRepository->changeStatusApprove($request->idVoucher);
+                    $this->ICashRegisterRepository->changeStateType($voucher->id);
                 }
                 return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
             }
