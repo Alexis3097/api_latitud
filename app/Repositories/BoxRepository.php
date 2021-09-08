@@ -43,6 +43,7 @@ class BoxRepository implements IBoxRepository
 
     public function approveExpense($idUser,$amount)
     {
+        //el id usuario es de quien hizo el voucher y a quien se le descontara el dinero
         if(!is_null($amount)){
             $box =  Box::where('user_id', $idUser)->first();
             $box->amount -=$amount;
