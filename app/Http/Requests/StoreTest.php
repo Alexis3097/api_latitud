@@ -24,14 +24,15 @@ class StoreTest extends FormRequest
     public function rules()
     {
         return [
-            'token'=> ['required','unique:NotificationToken::class'],
+            'token'=> ['required','unique:notification_tokens'],
         ];
     }
 
     public function messages()
     {
         return[
-            'token.required'=>'El token es requerido'
+            'token.required'=>'El token es requerido',
+            'token.unique'=>'El token debe ser unico'
         ];
     }
 }
