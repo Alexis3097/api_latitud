@@ -103,7 +103,9 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $response = Http::acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+        $response = Http::withHeaders([
+            'Authorization' => 'key=AAAAnCG-6t0:APA91bHWy5x1jCMIKDXwDQras4N-lbfHkg8w9bRNnExgoMHg8WF9AzRIot-IWpvLFtyKZVM6W8KYOUKxKMtCgE8AOU3RcNAnW1b3EtqXUr-3OI182_MY9BcxtS1MXjTNiFetfw_oP5pj',
+        ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
             [
                 "notification"=>[
                     "title"=>"Titulo",
