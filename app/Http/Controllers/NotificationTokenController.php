@@ -17,7 +17,7 @@ class NotificationTokenController extends Controller
 
     public function saveUserToken(StoreTest $request){
 
-        $validated = $request->validated();
+        $validated = $request->messages();
         return response()->json($validated);
 //        if ($validated->fails()) {
 //            return [
