@@ -12,7 +12,8 @@ class NotificationTokenRepository implements INotificationTokenRepository
      */
     public function saveUserToken($user_id, $token)
     {
-         return  NotificationToken::saveOrFail([
+        $userToken = new NotificationToken();
+         return  $userToken->saveOrFail([
              'user_id'=>$user_id,
              'token'=>$token
          ]);
