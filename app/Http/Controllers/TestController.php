@@ -115,7 +115,7 @@ class TestController extends Controller
 
         $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
 
-        return response()->json($response->body());
+        return response()->json('test');
     }
 
 
