@@ -115,7 +115,6 @@ class TestController extends Controller
                 "to"=>"f-hGcoWARG6tReEPnasWh8:APA91bHRMrogYmdoeoEPiBqzTK-aLQeTQaVEFmZT6BOBMngM-r2-ZSF2-9ytKPneU0LxGfNWYHJbJCNyLrhuH1_WPuRqEr1BhxBWWC57C_EWB9QTeqfb_x5PpzbPczGaBE8CPb2rkYlx"
             ]);
 
-//        $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
 
         return response($response->body());
     }
