@@ -15,7 +15,7 @@ class NotificationTokenController extends Controller
     }
 
     public function saveUserToken(Request $request){
-        $userToken = $this->INotificationTokenRepository->saveUserToken($request->idUser,$request->token);
+        $userToken = $this->INotificationTokenRepository->saveUserToken($request->user_id,$request->token);
         return response()->json($userToken);
     }
 }

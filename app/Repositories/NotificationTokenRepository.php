@@ -10,11 +10,11 @@ class NotificationTokenRepository implements INotificationTokenRepository
     /**
      * @inheritDoc
      */
-    public function saveUserToken($idUser, $token)
+    public function saveUserToken($user_id, $token)
     {
-         return  NotificationToken::firstOrCreate(
-            ['user_id' => $idUser],
-            ['token' => $token]
-        );
+         return  NotificationToken::saveOrFail([
+             'user_id'=>$user_id,
+             'token'=>$token
+         ]);
     }
 }
