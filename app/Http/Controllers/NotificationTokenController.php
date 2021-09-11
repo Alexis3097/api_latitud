@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ResponseMessages;
+use App\Http\Requests\StoreTest;
 use App\IRepositories\INotificationTokenRepository;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class NotificationTokenController extends Controller
         $this->INotificationTokenRepository = $INotificationTokenRepository;
     }
 
-    public function saveUserToken(Request $request){
+    public function saveUserToken(StoreTest $request){
         $userToken = $this->INotificationTokenRepository->saveUserToken($request->user_id,$request->token);
         return response()->json($userToken);
     }

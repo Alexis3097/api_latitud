@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\NotificationToken;
-class StoreTest extends FormRequest
+
+class StoreToken extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreTest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,14 +24,7 @@ class StoreTest extends FormRequest
     public function rules()
     {
         return [
-            'token'=> ['required','unique:NotificationToken::class'],
-        ];
-    }
-
-    public function messages()
-    {
-        return[
-            'token.required'=>'El token es requerido'
+            //
         ];
     }
 }
