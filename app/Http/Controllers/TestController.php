@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Http;
 use Throwable;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use App\Enums\ResponseMessages;
-use App\Http\Requests\StoreTest;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\TestResource;
 use App\IRepositories\ITestRepository;
-
 class TestController extends Controller
 {
     protected $ITestRepository;
@@ -101,6 +100,22 @@ class TestController extends Controller
             Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
             return response()->json(['destroy'=>false],500);
         }
+    }
+
+    public function  sendNoti(){
+//        $response = Http::withToken( env('FCM_KEY'))->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+//            [
+//                "notification"=>[
+//                    "title"=>"Titulo",
+//                    "body"=>"sub titulo"
+//                ],
+//                "priority"=>"high",
+//                "to"=>"f-hGcoWARG6tReEPnasWh8:APA91bHRMrogYmdoeoEPiBqzTK-aLQeTQaVEFmZT6BOBMngM-r2-ZSF2-9ytKPneU0LxGfNWYHJbJCNyLrhuH1_WPuRqEr1BhxBWWC57C_EWB9QTeqfb_x5PpzbPczGaBE8CPb2rkYlx"
+//            ]);
+
+        $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+
+        return response()->json($response->body());
     }
 
 

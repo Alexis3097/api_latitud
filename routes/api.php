@@ -48,5 +48,7 @@ Route::group([
     Route::apiResource('user', 'UserController');
     Route::post('notificationtokens', 'NotificationTokenController@saveUserToken');
 
+    Route::get('push','TestController@sendNoti');
+
 
 });
