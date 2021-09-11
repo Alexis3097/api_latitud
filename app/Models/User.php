@@ -11,6 +11,7 @@ use App\Models\AmountAssigned;
 use App\Models\CashRegister;
 use App\Models\Box;
 use App\Models\Voucher;
+use App\Models\NotificationToken;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -53,6 +54,12 @@ class User extends Authenticatable implements JWTSubject
     }
     public function cashRegisters(){
         return $this->hasMany(CashRegister::class,'idDestination');
+    }
+
+
+    public function notificationTokens()
+    {
+        return $this->hasMany(NotificationToken::class);
     }
 
     /**
