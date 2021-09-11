@@ -118,7 +118,7 @@ class UserRepository implements IUserRepository
     public function getBoss()
     {
         //obteiendo admin y caja chica
-        return User::where('user_type_id',1)->orWhere('user_type_id',3)->orderBy('id','desc')->get();
+        return User::where('user_type_id',1)->orWhere('user_type_id',3)->orderBy('id','asc')->get();
     }
 
     public function getUserXId($id)
