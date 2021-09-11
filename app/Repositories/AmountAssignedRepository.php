@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Events\AmountAssignedEvent;
 use App\IRepositories\IAmountAssignedRepository;
 use App\Models\AmountAssigned;
 use App\Models\Box;
@@ -40,7 +41,10 @@ class AmountAssignedRepository implements IAmountAssignedRepository
 
         } catch (\Exception $e) {
             DB::rollback();
-            $amount = $e;
+            $amount = null;
+        }
+        if(!is_null($amount)){
+            event(new AmountAssignedEvent($amount));
         }
         return $amount;
     }
