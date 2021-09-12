@@ -116,7 +116,7 @@ class TestController extends Controller
             ]);
 
 
-        return response($response->json());
+        return response($response->object());
     }
 
 
