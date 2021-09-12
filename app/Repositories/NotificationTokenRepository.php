@@ -32,10 +32,16 @@ class NotificationTokenRepository implements INotificationTokenRepository
                     "notification_key_name" => $notification_key_name,
                     "registration_ids" => [$token]
                 ]);
-            DeviceGroup::create([
+        //creamos el grupo
+            $deviceGroup = DeviceGroup::create([
                 'user_id'=>$user_id,
                 'notification_key_name'=>$notification_key_name,
-                'notification_key'=>$nuevoGrupo->body()->getContents(),
+                'notification_key'=>$nuevoGrupo->object()->notification_key,
+            ]);
+            //registramos
+            NotificationToken::create([
+                'device_groups_id' => $deviceGroup->id,
+                'token' => $token,
             ]);
         }
 //        //si existe hacer una petticion para agregar ese nuevo token
