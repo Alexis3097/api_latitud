@@ -11,7 +11,7 @@ use App\Models\AmountAssigned;
 use App\Models\CashRegister;
 use App\Models\Box;
 use App\Models\Voucher;
-use App\Models\NotificationToken;
+use App\Models\DeviceGroup;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -57,9 +57,9 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
-    public function notificationTokens()
+    public function deviceGroup()
     {
-        return $this->hasMany(NotificationToken::class);
+        return $this->hasOne(DeviceGroup::class);
     }
 
     /**

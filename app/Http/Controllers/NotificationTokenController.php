@@ -6,7 +6,6 @@ use App\Enums\ResponseMessages;
 use App\IRepositories\INotificationTokenRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Throwable;
 class NotificationTokenController extends Controller
 {
@@ -18,14 +17,7 @@ class NotificationTokenController extends Controller
 
     public function saveUserToken(Request $request){
        try{
-           $rules = [
-               'token' => ['required','unique:notification_tokens']
-           ];
-           $validator = Validator::make($request->all(), $rules);
-           if ($validator->fails()) {
-               return response()->json($validator->errors()->all());
 
-           }
            $userToken = $this->INotificationTokenRepository->saveUserToken($request->user_id,$request->token);
            if($userToken){
                return response()->json(ResponseMessages::POSTSUCCESSFUL());

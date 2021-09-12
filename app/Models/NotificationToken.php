@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\DeviceGroup;
 class NotificationToken extends Model
 {
     protected $table = 'notification_tokens';
     protected $fillable = [
-        'user_id',
-        'token'
+        'device_groups_id',
+        'token',
     ];
-    public function user()
+    public function deviceGroup()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(DeviceGroup::class);
     }
 
 }

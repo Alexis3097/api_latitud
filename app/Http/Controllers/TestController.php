@@ -116,7 +116,7 @@ class TestController extends Controller
             ]);
 
 
-        return response($response->body());
+        return response($response->body()->multicast_id);
     }
 
 
