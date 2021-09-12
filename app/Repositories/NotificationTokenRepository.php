@@ -11,19 +11,17 @@ use Illuminate\Support\Facades\Http;
 class NotificationTokenRepository implements INotificationTokenRepository
 {
 
-    /**
-     * @inheritDoc
-     */
+
     public function saveUserToken($user_id, $token)
     {
-        // verificar si el id usuario existe en la tabla de grupos
-        $userRegister = DeviceGroup::where('user_id', $user_id)->first();
-        // si no existe crear un keyname y grupo con ese token
-        if(is_null($userRegister)) {
+        // verificar si el id usuario existe en la tabla de grupos(significa que ya tiene un grupo)
+        $deviceGroupRegister = DeviceGroup::where('user_id', $user_id)->first();
+        // si no existe crear un keyname y grupo con ese token(esto solo pasara una vez por usuario)
+        if(is_null($deviceGroupRegister)) {
             $user = User::find($user_id);
             // creo un key name unico solo cundo no se ha registrado
             $notification_key_name = $user->name."-".$user_id;
-        $nuevoGrupo = Http::withHeaders([
+            $nuevoGrupo = Http::withHeaders([
                 'Authorization' => env('FCM_KEY'),
                 'project_id' => env('PROJECT_ID')
             ])->acceptJson()->post('https://fcm.googleapis.com/fcm/notification',
@@ -32,33 +30,53 @@ class NotificationTokenRepository implements INotificationTokenRepository
                     "notification_key_name" => $notification_key_name,
                     "registration_ids" => [$token]
                 ]);
-        //creamos el grupo
+            //creamos el grupo
             $deviceGroup = DeviceGroup::create([
                 'user_id'=>$user_id,
                 'notification_key_name'=>$notification_key_name,
                 'notification_key'=>$nuevoGrupo->object()->notification_key,
             ]);
-            //registramos
+            //registramos el token
             NotificationToken::create([
                 'device_groups_id' => $deviceGroup->id,
                 'token' => $token,
             ]);
+            // si no existia, regresamos el grupo que se acaba de crear
+            return $deviceGroup;
         }
-//        //si existe hacer una petticion para agregar ese nuevo token
-//        else{
-//
-//        }
-//                   $rules = [
-//               'token' => ['required','unique:notification_tokens']
-//           ];
-//           $validator = Validator::make([$user_id, $token], $rules);
-//           if ($validator->fails()) {
-//               return response()->json($validator->errors()->all());
-//
-//           }
-        $userToken = new NotificationToken();
-        $userToken->user_id =$user_id;
-        $userToken->token = $token;
-         return  $userToken->saveOrFail();
+       //si existe hacer una petticion para agregar ese nuevo token
+        else{
+            //validamos que el token no este registrado
+            $rules = [
+                'token' => ['required','unique:notification_tokens']
+            ];
+            $validator = Validator::make([$token], $rules);
+            // si la validacion falla es porque ya existe y tiene mensajes de error/validacion
+            if (!$validator->fails()) {
+                //agregamos el toquen al gryupo
+                $addToken = Http::withHeaders([
+                    'Authorization' => env('FCM_KEY'),
+                    'project_id' => env('PROJECT_ID')
+                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/notification',
+                    [
+                        "operation"=>"add",
+                        "notification_key_name" => $deviceGroupRegister->notification_key_name,
+                        "notification_key" => $deviceGroupRegister->notification_key,
+                        "registration_ids" => [$token]
+                    ]);
+                //guardamos el nuevo token el la BBDD
+                NotificationToken::create([
+                    'device_groups_id' => $deviceGroupRegister->id,
+                    'token' => $token,
+                ]);
+                // si se agrego un token a un grupo existente, regresamos el grupo existente
+                return $deviceGroupRegister;
+            }
+            //si la validacion falla y ya existe el token regresamos null
+            return null;
+        }
     }
+
+
+
 }
