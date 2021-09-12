@@ -116,7 +116,7 @@ class TestController extends Controller
             ]);
 
 
-        return response($response->body()->getContents());
+        return response($response->body());
     }
 
 
