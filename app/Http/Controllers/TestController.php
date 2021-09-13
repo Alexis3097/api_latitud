@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeviceGroup;
 use Illuminate\Support\Facades\Http;
 use Throwable;
 use App\Models\Test;
@@ -103,11 +104,8 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $object = array(
-            "name"=>"alexis",
-            "id"=>1
-        );
-        return response()->json($object["name"]);
+        $deviceGroupRegister = DeviceGroup::where('user_id',2)->first();
+        return response()->json($deviceGroupRegister);
     }
 
 
