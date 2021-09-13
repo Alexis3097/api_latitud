@@ -46,7 +46,8 @@ Route::group([
     Route::get('userType','UserTypeController@index');
     Route::put('user/changePasswordFromUser/{id}','UserController@changePasswordFromUser');
     Route::apiResource('user', 'UserController');
-    Route::post('notificationtokens', 'NotificationTokenController@saveUserToken');
+    Route::post('notificationtokens/create', 'NotificationTokenController@saveUserToken');
+    Route::post('notificationtokens/delete', 'NotificationTokenController@deleteUserToken');
 
     Route::get('push','TestController@sendNoti');
 

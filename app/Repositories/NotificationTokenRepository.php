@@ -73,5 +73,24 @@ class NotificationTokenRepository implements INotificationTokenRepository
     }
 
 
-
+    public function deleteUserToken($user_id, $token)
+    {
+      try{
+          $deviceGroupRegister = DeviceGroup::where('user_id', $user_id)->first();
+          $deleteToken = Http::withHeaders([
+              'Authorization' => env('FCM_KEY'),
+              'project_id' => env('PROJECT_ID')
+          ])->acceptJson()->post('https://fcm.googleapis.com/fcm/notification',
+              [
+                  "operation"=>"remove",
+                  "notification_key_name" => $deviceGroupRegister->notification_key_name,
+                  "notification_key" => $deviceGroupRegister->notification_key,
+                  "registration_ids" => [$token]
+              ]);
+          $notificationToke = NotificationToken::where('device_groups_id', $deviceGroupRegister->id)->first();
+          return $notificationToke->delete();
+      }catch (Throwable $e){
+          return $e;
+      }
+    }
 }

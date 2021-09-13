@@ -9,4 +9,5 @@ interface INotificationTokenRepository
      * @param String $token token a gurdar relacionado con el usuario
      */
     public function saveUserToken($user_id,$token);
+    public function deleteUserToken($user_id,$token);
 }
