@@ -107,7 +107,7 @@ class TestController extends Controller
             "name"=>"alexis",
             "id"=>1
         );
-        return response()->json($object->name);
+        return response()->json($object["name"]);
     }
 
 
