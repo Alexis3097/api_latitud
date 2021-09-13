@@ -105,7 +105,7 @@ class TestController extends Controller
 
     public function  sendNoti(){
         $deviceGroupRegister = DeviceGroup::where('user_id',1)->first();
-        return response()->json($deviceGroupRegister);
+        return response()->json($deviceGroupRegister->count());
     }
 
 
