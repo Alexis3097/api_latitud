@@ -103,20 +103,11 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $response = Http::withHeaders([
-            'Authorization' => env('FCM_KEY')
-        ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
-            [
-                "notification"=>[
-                    "title"=>"Titulo",
-                    "body"=>"sub titulo"
-                ],
-                "priority"=>"high",
-                "to"=>"f-hGcoWARG6tReEPnasWh8:APA91bHRMrogYmdoeoEPiBqzTK-aLQeTQaVEFmZT6BOBMngM-r2-ZSF2-9ytKPneU0LxGfNWYHJbJCNyLrhuH1_WPuRqEr1BhxBWWC57C_EWB9QTeqfb_x5PpzbPczGaBE8CPb2rkYlx"
-            ]);
-
-        $test = $response->object()->multicast_id;
-        return response()->json($test);
+        $object = array(
+            "name"=>"alexis",
+            "id"=>1
+        );
+        return response()->json($object);
     }
 
 
