@@ -5,6 +5,7 @@ use App\Events\AmountAssignedEvent;
 use App\IRepositories\IAmountAssignedRepository;
 use App\Models\AmountAssigned;
 use App\Models\Box;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
@@ -44,7 +45,12 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             $amount = null;
         }
         if(!is_null($amount)){
-            event(new AmountAssignedEvent($data->idDestinatario));
+            $user = User::find($data->user_id);
+            $objeto =  array(
+                'remitente' => $user->name,
+                'idDestinatario'=> $data->idDestinatario,
+            );
+            event(new AmountAssignedEvent($objeto));
         }
         return $amount;
     }
