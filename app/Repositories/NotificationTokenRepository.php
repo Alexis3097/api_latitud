@@ -77,25 +77,26 @@ class NotificationTokenRepository implements INotificationTokenRepository
     {
       try{
           $deviceGroupRegister = DeviceGroup::where('user_id', $user_id)->first();
-          $deleteToken = Http::withHeaders([
-              'Authorization' => env('FCM_KEY'),
-              'project_id' => env('PROJECT_ID')
-          ])->acceptJson()->post('https://fcm.googleapis.com/fcm/notification',
-              [
-                  "operation"=>"remove",
-                  "notification_key_name" => $deviceGroupRegister->notification_key_name,
-                  "notification_key" => $deviceGroupRegister->notification_key,
-                  "registration_ids" => [$token]
-              ]);
+//          $deleteToken = Http::withHeaders([
+//              'Authorization' => env('FCM_KEY'),
+//              'project_id' => env('PROJECT_ID')
+//          ])->acceptJson()->post('https://fcm.googleapis.com/fcm/notification',
+//              [
+//                  "operation"=>"remove",
+//                  "notification_key_name" => $deviceGroupRegister->notification_key_name,
+//                  "notification_key" => $deviceGroupRegister->notification_key,
+//                  "registration_ids" => [$token]
+//              ]);
 
           $notificationToke = NotificationToken::where('device_groups_id',$deviceGroupRegister->id)->where('token',$token)->get();
-          $deleteToken = $notificationToke->delete();
+//          $deleteToken = $notificationToke->delete();
 
-          $checksToken = NotificationToken::where('device_groups_id',$deviceGroupRegister->id)->get();
-          if($checksToken->count() <= 0){
-              $deviceGroupRegister->delete();
-          }
-          return $deleteToken;
+//          $checksToken = NotificationToken::where('device_groups_id',$deviceGroupRegister->id)->get();
+//          if($checksToken->count() <= 0){
+//              $deviceGroupRegister->delete();
+//          }
+//          return $deleteToken;
+          return $notificationToke;
 
       }catch (Throwable $e){
           return $e;
