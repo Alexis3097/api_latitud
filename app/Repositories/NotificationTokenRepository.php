@@ -87,8 +87,16 @@ class NotificationTokenRepository implements INotificationTokenRepository
                   "notification_key" => $deviceGroupRegister->notification_key,
                   "registration_ids" => [$token]
               ]);
+
           $notificationToke = NotificationToken::where('device_groups_id',$deviceGroupRegister->id)->where('token',$token)->get();
-          return $notificationToke->delete();
+          $deleteToken = $notificationToke->delete();
+
+          $checksToken = NotificationToken::where('device_groups_id',$deviceGroupRegister->id)->get();
+          if($checksToken->count() <= 0){
+              $deviceGroupRegister->delete();
+          }
+          return $deleteToken;
+
       }catch (Throwable $e){
           return $e;
       }
