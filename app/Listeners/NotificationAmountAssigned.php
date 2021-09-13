@@ -28,14 +28,14 @@ class NotificationAmountAssigned
     public function handle(AmountAssignedEvent $event)
     {
         // Access the order using $event->AmountAssigned...
-        $deviceGroupRegister = DeviceGroup::where('user_id', $event->AmountAssigned->idDestinatario)->first();
+        $deviceGroupRegister = DeviceGroup::where('user_id', $event->AmountAssigned["idDestinatario"])->first();
         $response = Http::withHeaders([
             'Authorization' => env('FCM_KEY')
         ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
             [
                 "notification"=>[
                     "title"=>"Monto asignado",
-                    "body"=>$event->AmountAssigned->remitente." te ha depositado"
+                    "body"=>$event->AmountAssigned["remitente"]." te ha depositado"
 //                    "body"=>"Ana te ha depositado"
                 ],
 //                "data"=>[
