@@ -48,14 +48,7 @@ class NotificationTokenRepository implements INotificationTokenRepository
             }
             //si existe hacer una petticion para agregar ese nuevo token
             else{
-                //validamos que el token no este registrado
-                $rules = [
-                    'token' => ['required','unique:notification_tokens']
-                ];
-                $validator = Validator::make([$token], $rules);
-                // si la validacion falla es porque ya existe y tiene mensajes de error/validacion
-                if (!$validator->fails()) {
-                    //agregamos el toquen al gryupo
+                //agregamos el toquen al gryupo
                     $addToken = Http::withHeaders([
                         'Authorization' => env('FCM_KEY'),
                         'project_id' => env('PROJECT_ID')
@@ -73,9 +66,6 @@ class NotificationTokenRepository implements INotificationTokenRepository
                     ]);
                     // si se agrego un token a un grupo existente, regresamos el grupo existente
                     return $deviceGroupRegister;
-                }
-                //si la validacion falla y ya existe el token regresamos null
-                return null;
             }
         }catch (Throwable $e){
             return $e;
