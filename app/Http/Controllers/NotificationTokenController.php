@@ -43,7 +43,11 @@ class NotificationTokenController extends Controller
     public function deleteUserToken(Request $request){
         try{
             $userToken = $this->INotificationTokenRepository->deleteUserToken($request->user_id,$request->token);
-            return response()->json($userToken);
+            if($userToken){
+                return response()->json(ResponseMessages::POSTSUCCESSFUL());
+            }else{
+                return response()->json(ResponseMessages::STORE_FAILED_400());
+            }
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
             return response()->json(['store'=>ResponseMessages::STORE_FAILED_500().$e],500);
