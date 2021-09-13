@@ -16,7 +16,7 @@ class CreateNotificationTokensTable extends Migration
         Schema::create('notification_tokens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('device_groups_id')->constrained();
-            $table->string('token')->unique();
+            $table->string('token');
             $table->timestamps();
         });
     }

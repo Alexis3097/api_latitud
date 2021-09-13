@@ -44,7 +44,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             $amount = null;
         }
         if(!is_null($amount)){
-            event(new AmountAssignedEvent($amount));
+            event(new AmountAssignedEvent($data->idDestinatario));
         }
         return $amount;
     }

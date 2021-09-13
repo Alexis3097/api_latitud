@@ -18,14 +18,14 @@ class NotificationTokenController extends Controller
 
     public function saveUserToken(Request $request){
        try{
-           $rules = [
-               'token' => ['required','unique:notification_tokens']
-           ];
-           $validator = Validator::make($request->all(), $rules);
-           if ($validator->fails()) {
-               return response()->json($validator->errors()->all());
-
-           }
+//           $rules = [
+//               'token' => ['required','unique:notification_tokens']
+//           ];
+//           $validator = Validator::make($request->all(), $rules);
+//           if ($validator->fails()) {
+//               return response()->json($validator->errors()->all());
+//
+//           }
            $userToken = $this->INotificationTokenRepository->saveUserToken($request->user_id,$request->token);
            if(!is_null($userToken)){
                return response()->json(ResponseMessages::POSTSUCCESSFUL());
