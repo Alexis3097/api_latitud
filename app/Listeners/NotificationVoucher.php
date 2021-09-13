@@ -31,21 +31,23 @@ class NotificationVoucher
        try{
            // Access the order using $event->voucherObject...
            $deviceGroupRegister = DeviceGroup::where('user_id', $event->voucherObject["idDestinatario"])->first();
-           $response = Http::withHeaders([
-               'Authorization' => env('FCM_KEY')
-           ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
-               [
-                   "notification"=>[
-                       "title"=>"Comprobante de pago",
-                       "body"=>$event->voucherObject["remitente"]." ha comprobado gastos"
-                   ],
+           if(!is_null($deviceGroupRegister)){
+               $response = Http::withHeaders([
+                   'Authorization' => env('FCM_KEY')
+               ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+                   [
+                       "notification"=>[
+                           "title"=>"Comprobante de pago",
+                           "body"=>$event->voucherObject["remitente"]." ha comprobado gastos"
+                       ],
 //                "data"=>[
 //                    "type"=>"voucherObject",
 //                    "idTransaction"=> "id"
 //                ],
-                   "priority"=>"high",
-                   "to"=>$deviceGroupRegister->notification_key
-               ]);
+                       "priority"=>"high",
+                       "to"=>$deviceGroupRegister->notification_key
+                   ]);
+           }
        }catch (\Exception $e){
 
        }

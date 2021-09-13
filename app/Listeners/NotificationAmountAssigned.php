@@ -30,21 +30,24 @@ class NotificationAmountAssigned
         try{
             // Access the order using $event->AmountAssigned...
             $deviceGroupRegister = DeviceGroup::where('user_id', $event->AmountAssigned["idDestinatario"])->first();
-            $response = Http::withHeaders([
-                'Authorization' => env('FCM_KEY')
-            ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
-                [
-                    "notification"=>[
-                        "title"=>"Depósito",
-                        "body"=>$event->AmountAssigned["remitente"]." te ha depositado"
-                    ],
+            if(!is_null($deviceGroupRegister)){
+                $response = Http::withHeaders([
+                    'Authorization' => env('FCM_KEY')
+                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+                    [
+                        "notification"=>[
+                            "title"=>"Depósito",
+                            "body"=>$event->AmountAssigned["remitente"]." te ha depositado"
+                        ],
 //                "data"=>[
 //                    "type"=>"AmountAssigned",
 //                    "idTransaction"=> "id"
 //                ],
-                    "priority"=>"high",
-                    "to"=>$deviceGroupRegister->notification_key
-                ]);
+                        "priority"=>"high",
+                        "to"=>$deviceGroupRegister->notification_key
+                    ]);
+            }
+
         }catch (\Exception $e){
 
         }
