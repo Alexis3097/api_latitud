@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Events\VoucherEvent;
 use App\Models\CheckType;
 use App\Models\ExpenseType;
+use App\Models\User;
 use App\Models\Voucher;
 use App\IRepositories\IVoucherRepository;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,12 @@ class VoucherRepository implements IVoucherRepository
             }
         }
         if(!is_null($voucher)){
-           event(new VoucherEvent());
+            $user = User::find($data->user_id);
+            $objectVouvher = array(
+                'remitente' => $user->name,
+                'idDestinatario'=> $data->idDestinatario,
+            );
+           event(new VoucherEvent($objectVouvher));
         }
         return $voucher;
     }
