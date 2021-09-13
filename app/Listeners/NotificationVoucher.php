@@ -2,12 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\AmountAssignedEvent;
+use App\Events\VoucherEvent;
 use App\Models\DeviceGroup;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
-class NotificationAmountAssigned
+
+class NotificationVoucher
 {
     /**
      * Create the event listener.
@@ -22,28 +23,27 @@ class NotificationAmountAssigned
     /**
      * Handle the event.
      *
-     * @param  AmountAssignedEvent  $event
+     * @param  VoucherEvent  $event
      * @return void
      */
-    public function handle(AmountAssignedEvent $event)
+    public function handle(VoucherEvent $event)
     {
-        // Access the order using $event->AmountAssigned...
-        $deviceGroupRegister = DeviceGroup::where('user_id', $event->AmountAssigned["idDestinatario"])->first();
+        // Access the order using $event->voucherObject...
+        $deviceGroupRegister = DeviceGroup::where('user_id', $event->voucherObject["idDestinatario"])->first();
         $response = Http::withHeaders([
             'Authorization' => env('FCM_KEY')
         ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
             [
                 "notification"=>[
-                    "title"=>"Depósito",
-                    "body"=>$event->AmountAssigned["remitente"]." te ha depositado"
+                    "title"=>"Comprobante de pago",
+                    "body"=>$event->voucherObject["remitente"]." ha comprobado gastos"
                 ],
 //                "data"=>[
-//                    "type"=>"AmountAssigned",
+//                    "type"=>"voucherObject",
 //                    "idTransaction"=> "id"
 //                ],
                 "priority"=>"high",
                 "to"=>$deviceGroupRegister->notification_key
             ]);
-
     }
 }

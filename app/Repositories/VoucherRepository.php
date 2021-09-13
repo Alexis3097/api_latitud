@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Events\VoucherEvent;
 use App\Models\CheckType;
 use App\Models\ExpenseType;
 use App\Models\Voucher;
@@ -45,9 +46,13 @@ class VoucherRepository implements IVoucherRepository
             DB::commit();
         }catch (\Exception $e){
             DB::rollback();
+            $voucher = null;
             if(!is_null($foto)){
                 cloudinary()->destroy($foto->getPublicId());
             }
+        }
+        if(!is_null($voucher)){
+           event(new VoucherEvent());
         }
         return $voucher;
     }

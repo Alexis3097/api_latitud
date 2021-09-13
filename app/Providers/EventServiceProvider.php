@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AmountAssignedEvent' => [
             'App\Listeners\NotificationAmountAssigned',
         ],
+        'App\Events\VoucherEvent' => [
+            'App\Listeners\NotificationVoucher',
+        ],
     ];
 
     /**
