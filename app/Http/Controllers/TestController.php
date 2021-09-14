@@ -107,7 +107,7 @@ class TestController extends Controller
     public function  sendNoti(){
        $user = User::where("user_type_id", 8)->get();
        if(is_null($user)){
-           return response()->json($user);
+           return response()->json('es nullo cuando no tiene contenido');
        }
 
     }
