@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\DiscountBoxEvent;
+use App\Models\DeviceGroup;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Http;
+
+class NotificationDiscountBox
+{
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  DiscountBoxEvent  $event
+     * @return void
+     */
+    public function handle(DiscountBoxEvent $event)
+    {
+//        //$event->$DiscountBox
+//        try{
+//            $deviceGroupRegister = DeviceGroup::where('user_id', 1)->first();
+//            if(!is_null($deviceGroupRegister)){
+//                $response = Http::withHeaders([
+//                    'Authorization' => env('FCM_KEY')
+//                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+//                    [
+//                        "notification"=>[
+//                            "title"=>"Comprobante de pago",
+//                            "body"=>$event->DiscountBox["remitente"]." ha comprobado gastos"
+//                        ],
+//                        "priority"=>"high",
+//                        "to"=>$deviceGroupRegister->notification_key
+//                    ]);
+//            }
+//        }catch (\Exception $e){
+//
+//        }
+    }
+}

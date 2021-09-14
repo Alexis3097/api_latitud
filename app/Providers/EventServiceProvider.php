@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\VoucherEvent' => [
             'App\Listeners\NotificationVoucher',
         ],
+        'App\Events\DiscountBoxEvent' => [
+            'App\Listeners\NotificationDiscountBox',
+        ],
     ];
 
     /**

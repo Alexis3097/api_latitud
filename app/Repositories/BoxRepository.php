@@ -2,10 +2,13 @@
 
 
 namespace App\Repositories;
+use App\Events\DiscountBoxEvent;
 use  App\IRepositories\IBoxRepository;
 use App\Models\Box;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-class BoxRepository implements IBoxRepository
+class
+BoxRepository implements IBoxRepository
 {
 
     public function all()
@@ -60,6 +63,13 @@ class BoxRepository implements IBoxRepository
             $box =  Box::where('user_id', $idUser)->first();
             $box->amount -=$amount;
             $box->save();
+            if($box->amount <= 0){
+                $idAdmin = 1;
+                $objeto =  array(
+                    'idDestinatario'=> $idAdmin,
+                );
+                event(new DiscountBoxEvent($objeto));
+            }
             return $box;
         }
         return null;
