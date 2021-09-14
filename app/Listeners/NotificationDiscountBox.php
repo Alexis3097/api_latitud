@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\DiscountBoxEvent;
 use App\Models\DeviceGroup;
+use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
@@ -28,24 +29,31 @@ class NotificationDiscountBox
      */
     public function handle(DiscountBoxEvent $event)
     {
-//        //$event->$DiscountBox
-//        try{
-//            $deviceGroupRegister = DeviceGroup::where('user_id', 1)->first();
-//            if(!is_null($deviceGroupRegister)){
-//                $response = Http::withHeaders([
-//                    'Authorization' => env('FCM_KEY')
-//                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
-//                    [
-//                        "notification"=>[
-//                            "title"=>"Comprobante de pago",
-//                            "body"=>$event->DiscountBox["remitente"]." ha comprobado gastos"
-//                        ],
-//                        "priority"=>"high",
-//                        "to"=>$deviceGroupRegister->notification_key
-//                    ]);
-//            }
-//        }catch (\Exception $e){
-//
-//        }
+       //$event->$DiscountBox
+        $user = User::where()->get();
+        $this->sendNotification();
+
+    }
+
+    public function sendNotification($user_id){
+        try{
+            $deviceGroupRegister = DeviceGroup::where('user_id', $user_id)->first();
+            if(!is_null($deviceGroupRegister)){
+                $response = Http::withHeaders([
+                    'Authorization' => env('FCM_KEY')
+                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+                    [
+                        "notification"=>[
+                            "title"=>"Caja chica",
+                            "body"=>"caja chica se ha quedado sin fondos"
+                        ],
+                        "priority"=>"high",
+                        "to"=>$deviceGroupRegister->notification_key
+                    ]);
+            }
+        }catch (\Exception $e){
+
+        }
     }
 }
+

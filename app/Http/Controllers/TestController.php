@@ -105,7 +105,7 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-       $user = User::where("id",[2,3])->get();
+       $user = User::where("user_type_id", 1)->get();
         return response()->json($user);
     }
 
