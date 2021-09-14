@@ -29,10 +29,18 @@ class NotificationDiscountBox
      */
     public function handle(DiscountBoxEvent $event)
     {
-       //$event->$DiscountBox
-        
-        $user = User::where("user_type_id", 1)->get();
-        $this->sendNotification();
+       try{
+           //$event->$DiscountBox
+           $userTypeAdmin = 1;
+           $users = User::where("user_type_id", $userTypeAdmin)->get();
+           if($users->count() > 0){
+               foreach ($users as $user){
+                   $this->sendNotification($user->id);
+               }
+           }
+       }catch (\Exception $e){
+
+       }
 
     }
 
