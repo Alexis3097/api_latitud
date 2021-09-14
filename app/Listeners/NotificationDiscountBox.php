@@ -30,7 +30,8 @@ class NotificationDiscountBox
     public function handle(DiscountBoxEvent $event)
     {
        //$event->$DiscountBox
-        $user = User::where()->get();
+        
+        $user = User::where("user_type_id", 1)->get();
         $this->sendNotification();
 
     }
