@@ -111,7 +111,8 @@ class CashRegisterController extends Controller
     }
     public function voidRegistration(Request $request)
     {
-        try{
+        return response()->json($request->idRegister, $request->idDestination);
+//        try{
            //eliminamos el registro y nos devuelve el monto que se cancelo
             $amount = $this->ICashRegisterRepository->delete($request->idRegister);
             //disminuimos el dinero de un usuario en concreto
@@ -121,9 +122,9 @@ class CashRegisterController extends Controller
             }else{
                 return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
             }
-        }catch (Throwable $e){
-            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
-            return response()->json(['get'=>false],500);
-        }
+//        }catch (Throwable $e){
+//            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
+//            return response()->json(['get'=>false],500);
+//        }
     }
 }
