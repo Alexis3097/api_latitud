@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\ResponseMessages;
 use App\Http\Resources\CashRegisterResource;
+use App\IRepositories\IBoxRepository;
 use App\IRepositories\ICashRegisterRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,10 +12,12 @@ use Throwable;
 class CashRegisterController extends Controller
 {
     protected $ICashRegisterRepository;
-    function __construct(ICashRegisterRepository $ICashRegisterRepository)
+    protected $IBoxRepository;
+    function __construct(ICashRegisterRepository $ICashRegisterRepository, IBoxRepository $IBoxRepository)
     {
         $this->middleware('auth:api');
         $this->ICashRegisterRepository = $ICashRegisterRepository;
+        $this->IBoxRepository = $IBoxRepository;
     }
 
     function index(){
@@ -103,6 +106,23 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
+            return response()->json(['get'=>false],500);
+        }
+    }
+    public function voidRegistration(Request $request)
+    {
+        try{
+           //eliminamos el registro y nos devuelve el monto que se cancelo
+            $amount = $this->ICashRegisterRepository->delete($request->idRegister);
+            //disminuimos el dinero de un usuario en concreto
+            $box = $this->IBoxRepository->approveExpense($request->idDestination, $amount);
+            if(!is_null($box)){
+                return response()->json(['messages'=>ResponseMessages::DESTROY_SUCCESS()]);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
             return response()->json(['get'=>false],500);
         }
     }

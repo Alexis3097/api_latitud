@@ -42,7 +42,11 @@ class CashRegisterRepository implements ICashRegisterRepository
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        //elimina el registro y me devuelve el monto que tenia asignado
+       $cashRegister = CashRegister::find(id);
+       $amount = $cashRegister->account;
+        $cashRegister->delete();
+        return $amount;
     }
 
     public function getDetailRegister($id)

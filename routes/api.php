@@ -35,6 +35,7 @@ Route::group([
     Route::get('cashRegister/getRegistersXUser/{id}','CashRegisterController@getRegistersXUser');
     Route::get('cashRegister/getRegistersXCajaChica/{id}','CashRegisterController@getRegistersXCajaChica');
     Route::get('cashRegister/RegisterWithVoucher/{id}','CashRegisterController@RegisterWithVoucher');
+    Route::post('cashRegister/delete', 'CashRegisterController@voidRegistration');
     Route::apiResource('cashRegister','CashRegisterController');
 
     Route::get('box/cajaChica','BoxController@cajaChica');
@@ -48,6 +49,7 @@ Route::group([
     Route::apiResource('user', 'UserController');
     Route::post('notificationtokens/create', 'NotificationTokenController@saveUserToken');
     Route::post('notificationtokens/delete', 'NotificationTokenController@deleteUserToken');
+
 
     Route::get('push','TestController@sendNoti');
 
