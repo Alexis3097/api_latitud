@@ -112,20 +112,19 @@ class CashRegisterController extends Controller
     public function voidRegistration(Request $request)
     {
 
-//        try{
+        try{
            //eliminamos el registro y nos devuelve el monto que se cancelo
             $amount = $this->ICashRegisterRepository->delete($request->idRegister);
-         return response()->json($amount);
-//            //disminuimos el dinero de un usuario en concreto
-//            $box = $this->IBoxRepository->approveExpense($request->idDestination, $amount);
-//            if(!is_null($box)){
-//                return response()->json(['messages'=>ResponseMessages::DESTROY_SUCCESS()]);
-//            }else{
-//                return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
-//            }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
-//            return response()->json(['voidRegistration'=>false],500);
-//        }
+            //disminuimos el dinero de un usuario en concreto
+            $box = $this->IBoxRepository->approveExpense($request->idDestination, $amount);
+            if(!is_null($box)){
+                return response()->json(['messages'=>ResponseMessages::DESTROY_SUCCESS()]);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
+            return response()->json(['voidRegistration'=>false],500);
+        }
     }
 }
