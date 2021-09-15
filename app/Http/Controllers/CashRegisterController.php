@@ -111,7 +111,7 @@ class CashRegisterController extends Controller
     }
     public function voidRegistration(Request $request)
     {
-        return response()->json($request->idRegister);
+        return response()->json($request->idDestination);
 //        try{
 //           //eliminamos el registro y nos devuelve el monto que se cancelo
 //            $amount = $this->ICashRegisterRepository->delete($request->idRegister);
