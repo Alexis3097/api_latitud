@@ -32,7 +32,7 @@ class CashRegisterController extends Controller
            }
        }catch (Throwable $e){
            Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-           return response()->json(['get'=>false],500);
+           return response()->json(['index'=>false],500);
        }
     }
     function registersXUser($id){
@@ -46,7 +46,7 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500() .$e);
-            return response()->json(['get'=>$e],500);
+            return response()->json(['registersXUser'=>$e],500);
         }
     }
 
@@ -61,7 +61,7 @@ class CashRegisterController extends Controller
             }
         }catch(Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['show'=>false],500);
         }
     }
     function RegisterWithVoucher($id){
@@ -75,7 +75,7 @@ class CashRegisterController extends Controller
             }
         }catch(Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['RegisterWithVoucher'=>false],500);
         }
     }
 
@@ -91,7 +91,7 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['getRegistersXUser'=>false],500);
         }
     }
     public function getRegistersXCajaChica($id)
@@ -106,13 +106,12 @@ class CashRegisterController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::GET_RESOURCES_FAILED_500().$e);
-            return response()->json(['get'=>false],500);
+            return response()->json(['getRegistersXCajaChica'=>false],500);
         }
     }
     public function voidRegistration(Request $request)
     {
-        return response()->json($request->idRegister, $request->idDestination);
-//        try{
+        try{
            //eliminamos el registro y nos devuelve el monto que se cancelo
             $amount = $this->ICashRegisterRepository->delete($request->idRegister);
             //disminuimos el dinero de un usuario en concreto
@@ -122,9 +121,9 @@ class CashRegisterController extends Controller
             }else{
                 return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
             }
-//        }catch (Throwable $e){
-//            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
-//            return response()->json(['get'=>false],500);
-//        }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
+            return response()->json(['voidRegistration'=>false],500);
+        }
     }
 }
