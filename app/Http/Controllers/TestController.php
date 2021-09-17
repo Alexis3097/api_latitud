@@ -106,7 +106,7 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-       $voucher = Voucher::find(1)->delete;
+       $voucher = Voucher::find(10)->delete;
        return response()->json($voucher);
 
     }
