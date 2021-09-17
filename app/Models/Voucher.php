@@ -28,6 +28,7 @@ class Voucher extends Model
         'user_id',
         'expense_type_id',
         'check_type_id',
+        'destination_id',
         'concept',
         'amount',
         'photo',

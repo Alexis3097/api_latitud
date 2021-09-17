@@ -30,6 +30,7 @@ class VoucherRepository implements IVoucherRepository
                 'user_id'=>$data->user_id,//el usuario que esta mandando el dinero
                 'expense_type_id'=>$data->expense_type_id,
                 'check_type_id'=>$data->check_type_id,
+                'destination_id'=>$data->idDestinatario,
                 'concept'=>$data->concept,
                 'amount'=>$data->amount,
                 'photo'=>$foto == null ? $foto : $foto->getSecurePath(),

@@ -18,6 +18,7 @@ class CreateVouchersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('expense_type_id')->constrained('expense_types');
             $table->foreignId('check_type_id')->constrained('check_types');
+            $table->integer('destination_id');
             $table->string('concept');
             $table->double('amount');
             $table->string('photo')->nullable();
