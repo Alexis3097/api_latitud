@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 use App\Events\VoucherEvent;
+use App\Models\CashRegister;
 use App\Models\CheckType;
 use App\Models\ExpenseType;
 use App\Models\User;
@@ -95,6 +96,7 @@ class VoucherRepository implements IVoucherRepository
             $voucher->Store = $data->Store;
             $voucher->RFC = $data->RFC;
             $voucher->save();
+
             DB::commit();
         }catch (\Exception $e){
             DB::rollback();
@@ -102,6 +104,13 @@ class VoucherRepository implements IVoucherRepository
                 cloudinary()->destroy($foto->getPublicId());
             }
             $voucher = $e;
+        }
+        if(!is_null($voucher)){
+            //si se actualizo el voucher hay que actualizar el registro
+            $cashRegister = CashRegister::find(1);
+            $cashRegister->account = $voucher->amount;
+            $cashRegister->idDestination = $voucher->destination_id;
+            $cashRegister->save();
         }
         return $voucher;
     }
