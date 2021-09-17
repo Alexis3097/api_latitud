@@ -96,21 +96,19 @@ class UserController extends Controller
 
     public function update(Request $request, $id): \Illuminate\Http\JsonResponse
     {
-        $user = $this->IUserRepository->update($request, $id);
-        return response()->json($user);
-//        try{
-//            $user = $this->IUserRepository->update($request, $id);
-//            if(!is_null($user)){
-//                return response()->json($user);
-//            }
-//            else{
-//                return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
-//            }
-//        }catch(Throwable $e){
-//            Log::info(ResponseMessages::UPDATE_FAILED_500().$e);
-//            return response()->json(['update'=>false],500);
-//
-//        }
+        try{
+            $user = $this->IUserRepository->update($request, $id);
+            if(!is_null($user)){
+                return response()->json(['messages'=>ResponseMessages::UPDATE_SUCCESS()]);
+            }
+            else{
+                return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
+            }
+        }catch(Throwable $e){
+            Log::info(ResponseMessages::UPDATE_FAILED_500().$e);
+            return response()->json(['update'=>false],500);
+
+        }
     }
 
     public function getBoss(){
@@ -155,6 +153,21 @@ class UserController extends Controller
         }catch (Throwable $e){
             Log::info(ResponseMessages::STORE_FAILED_500().$e);
             return response()->json(['store'=>$e],500);
+        }
+    }
+
+    public function destroy($id){
+        try {
+            $user = $this->IUserRepository->delete($id);
+            //si es true, se elimino
+            if($user){
+                return response()->json(['messages'=>ResponseMessages::DESTROY_SUCCESS()]);
+            }else{
+                return response()->json(['messages'=>ResponseMessages::DESTROY_FAILED_400()]);
+            }
+        }catch (Throwable $e){
+            Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
+            return response()->json(['destroy'=>$e],500);
         }
     }
 }

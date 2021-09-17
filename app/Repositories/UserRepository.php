@@ -86,13 +86,18 @@ class UserRepository implements IUserRepository
             if(!is_null($foto)){
                 cloudinary()->destroy($foto->getPublicId());
             }
-            $user = $e;
+            $user = null;
         }
 
         return $user;
     }
     public function delete($id){
-
+        $user = User::find($id);
+        if(!is_null($user)){
+            $user->delete();
+            return true;
+        }
+        return false;
     }
 
     public function hashPassword($password): string
