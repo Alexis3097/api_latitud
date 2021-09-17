@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DeviceGroup;
 use App\Models\User;
+use App\Models\Voucher;
 use Illuminate\Support\Facades\Http;
 use Throwable;
 use App\Models\Test;
@@ -105,10 +106,8 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-       $user = User::where("user_type_id", 8)->get();
-       if($user->count() == 0){
-           return response()->json('es nullo cuando no tiene contenido');
-       }
+       $voucher = Voucher::find(1)->delete;
+       return response()->json($voucher);
 
     }
 

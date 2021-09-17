@@ -115,7 +115,18 @@ class VoucherRepository implements IVoucherRepository
         return $voucher;
     }
     public function delete($id){
-        return Voucher::find($id)->delete();
+        $voucher = Voucher::find($id);
+        //eliminar el register
+        $cashRegister = CashRegister::where('registrable_id',$voucher->id)->where('registrable_type','App\Models\Voucher')->first();
+        $cashRegister->delete();
+        //eliminar la foto si tiene
+        if(!is_null($voucher->photoId)){
+            cloudinary()->destroy($voucher->photoId);
+        }
+        //eliminar el voucher
+        return $voucher->delete();
+
+
     }
 
     public function getExpenseType()
