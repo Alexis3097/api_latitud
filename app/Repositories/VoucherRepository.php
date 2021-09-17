@@ -44,6 +44,7 @@ class VoucherRepository implements IVoucherRepository
             $voucher->CashRegister()->create([
                 'account'=>$data->amount,
                 'type'=> 'en revision',
+                'user_id'=>$data->user_id,//el usuario que mando dinero
                 'idDestination'=>$data->idDestinatario,//debe ser a quien le esta dando el dinero
             ]);
             DB::commit();

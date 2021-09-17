@@ -30,6 +30,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             $amount->CashRegister()->create([
                 'account'=>$data->amount,
                 'type'=>'aprobado',
+                'user_id'=>$data->user_id,//el usuario que mando dinero
                 'idDestination'=>$data->idDestinatario,//a quien se le esta dando el dinero
             ]);
             //actualizar si caja del usuario a quien se le envio

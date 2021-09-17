@@ -20,6 +20,7 @@ class CreateCashRegisterTable extends Migration
             $table->unsignedBigInteger('registrable_id');
             $table->string('registrable_type');
             $table->unsignedBigInteger('idDestination');//destino del dinero
+            $table->bigInteger('user_id');
             $table->foreign('idDestination')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();

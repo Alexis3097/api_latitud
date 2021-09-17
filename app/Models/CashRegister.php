@@ -13,6 +13,7 @@ class CashRegister extends Model
     protected $fillable = [
         'account',
         'type',
+        'user_id',
         'registrable_id',
         'registrable_type',
         'idDestination',
