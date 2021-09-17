@@ -107,6 +107,9 @@ class TestController extends Controller
 
     public function  sendNoti(){
        $voucher = Voucher::find(10)->delete;
+       if(!is_null($voucher)){
+           return response()->json('soy vacio');
+       }
        return response()->json($voucher);
 
     }
