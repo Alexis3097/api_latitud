@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AmountAssigned;
 use App\Models\DeviceGroup;
+use App\Models\Notification;
 use App\Models\User;
 use App\Models\Voucher;
 use Illuminate\Support\Facades\Http;
@@ -107,9 +108,14 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $amount = AmountAssigned::find(1);
-        return response()->json($amount->cashRegister->id);
+//        $amount = AmountAssigned::find(1);
 
+        $notificacion = Notification::create([
+            'user_id'=> 1,
+            'type' => 'AmountAssigned',
+            'register_id'=>1,
+        ]);
+        return response()->json($notificacion);
     }
 
 

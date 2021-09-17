@@ -44,7 +44,7 @@ class NotificationAmountAssigned
                         "to"=>$deviceGroupRegister->notification_key
                     ]);
 
-               
+
             }
 
         }catch (\Exception $e){
