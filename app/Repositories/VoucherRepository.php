@@ -107,7 +107,7 @@ class VoucherRepository implements IVoucherRepository
         }
         if(!is_null($voucher)){
             //si se actualizo el voucher hay que actualizar el registro
-            $cashRegister = CashRegister::find(1);
+            $cashRegister = CashRegister::where('registrable_id',$voucher->id)->where('registrable_type','App\Models\Voucher')->first();
             $cashRegister->account = $voucher->amount;
             $cashRegister->idDestination = $voucher->destination_id;
             $cashRegister->save();
