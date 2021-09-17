@@ -67,9 +67,43 @@ class VoucherRepository implements IVoucherRepository
         return Voucher::find($id);
     }
     public function update($data, $id){
-        $voucher = Voucher::find($id);
-        $voucher->fill($data);
-        return $voucher->save();
+        $foto = null;
+        $voucher = null;
+        try{
+            global $foto;
+            global $voucher;
+            DB::beginTransaction();
+            $voucher = Voucher::find($id);
+            if(!is_null($data->file('file'))) {
+                $foto = cloudinary()->upload($data->file('file')->getRealPath());
+                //elimino la foto vieja si es que tiene
+                if (!is_null($voucher->photoId)) {
+                    cloudinary()->destroy($voucher->photoId);
+                }
+                //actualizo el url de la nueva fotp
+                $voucher->photo = $foto->getSecurePath();
+                $voucher->photoId = $foto->getPublicId();
+            }
+            //actualizo los datos del voucher
+            //no actualizo quien mando el dinero
+            $voucher->expense_type_id = $data->expense_type_id;
+            $voucher->check_type_id = $data->check_type_id;
+            $voucher->destination_id = $data->idDestinatario;
+            $voucher->concept = $data->concept;
+            $voucher->amount = $data->amount;
+            $voucher->date = $data->date;
+            $voucher->Store = $data->Store;
+            $voucher->RFC = $data->RFC;
+            $voucher->save();
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollback();
+            if(!is_null($foto)){
+                cloudinary()->destroy($foto->getPublicId());
+            }
+            $voucher = $e;
+        }
+        return $voucher;
     }
     public function delete($id){
         return Voucher::find($id)->delete();

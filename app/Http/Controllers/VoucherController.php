@@ -64,8 +64,8 @@ class VoucherController extends Controller
 
     public function update(Request $request, $id){
         try {
-            $voucher = $this->IVoucherRepository->update($request->all(),$id);
-            if($voucher){
+            $voucher = $this->IVoucherRepository->update($request,$id);
+            if(!is_null($voucher)){
                 return response()->json(['messages'=>ResponseMessages::UPDATE_SUCCESS()]);
             }else{
                 return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
