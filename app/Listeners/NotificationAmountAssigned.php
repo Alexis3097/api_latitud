@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\AmountAssignedEvent;
 use App\Models\DeviceGroup;
+use App\Models\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
@@ -39,13 +40,15 @@ class NotificationAmountAssigned
                             "title"=>"Depósito",
                             "body"=>$event->AmountAssigned["remitente"]." te ha depositado"
                         ],
-//                "data"=>[
-//                    "type"=>"AmountAssigned",
-//                    "idTransaction"=> "id"
-//                ],
                         "priority"=>"high",
                         "to"=>$deviceGroupRegister->notification_key
                     ]);
+
+                Notification::create([
+                    'user_id'=> $event->AmountAssigned["idDestinatario"],
+                    'type' => 'AmountAssigned',
+                    'register_id'=>$event->AmountAssigned["register_id"],
+                ]);
             }
 
         }catch (\Exception $e){

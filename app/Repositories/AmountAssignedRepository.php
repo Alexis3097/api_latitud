@@ -50,6 +50,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
             $objeto =  array(
                 'remitente' => $user->name,
                 'idDestinatario'=> $data->idDestinatario,
+                'register_id'=>$amount->CashRegister->id,
             );
             event(new AmountAssignedEvent($objeto));
         }
