@@ -81,6 +81,7 @@ class VoucherController extends Controller
     public function destroy($id){
         try {
             $voucher = $this->IVoucherRepository->delete($id);
+            //si es true, se elimino
             if($voucher){
                 return response()->json(['messages'=>ResponseMessages::DESTROY_SUCCESS()]);
             }else{
@@ -88,7 +89,7 @@ class VoucherController extends Controller
             }
         }catch (Throwable $e){
             Log::info(ResponseMessages::DESTROY_FAILED_500().$e);
-            return response()->json(['destroy'=>false],500);
+            return response()->json(['destroy'=>$e],500);
         }
     }
     public function  getDataSelects(): \Illuminate\Http\JsonResponse
