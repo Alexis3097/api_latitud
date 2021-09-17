@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AmountAssigned;
 use App\Models\DeviceGroup;
 use App\Models\User;
 use App\Models\Voucher;
@@ -106,9 +107,8 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-
-
-
+        $amount = AmountAssigned::find(1);
+        return response()->json($amount->cashRegister->id);
     }
 
 
