@@ -95,8 +95,7 @@ class UserRepository implements IUserRepository
     public function delete($id){
         $user = User::find($id);
         if(!is_null($user)){
-            $cashRegister = CashRegister::where('user_id',$id)->get();
-            $cashRegister->delete();
+            $cashRegister = CashRegister::where('user_id',$id)->delete();
             $user->delete();
             return true;
         }
