@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 use App\Models\Box;
+use App\Models\CashRegister;
 use App\Models\User;
 use Cloudinary\Cloudinary;
 use App\IRepositories\IUserRepository;
@@ -94,6 +95,8 @@ class UserRepository implements IUserRepository
     public function delete($id){
         $user = User::find($id);
         if(!is_null($user)){
+            $cashRegister = CashRegister::where('user_id',$id)->get();
+            $cashRegister->delete();
             $user->delete();
             return true;
         }
