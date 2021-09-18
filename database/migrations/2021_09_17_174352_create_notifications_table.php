@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('type');
             $table->boolean('is_read')->default(0);
-            $table->bigInteger('register_id');
+            $table->bigInteger('register_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

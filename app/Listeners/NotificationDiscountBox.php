@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\DiscountBoxEvent;
 use App\Models\DeviceGroup;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -38,6 +39,10 @@ class NotificationDiscountBox
                    $this->sendNotification($user->id);
                }
            }
+           Notification::create([
+               'user_id'=> $userTypeAdmin,//a quien le pertenece la notificacion
+               'type' => 'Caja chica',
+           ]);
        }catch (\Exception $e){
 
        }
