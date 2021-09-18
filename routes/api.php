@@ -50,6 +50,7 @@ Route::group([
     Route::post('notificationtokens/create', 'NotificationTokenController@saveUserToken');
     Route::post('notificationtokens/delete', 'NotificationTokenController@deleteUserToken');
     Route::get('notifications/{user_id}','NotificationController@getNotificationsXUser');
+    Route::put('notifications/{user_id}','NotificationController@markNotification');
 
     Route::get('push','TestController@sendNoti');
 

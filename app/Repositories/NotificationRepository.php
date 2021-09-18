@@ -25,7 +25,13 @@ class NotificationRepository implements INotificationRepository
 
     public function update($data, $id)
     {
-        // TODO: Implement update() method.
+
+    }
+    public function markNotification($id){
+        $notification = Notification::find($id);
+        $notification->is_read = true;
+        $notification->save();
+        return $notification;
     }
 
     public function delete($id)
