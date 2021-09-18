@@ -108,14 +108,9 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-//        $amount = AmountAssigned::find(1);
+        $amount = AmountAssigned::find(1)->cashRegister->id;
+        return response()->json($amount);
 
-        $notificacion = Notification::create([
-            'user_id'=> 1,
-            'type' => 'AmountAssigned',
-            'register_id'=>1,
-        ]);
-        return response()->json($notificacion);
     }
 
 

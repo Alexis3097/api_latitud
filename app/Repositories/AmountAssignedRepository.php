@@ -5,6 +5,7 @@ use App\Events\AmountAssignedEvent;
 use App\IRepositories\IAmountAssignedRepository;
 use App\Models\AmountAssigned;
 use App\Models\Box;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
@@ -66,6 +67,9 @@ class AmountAssignedRepository implements IAmountAssignedRepository
         return $amountAssigned->save();
     }
     public function delete($id){
-        return AmountAssigned::find($id)->delete();
+        $amountAssigned =  AmountAssigned::find($id);
+//        Notification::where()->first();
+        $amountAssigned->delete();
+        return $amountAssigned;
     }
 }
