@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->bigInteger('destination_id');//quien recibe la transaccion
             $table->string('type');
             $table->boolean('is_read')->default(0);
-            $table->bigInteger('register_id')->nullable();
+            $table->bigInteger('register_id')->nullable();//es cero cuando no es registro, solo aviso
             $table->softDeletes();
             $table->timestamps();
         });
