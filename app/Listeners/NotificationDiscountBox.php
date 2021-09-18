@@ -39,7 +39,7 @@ class NotificationDiscountBox
                    $this->sendNotification($user->id);
                }
            }
-           Notification::create([
+           $notificacion = Notification::create([
                'user_id'=> $userTypeAdmin,//a quien le pertenece la notificacion
                'type' => 'Caja chica',
            ]);
