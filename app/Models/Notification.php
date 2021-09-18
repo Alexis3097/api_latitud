@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Notification extends Model
 {
     protected $table = 'notifications';
-
+    use SoftDeletes;
     protected $fillable = [
         'user_id',
         'destination_id',
