@@ -48,7 +48,7 @@ class NotificationVoucher
            Notification::create([
                'user_id'=> $event->voucherObject["user_id"],
                'destination_id'=>$event->voucherObject["idDestinatario"],//a quien le pertenece la notificacion
-               'type' => 'Voucher',
+               'type' => 'Comprobante de pago',
                'register_id'=>$event->voucherObject["register_id"],
            ]);
        }catch (\Exception $e){

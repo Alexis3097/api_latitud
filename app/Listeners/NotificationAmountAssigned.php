@@ -47,7 +47,7 @@ class NotificationAmountAssigned
             Notification::create([
                 'user_id'=> $event->AmountAssigned["user_id"],
                 'destination_id'=>$event->AmountAssigned["idDestinatario"],
-                'type' => 'AmountAssigned',
+                'type' => 'Monto asignado',
                 'register_id'=>$event->AmountAssigned["register_id"],
             ]);
         }catch (\Exception $e){
