@@ -43,15 +43,12 @@ class NotificationAmountAssigned
                         "priority"=>"high",
                         "to"=>$deviceGroupRegister->notification_key
                     ]);
-
-
             }
             Notification::create([
                 'user_id'=> $event->AmountAssigned["idDestinatario"],
                 'type' => 'AmountAssigned',
                 'register_id'=>$event->AmountAssigned["register_id"],
             ]);
-
         }catch (\Exception $e){
 
         }

@@ -60,6 +60,7 @@ class VoucherRepository implements IVoucherRepository
             $objectVouvher = array(
                 'remitente' => $user->name,
                 'idDestinatario'=> $data->idDestinatario,
+                'register_id'=>$voucher->CashRegister->id,
             );
            event(new VoucherEvent($objectVouvher));
         }

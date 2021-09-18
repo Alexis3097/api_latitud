@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\VoucherEvent;
 use App\Models\DeviceGroup;
+use App\Models\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Http;
@@ -40,14 +41,15 @@ class NotificationVoucher
                            "title"=>"Comprobante de pago",
                            "body"=>$event->voucherObject["remitente"]." ha comprobado gastos"
                        ],
-//                "data"=>[
-//                    "type"=>"voucherObject",
-//                    "idTransaction"=> "id"
-//                ],
                        "priority"=>"high",
                        "to"=>$deviceGroupRegister->notification_key
                    ]);
            }
+           Notification::create([
+               'user_id'=> $event->voucherObject["idDestinatario"],//a quien le pertenece la notificacion
+               'type' => 'Voucher',
+               'register_id'=>$event->voucherObject["register_id"],
+           ]);
        }catch (\Exception $e){
 
        }
