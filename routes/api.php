@@ -49,7 +49,7 @@ Route::group([
     Route::apiResource('user', 'UserController');
     Route::post('notificationtokens/create', 'NotificationTokenController@saveUserToken');
     Route::post('notificationtokens/delete', 'NotificationTokenController@deleteUserToken');
-
+    Route::get('notifications/{user_id}','NotificationController@getNotificationsXUser');
 
     Route::get('push','TestController@sendNoti');
 

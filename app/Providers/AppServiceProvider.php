@@ -45,6 +45,10 @@ class AppServiceProvider extends ServiceProvider
             'App\IRepositories\INotificationTokenRepository',
             'App\Repositories\NotificationTokenRepository'
         );
+        $this->app->bind(
+            'App\IRepositories\INotificationRepository',
+            'App\Repositories\NotificationRepository'
+        );
 
     }
 
