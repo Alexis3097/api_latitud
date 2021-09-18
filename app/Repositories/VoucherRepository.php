@@ -58,6 +58,7 @@ class VoucherRepository implements IVoucherRepository
         if(!is_null($voucher)){
             $user = User::find($data->user_id);
             $objectVouvher = array(
+                'user_id'=>$voucher->user_id,//quien hace la transaccion
                 'remitente' => $user->name,
                 'idDestinatario'=> $data->idDestinatario,
                 'register_id'=>$voucher->CashRegister->id,

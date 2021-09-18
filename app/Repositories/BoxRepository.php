@@ -67,6 +67,7 @@ BoxRepository implements IBoxRepository
                 $idAdmin = 1;
                 $objeto =  array(
                     'idDestinatario'=> $idAdmin,
+                    'user_id'=>$idUser,
                 );
                 event(new DiscountBoxEvent($objeto));
             }

@@ -48,6 +48,7 @@ class AmountAssignedRepository implements IAmountAssignedRepository
         if(!is_null($amount)){
             $user = User::find($data->user_id);
             $objeto =  array(
+                'user_id'=>$amount->user_id,//quien hace la transaccion
                 'remitente' => $user->name,
                 'idDestinatario'=> $data->idDestinatario,
                 'register_id'=>$amount->CashRegister->id,

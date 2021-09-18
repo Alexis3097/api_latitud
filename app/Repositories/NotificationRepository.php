@@ -35,6 +35,6 @@ class NotificationRepository implements INotificationRepository
 
     public function getNotificationsXUser($user_id)
     {
-        return Notification::where('user_id',$user_id)->orderBy('id','desc')->paginate(10);
+        return Notification::where('destination_id',$user_id)->orderBy('id','desc')->paginate(10);
     }
 }

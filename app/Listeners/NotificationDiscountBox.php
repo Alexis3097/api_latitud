@@ -40,7 +40,8 @@ class NotificationDiscountBox
                }
            }
             Notification::create([
-               'user_id'=> $userTypeAdmin,//a quien le pertenece la notificacion
+               'user_id'=> $event->DiscountBox['user_id'],//a quien hizo la notificacion
+                'destination_id'=> $userTypeAdmin,//quien le pertenece la notificacion
                'type' => 'Caja chica',
            ]);
        }catch (\Exception $e){
