@@ -9,6 +9,7 @@ use App\Models\AmountAssigned;
 use App\Models\CashRegister;
 use App\Models\CheckType;
 use App\Models\ExpenseType;
+use App\Models\Notification;
 use App\Models\Voucher;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -44,6 +45,8 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
         //elimina el registro y me devuelve el monto que tenia asignado
        $cashRegister = CashRegister::find($id);
+       //elimino la notificacion
+        Notification::where('register_id',$id)->first()->delete();
        $amount = $cashRegister->account;
        //eliminamos tambien el amountAssiged relacionado
         $IdAmountAssigned = $cashRegister->registrable_id;

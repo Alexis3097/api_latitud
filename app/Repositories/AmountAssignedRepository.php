@@ -67,9 +67,6 @@ class AmountAssignedRepository implements IAmountAssignedRepository
         return $amountAssigned->save();
     }
     public function delete($id){
-        $amountAssigned =  AmountAssigned::find($id);
-        Notification::where('register_id',$amountAssigned->cashRegister->id)->first()->delete();
-        $amountAssigned->delete();
-        return $amountAssigned;
+        return AmountAssigned::find($id)->delete();
     }
 }
