@@ -5,6 +5,7 @@ use App\Events\VoucherEvent;
 use App\Models\CashRegister;
 use App\Models\CheckType;
 use App\Models\ExpenseType;
+use App\Models\Notification;
 use App\Models\User;
 use App\Models\Voucher;
 use App\IRepositories\IVoucherRepository;
@@ -122,6 +123,8 @@ class VoucherRepository implements IVoucherRepository
         if(!is_null($voucher)){
             //eliminar el register
             $cashRegister = CashRegister::where('registrable_id',$voucher->id)->where('registrable_type','App\Models\Voucher')->first();
+            //eliminar la notificacion
+            Notification::where('register_id',$cashRegister->id)->first()->delete();
             $cashRegister->delete();
             //eliminar la foto si tiene
             if(!is_null($voucher->photoId)){
