@@ -113,6 +113,6 @@ class CashRegisterRepository implements ICashRegisterRepository
     {
         $cashRegister = CashRegister::find($id);
         $cashRegister->type = 'aprobado';
-        $cashRegister->save();
+        return $cashRegister->save();
     }
 }
