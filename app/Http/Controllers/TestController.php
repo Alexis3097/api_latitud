@@ -109,8 +109,11 @@ class TestController extends Controller
 
     public function  sendNoti(){
         $voucher = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+        if($voucher->count()==0){
+            return response()->json('si conto el arreglo vacio y es 0');
+        }
 
-        return response()->json($voucher);
+        return response()->json('paso el if');
 
     }
 
