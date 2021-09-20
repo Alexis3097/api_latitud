@@ -108,8 +108,8 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $amount = AmountAssigned::find(1)->cashRegister->id;
-        return response()->json($amount);
+        $voucher = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+        return response()->json($voucher);
 
     }
 
