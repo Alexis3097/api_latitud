@@ -50,7 +50,7 @@ class BoxController extends Controller
                 if(!is_null($box)){
                     //se cambia el estado del voucher a aprobado
                     $this->IVoucherRepository->changeStatusApprove($request->idVoucher);
-                    $this->ICashRegisterRepository->changeStateType($request->idVoucher);
+                    $this->ICashRegisterRepository->changeStateType(31);
                 }
                 return response()->json(['messages'=> ResponseMessages::UPDATE_SUCCESS()]);
             }
