@@ -109,7 +109,7 @@ class TestController extends Controller
 
     public function  sendNoti(){
         $voucher = Voucher::where('approve',true)->where('photoId','!=',null)->get();
-        return response()->json($voucher->created_at);
+        return response()->json($voucher);
 
     }
 
