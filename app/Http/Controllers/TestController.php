@@ -110,7 +110,13 @@ class TestController extends Controller
     public function  sendNoti(){
         $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
         if($vouchers->count() > 0){
-            return response()->json($vouchers[0]->created_at->diffInDays());
+            foreach ($vouchers as $voucher){
+                if($voucher->created_at->diffInDays() > 7){
+                    //eliminar la foto 
+                    cloudinary()->destroy($voucher->photoId);
+                }
+            }
+
         }
 
         return response()->json('paso el if');
