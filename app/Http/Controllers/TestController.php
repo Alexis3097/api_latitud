@@ -119,7 +119,7 @@ class TestController extends Controller
 //
 //        }
 
-        $users = User::where('user_type_id','!=',1)->get();
+        $users = User::where('user_type_id','!=',1)->get('id');
 
         return response()->json($users);
 
