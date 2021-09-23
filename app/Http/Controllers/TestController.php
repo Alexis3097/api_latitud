@@ -122,7 +122,7 @@ class TestController extends Controller
         $users = User::where('user_type_id','!=',1)->get('id');
         $notifications = Notification::where('user_id',$users[0]->id)->get();
 
-        return response()->json($notifications);
+        return response()->json($users[0]->id);
 
     }
 
