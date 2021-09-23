@@ -24,7 +24,7 @@ class CreateVouchersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('photoId')->nullable();
             $table->string('Store');
-            $table->string('RFC');
+            $table->string('RFC')->nullable();;
             $table->dateTime('date', 0);
             $table->boolean('approve')->default(0);//default 0 = no aprobado y 1 = aprobado
             $table->softDeletes();

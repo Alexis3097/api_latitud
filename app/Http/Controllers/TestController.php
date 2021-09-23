@@ -112,7 +112,7 @@ class TestController extends Controller
         if($vouchers->count() > 0){
             foreach ($vouchers as $voucher){
                 if($voucher->created_at->diffInDays() > 7){
-                    //eliminar la foto 
+                    //eliminar la foto
                     cloudinary()->destroy($voucher->photoId);
                 }
             }

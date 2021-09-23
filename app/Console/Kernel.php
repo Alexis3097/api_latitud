@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Voucher;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,12 @@ class Kernel extends ConsoleKernel
         //
     ];
 
+
+    protected function scheduleTimezone()
+    {
+        return 'America/Mexico_City';
+    }
+
     /**
      * Define the application's command schedule.
      *
@@ -24,9 +31,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->call(function () {
-//            DB::table('recent_users')->delete();
-//        })->daily();
+        $schedule->call(function () {
+            $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+            if($vouchers->count() > 0){
+                foreach ($vouchers as $voucher){
+                    if($voucher->created_at->diffInDays() > 7){
+                        //eliminar la foto
+                        cloudinary()->destroy($voucher->photoId);
+                    }
+                }
+
+            }
+        })->dailyAt('00:00');
     }
 
     /**
