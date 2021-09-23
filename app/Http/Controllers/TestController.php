@@ -139,7 +139,7 @@ class TestController extends Controller
                     [
                         "notification"=>[
                             "title"=>"Recordatorio",
-                            "body"=>"Debes hacer tus comprobantes de pago antes del fin de mes"
+                            "body"=>"Realzia tus comprobantes de pago antes del fin de mes"
                         ],
                         "priority"=>"high",
                         "to"=>$deviceGroupRegister->notification_key
