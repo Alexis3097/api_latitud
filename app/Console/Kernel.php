@@ -31,6 +31,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //elimina las fotos del servidor cuando ya estan aprobados
+        $schedule->call(function () {
+            $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+            if($vouchers->count() > 0){
+                foreach ($vouchers as $voucher){
+                    if($voucher->created_at->diffInDays() > 7){
+                        //eliminar la foto
+                        cloudinary()->destroy($voucher->photoId);
+                    }
+                }
+
+            }
+        })->dailyAt('00:00');
+
+        //notificaccion el ultimo dia del mes
         $schedule->call(function () {
             $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
             if($vouchers->count() > 0){

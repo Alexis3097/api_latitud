@@ -108,18 +108,20 @@ class TestController extends Controller
     }
 
     public function  sendNoti(){
-        $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
-        if($vouchers->count() > 0){
-            foreach ($vouchers as $voucher){
-                if($voucher->created_at->diffInDays() > 7){
-                    //eliminar la foto
-                    cloudinary()->destroy($voucher->photoId);
-                }
-            }
+//        $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+//        if($vouchers->count() > 0){
+//            foreach ($vouchers as $voucher){
+//                if($voucher->created_at->diffInDays() > 7){
+//                    //eliminar la foto
+//                    cloudinary()->destroy($voucher->photoId);
+//                }
+//            }
+//
+//        }
 
-        }
+        $users = User::where('user_type_id','!=',1)->get();
 
-        return response()->json('paso el if');
+        return response()->json($users);
 
     }
 
