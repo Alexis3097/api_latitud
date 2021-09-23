@@ -120,10 +120,34 @@ class TestController extends Controller
 //        }
 
         $users = User::where('user_type_id','!=',1)->get('id');
-        $notifications = DeviceGroup::where('user_id',$users[3]->id)->get();
+        if($users->count() > 0){
+            foreach ($users as $user){
+                $this->sendNotification($user->id);
+            }
+        }
+        return response()->json('ok');
 
-        return response()->json($notifications);
+    }
 
+    public function sendNotification($user_id){
+        try{
+            $deviceGroupRegister = DeviceGroup::where('user_id', $user_id)->first();
+            if(!is_null($deviceGroupRegister)){
+                $response = Http::withHeaders([
+                    'Authorization' => env('FCM_KEY')
+                ])->acceptJson()->post('https://fcm.googleapis.com/fcm/send',
+                    [
+                        "notification"=>[
+                            "title"=>"Recordatorio",
+                            "body"=>"Debes hacer tus comprobantes de pago antes del fin de mes"
+                        ],
+                        "priority"=>"high",
+                        "to"=>$deviceGroupRegister->notification_key
+                    ]);
+            }
+        }catch (\Exception $e){
+
+        }
     }
 
 
