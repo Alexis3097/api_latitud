@@ -120,7 +120,7 @@ class TestController extends Controller
 //        }
 
         $users = User::where('user_type_id','!=',1)->get('id');
-        $notifications = Notification::where('user_id',$users[3]->id)->get();
+        $notifications = DeviceGroup::where('user_id',$users[3]->id)->get();
 
         return response()->json($notifications);
 
