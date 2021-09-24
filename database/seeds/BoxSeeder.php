@@ -17,28 +17,28 @@ class BoxSeeder extends Seeder
 //            'user_id'=>1,
 //        ]);
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>2,
         ]);
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>3,
         ]);
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>4,
         ]);
 
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>5,
         ]);
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>6,
         ]);
         Box::create([
-            'amount'=>500,
+            'amount'=>500.00,
             'user_id'=>7,
         ]);
 

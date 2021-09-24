@@ -94,12 +94,12 @@ class UserController extends Controller
         }
     }
 
-    public function update(Request $request, $id): \Illuminate\Http\JsonResponse
+    public function update(Request $request, $id)
     {
         try{
             $user = $this->IUserRepository->update($request, $id);
             if(!is_null($user)){
-                return response()->json(['messages'=>ResponseMessages::UPDATE_SUCCESS()]);
+                return new UserResource($user);
             }
             else{
                 return response()->json(['messages'=>ResponseMessages::UPDATE_FAILED_400()]);
