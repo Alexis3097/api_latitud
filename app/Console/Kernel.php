@@ -39,6 +39,10 @@ class Kernel extends ConsoleKernel
                     if($voucher->created_at->diffInDays() > 7){
                         //eliminar la foto
                         cloudinary()->destroy($voucher->photoId);
+                        //actualiza la base de datos del registro que se elimino la foto
+                        $voucher->photo = null;
+                        $voucher->photoId = null;
+                        $voucher->save();
                     }
                 }
 
@@ -46,18 +50,18 @@ class Kernel extends ConsoleKernel
         })->dailyAt('00:00');
 
         //notificaccion el ultimo dia del mes
-        $schedule->call(function () {
-            $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
-            if($vouchers->count() > 0){
-                foreach ($vouchers as $voucher){
-                    if($voucher->created_at->diffInDays() > 7){
-                        //eliminar la foto
-                        cloudinary()->destroy($voucher->photoId);
-                    }
-                }
-
-            }
-        })->dailyAt('00:00');
+//        $schedule->call(function () {
+//            $vouchers = Voucher::where('approve',true)->where('photoId','!=',null)->get();
+//            if($vouchers->count() > 0){
+//                foreach ($vouchers as $voucher){
+//                    if($voucher->created_at->diffInDays() > 7){
+//                        //eliminar la foto
+//                        cloudinary()->destroy($voucher->photoId);
+//                    }
+//                }
+//
+//            }
+//        })->dailyAt('00:00');
     }
 
     /**
