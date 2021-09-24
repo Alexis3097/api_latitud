@@ -62,7 +62,7 @@ class Kernel extends ConsoleKernel
                     $this->sendNotification($user->id);
                 }
             }
-        })->monthlyOn(24, '16:00');
+        })->monthlyOn(27, '11:00');
     }
 
     /**
